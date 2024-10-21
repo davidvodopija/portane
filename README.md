@@ -1,30 +1,39 @@
-# Programsko inženjerstvo
-
-> Ime projekta u naslovu ima cilj opisati namjenu projekta te pomoći u podizanju početnog interesa za projekt prezentirajući osnovnu svrhu projekta.
-> Isključivo ovisi o Vama!
-> 
-> Naravno, nijedan predložak nije idealan za sve projekte jer su potrebe i ciljevi različiti. Ne bojte se naglasiti Vaš cilj u ovoj početnoj stranici projekta, podržat ćemo ga bez obzira usredotočili se Vi više na tenologiju ili marketing.
-> 
-> Zašto ovaj dokument? Samo manji dio timova je do sada propoznao potrebu (a i meni je lakše pratiti Vaš rad).  
+# Virtualni Ormar
 
 # Opis projekta
 Ovaj projekt je reultat timskog rada u sklopu projeknog zadatka kolegija [Programsko inženjerstvo](https://www.fer.unizg.hr/predmet/proinz) na Fakultetu elektrotehnike i računarstva Sveučilišta u Zagrebu. 
 
-Kratko opisati cilj Vašeg projekta. Vaša motivacija?  (Napomena: odgovor nije »Zato što je to bio zadatak i nismo imali ideje za drugo.«). Koji problem rješavate?
-> Obzirom da je ovo zadani projekt navedite i što želite/jeste novo  naučili.
+Projekt se sastoji od izrade responzivne web aplikacije u kojoj korisnici definiraju vlastiti virtualni ormar, njegovu strukturu (broj polica, ladica ili šipka za odjeću). Korisnici mogu dodavati artikle odjeće ili obuće te definirati njihove karakteristike (naziv, slika, opća kategorija, kategorija godišnjeg doba, kategorija ležernosti, glavnu i sporednu boju, opis stanja artikla te lokaciju u virtualnom ormaru). Korisnici mogu izraditi odjevnu kombinaciju zadavanjem kriterija, rezultira popisom preporučenih artikala. Aplikacija podržava prijavu oglašivača koji reklamiraju svoje artikle.
 
-> Dobro izrađen opis omogućuje vam da pokažete svoj rad drugim programerima, kao i potencijalnim poslodavcima. Ne samo da prvi dojam na stranici opisa često razlikuje dobar projekt od lošeg projekta već i predstavlja dobru praksu koju morate savladati.
 
 # Funkcijski zahtjevi
-> Navedite ključne zahtjeve Vašeg projekta.
+> Responzivna web aplikacija prilagođena mobilnim korisnicima
+> Podrška više korisnika u stvarnom vremenu
+> Podrška neregistriranih i registriranih korisnika te oglašivača
+> Definiranje virtualnog ormara i definiranje njegove strukture
+> Dodavanje artikala u ormar
+> Pretraživanje vlastitih ormara po karakteristikama artikala
+> Dijeljenje artikala drugim korisnicima
+> Prijedlog odabira odjevne kombinacije na temelju unesenih kriterija
+> Uklanjanje virtualnog ormara, izmjena strukture ormara i uklanjanje artikala iz virtualnog ormara
+> Povezivanje s vanjskom uslugom radi vremenske prognoze
 
 
 # Tehnologije
+PostgreSQL baza podataka
+Docker
+React js.
+Spring Boot
 
 #Instalcija
 # Članovi tima 
-> Popis članova tima/linkovi/ glavni doprinos
->
+> Marko Cindrić
+> Roko Domović
+> Borna Lešić
+> Boris Španić
+> Lara Topalović
+> David Vodopija
+> Marko Ćiril Zovko
 
 # Kontribucije
 >Pravila ovise o organizaciji tima i su često izdvojena u CONTRIBUTING.md
