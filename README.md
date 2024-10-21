@@ -8,14 +8,23 @@ Projekt se sastoji od izrade responzivne web aplikacije u kojoj korisnici defini
 
 # Funkcijski zahtjevi
 > Responzivna web aplikacija prilagođena mobilnim korisnicima
+
 > Podrška više korisnika u stvarnom vremenu
+
 > Podrška neregistriranih i registriranih korisnika te oglašivača
+
 > Definiranje virtualnog ormara i definiranje njegove strukture
+
 > Dodavanje artikala u ormar
+
 > Pretraživanje vlastitih ormara po karakteristikama artikala
+
 > Dijeljenje artikala drugim korisnicima
+
 > Prijedlog odabira odjevne kombinacije na temelju unesenih kriterija
+
 > Uklanjanje virtualnog ormara, izmjena strukture ormara i uklanjanje artikala iz virtualnog ormara
+
 > Povezivanje s vanjskom uslugom radi vremenske prognoze
 
 
@@ -27,12 +36,19 @@ Spring Boot
 
 #Instalcija
 # Članovi tima 
+
 > Marko Cindrić
+
 > Roko Domović
+
 > Borna Lešić
+
 > Boris Španić
+
 > Lara Topalović
+
 > David Vodopija
+
 > Marko Ćiril Zovko
 
 # Kontribucije
