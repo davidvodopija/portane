@@ -1,0 +1,29 @@
+/*size variants*/
+.btn-small {
+	padding: 8px 16px;
+	font-size: 0.85rem;
+}
+
+/*color variants*/
+.btn-orange {
+	background-color: #b43600;
+	color: white;
+}
+
+.btn:hover {
+	border: 2px solid #b4000065;
+}
+
+.btn-red {
+	background-color: #b40000;
+	color: white;
+}
+
+/*radius variants*/
+.btn-standard {
+	border-radius: 4px;
+}
+
+.btn-rounded {
+	border-radius: 20px;
+}
