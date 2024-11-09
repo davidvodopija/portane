@@ -10,7 +10,7 @@ function Header() {
 					<a className="navbar-brand">
 						PORTANE
 						<div className="smalltext">
-							-tvoj portable virtualni ormar
+							- tvoj portable virtualni ormar
 						</div>
 					</a>
 
