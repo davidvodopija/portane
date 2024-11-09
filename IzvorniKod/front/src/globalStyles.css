@@ -1,0 +1,16 @@
+/*CSS class defining heading on auth page*/
+.h-auth {
+	font-size: 40px;
+	color: #af0000;
+	font-weight: 600;
+}
+
+/*CSS class defining hr on auth page*/
+.hr-auth {
+	border: none;
+	width: 60%;
+	height: 4px;
+	color: #ffc8c8;
+	background-color: #ffc8c8;
+	opacity: 100;
+}
