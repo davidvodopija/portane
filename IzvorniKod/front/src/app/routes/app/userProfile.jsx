@@ -1,4 +1,10 @@
+import UserInfo from "../../../features/userProfile/components/userInfo";
+
 function UserProfile() {
-	return <></>;
+	return (
+		<>
+			<UserInfo></UserInfo>
+		</>
+	);
 }
 export default UserProfile;

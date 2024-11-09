@@ -1,0 +1,50 @@
+.userinfocard-container {
+	margin: 25px;
+	margin-top: 40px;
+	padding: 50px;
+	padding-left: 120px;
+	background-color: #fef3f3;
+}
+
+.firstcolumn-container {
+	width: 300px;
+	height: 350px;
+	padding-right: 20px;
+}
+
+.pic-container {
+	background-color: white;
+	padding: 40px;
+	border-radius: 100%;
+}
+
+.big-userlogo {
+	opacity: 0.7;
+	width: 100%;
+}
+
+.username-color {
+	font-weight: bold;
+	color: #b40000;
+}
+
+.left-padding-secondcolumn {
+	padding-left: 140px;
+}
+
+.info-size-spacing {
+	font-size: 1.35rem;
+	gap: 30px;
+}
+
+.mail-logo {
+	width: 40px;
+	margin-right: 10px;
+}
+
+.buttons-container {
+	margin-top: 80px;
+	margin-left: 480px;
+	width: 400px;
+	height: 100px;
+}
