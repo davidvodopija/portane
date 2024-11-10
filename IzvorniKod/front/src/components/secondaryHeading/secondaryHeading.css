@@ -1,0 +1,13 @@
+.secondary-heading-text {
+	font-size: 1.7rem;
+	font-weight: 500;
+	color: #af0000;
+}
+
+.secondary-heading-hr {
+	width: 72%;
+	height: 3px;
+	color: #ffc8c8;
+	background-color: #ffc8c8;
+	opacity: 100%;
+}
