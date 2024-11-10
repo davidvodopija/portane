@@ -1,4 +1,4 @@
-.card {
+.wardrobe-card .card {
 	width: 20rem;
 	height: 20rem;
 	background-color: #fffdf8;
@@ -8,16 +8,16 @@
 	position: relative;
 }
 
-.card:hover {
+.wardrobe-card .card:hover {
 	border: 2px solid #b43600c0;
 }
 
-.card-img-top {
+.wardrobe-card .card-img-top {
 	width: 130px;
 	padding: 5px;
 }
 
-.card-text {
+.wardrobe-card .card-text {
 	font-size: 1.4rem;
 	color: #af0000;
 	font-weight: bold;
