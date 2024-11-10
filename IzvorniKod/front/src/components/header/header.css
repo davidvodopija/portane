@@ -1,0 +1,32 @@
+.navbar {
+	margin: 15px;
+	padding: 10px;
+	background-color: #f8c8c8;
+}
+
+.navbar-brand {
+	margin: 0px;
+	padding: 0px;
+	color: #af0000;
+	max-width: fit-content;
+}
+
+.authentication-container {
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	gap: 20px;
+	min-width:250px;
+}
+
+.smalltext {
+	margin-left: 30px;
+	color: grey;
+	font-size: 0.75rem;
+	font-style: italic;
+}
+
+.bi-person-circle{
+	font-size: 1.75rem;
+}
+
