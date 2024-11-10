@@ -11,9 +11,9 @@ function SearchBar() {
 					placeholder="Pretraži"
 					aria-label="Search"
 				/>
-				<button className="btn btn-outline-success" type="submit">
-					Search
-				</button>
+				<div className="image-container" type="submit">
+					<i class="bi bi-search"></i>
+				</div>
 			</form>
 		</div>
 	);

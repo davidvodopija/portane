@@ -3,11 +3,14 @@ import SearchBar from "../searchBar/searchBar";
 import "./header.css";
 
 function Header() {
+	let isLoggedIn = true;
+	let imeKorisnika = 'Ime Korisnika';
+
 	return (
 		<div className="container-fluid">
 			<nav className="navbar">
 				<div className="container-fluid">
-					<a className="navbar-brand">
+					<a href="/" className="navbar-brand">
 						PORTANE
 						<div className="smalltext">
 							-tvoj portable virtualni ormar
@@ -16,12 +19,18 @@ function Header() {
 
 					<SearchBar></SearchBar>
 
-					<div className="authentication-container">
-						<a>Registriraj se</a>
-						<Button size="small" color="orange" radius="standard">
-							Ulogiraj se
-						</Button>
-					</div>
+					{ isLoggedIn ? 
+						(<div className="authentication-container">
+							<a>{imeKorisnika}</a>
+							<i className="bi bi-person-circle d-flex align-items-center"></i>
+							</div>):
+						(<div className="authentication-container">
+							<a href="#" className="btn" role="button" data-bs-toggle="button">Registriraj se</a>
+							<Button size="small" color="orange" radius="standard">
+								Ulogiraj se
+							</Button>
+						</div>)
+					}
 				</div>
 			</nav>
 		</div>
