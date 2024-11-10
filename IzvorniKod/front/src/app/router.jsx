@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Home from "./routes/app/home";
+import ItemDetails from "./routes/app/itemDetails";
 import UserProfile from "./routes/app/userProfile";
 import CreateWardrobe from "./routes/app/createWardrobe";
 import Auth from "./routes/auth/auth";

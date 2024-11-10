@@ -1,0 +1,35 @@
+.item-info-container {
+	height: 600px;
+	margin: 25px;
+	padding: 40px;
+	padding-left: 120px;
+	background-color: #fef3f3;
+}
+
+.item-image {
+	width: 500px;
+	height: auto;
+}
+
+.container-margin {
+	margin-left: 130px;
+}
+
+.large-red-text {
+	font-weight: 500;
+	color: #b40000;
+}
+
+.list-unstyled > li {
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+}
+
+.list-unstyled li:last-child {
+	border-bottom: none;
+}
+
+.list-unstyled strong {
+	margin-right: 10px;
+}
