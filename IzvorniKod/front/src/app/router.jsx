@@ -12,6 +12,7 @@ function Router() {
 				<Route path="/user-profile" element={<UserProfile />} />
 				{/*path should maybe later be change to actual username*/}
 				<Route path="/create-wardrobe" element={<CreateWardrobe />} />
+				<Route path="/auth/:mode" element={<Auth />} />
 				<Route path="/auth" element={<Auth />} />
 			</Routes>
 		</BrowserRouter>
