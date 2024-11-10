@@ -1,9 +1,14 @@
+import { useRef } from "react";
 import Button from "../../../../components/button/button.jsx";
 import "../form.css";
+import { register } from "../../api/authAPI.jsx";
+import { handleFormSubmit } from "../../../../utils/formUtils.jsx";
 
 function RegisterForm() {
+	const formRef = useRef(null);
+
 	return (
-		<form className="border p-4 rounded-2">
+		<form className="border p-4 rounded-2" ref={formRef}>
 			<div className="mb-3">
 				<label htmlFor="name" className="form-label">
 					Ime
@@ -11,8 +16,10 @@ function RegisterForm() {
 				<input
 					type="text"
 					className="form-control"
+					name="firstname"
 					id="name"
 					placeholder="Unesite ime"
+					required
 				/>
 			</div>
 			<div className="mb-3">
@@ -22,8 +29,10 @@ function RegisterForm() {
 				<input
 					type="text"
 					className="form-control"
+					name="lastname"
 					id="lastname"
 					placeholder="Unesite prezime"
+					required
 				/>
 			</div>
 			<div className="mb-3">
@@ -33,8 +42,11 @@ function RegisterForm() {
 				<input
 					type="email"
 					className="form-control"
+					name="email"
 					id="email"
 					placeholder="Unesite email"
+					required
+					pattern="^\S+@\S+\.\S+$"
 				/>
 			</div>
 			<div className="mb-4">
@@ -44,12 +56,18 @@ function RegisterForm() {
 				<input
 					type="password"
 					className="form-control"
+					name="password"
 					id="password"
 					placeholder="Unesite lozinku"
+					required
 				/>
 			</div>
-			<div className="d-grid gap-3 col-6 w-100">
-				<Button size="small" color="red" radius="normal">
+			<div className="d-grid w-100">
+				<Button
+					size="small"
+					color="red"
+					radius="normal"
+					onClick={() => handleFormSubmit(formRef, register)}>
 					Registriraj se
 				</Button>
 			</div>
