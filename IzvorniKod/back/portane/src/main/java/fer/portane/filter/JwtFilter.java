@@ -34,10 +34,10 @@ public class JwtFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         final String uri = request.getRequestURI();
 
-        /*if (uri.equals("/api/auth/login") || uri.equals("/api/users/create") || uri.equals("/h2-console/**")) {
+        if (uri.equals("/api/auth/login") || uri.equals("/api/users/create") || uri.equals("/h2-console/**")) {
             filterChain.doFilter(request, response);
             return;
-        }*/
+        }
 
         String token = null;
 
