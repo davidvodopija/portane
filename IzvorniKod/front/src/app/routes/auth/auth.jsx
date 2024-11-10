@@ -5,12 +5,12 @@ import { useParams } from "react-router-dom";
 import AuthSelector from "../../../features/auth/components/authSelector/authSelector";
 import AuthHeading from "../../../features/auth/components/authHeading/authHeading";
 
-//const { mode } = useParams();
 function Auth() {
+	const { mode } = useParams();
 	return (
 		<div className="d-flex flex-column align-items-center center-screen">
 			<AuthHeading text={"Portane"}></AuthHeading>
-			<AuthSelector mode="login"></AuthSelector>
+			<AuthSelector mode={mode}></AuthSelector>
 		</div>
 	);
 }

@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import SwitchLabel from "../switchLabel/switchLabel";
 import LoginForm from "../loginForm/loginForm";
 import RegisterForm from "../registerForm/registerForm";
+import useAuthNavigation from "../../hooks/useAuthNavigation";
 
 const AuthSelector = ({ mode = "login" }) => {
 	const [isLogin, setIsLogin] = useState(mode === "login");
+
+	useAuthNavigation(isLogin);
 
 	return (
 		<>
@@ -12,14 +15,14 @@ const AuthSelector = ({ mode = "login" }) => {
 				<SwitchLabel
 					isActive={!isLogin}
 					onClick={() => {
-						setIsLogin(!isLogin);
+						setIsLogin(false);
 					}}>
 					REGISTRIRAJ SE
 				</SwitchLabel>
 				<SwitchLabel
 					isActive={isLogin}
 					onClick={() => {
-						setIsLogin(!isLogin);
+						setIsLogin(true);
 					}}>
 					PRIJAVI SE
 				</SwitchLabel>
