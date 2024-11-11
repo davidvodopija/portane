@@ -5,6 +5,10 @@
 	font-weight: 600;
 }
 
+.h-auth:hover {
+	cursor: pointer;
+}
+
 /*CSS class defining hr on auth page*/
 .hr-auth {
 	border: none;

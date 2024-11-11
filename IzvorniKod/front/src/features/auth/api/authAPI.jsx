@@ -6,22 +6,19 @@ var host = "http://localhost:8080";
 export const login = async (data) => {
 	try {
 		const response = await axios.post(host + "/api/auth/login", data);
+		return response.data;
 	} catch (error) {
-		throw error.response ? error.response.data : new Error("Network error");
+		alert("Neuspjela prijava, pokušajte ponovno!");
+		throw new Error("Login failed");
 	}
 };
 
 export const register = async (data) => {
 	try {
 		const response = await axios.post(host + "/api/users/create", data);
+		return response.data;
 	} catch (error) {
-		throw error.response ? error.response.data : new Error("Network error");
-	}
-};
-export const test = async () => {
-	try {
-		const response = await axios.get(host + "/api/users/test");
-	} catch (error) {
-		throw error.response ? error.response.data : new Error("Network error");
+		alert("Neuspjela registracija, pokušajte ponovno!");
+		throw new Error("Registration failed");
 	}
 };

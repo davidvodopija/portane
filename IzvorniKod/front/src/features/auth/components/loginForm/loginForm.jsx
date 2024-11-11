@@ -2,10 +2,12 @@ import { useRef } from "react";
 import Button from "../../../../components/button/button.jsx";
 import { handleFormSubmit } from "../../../../utils/formUtils.jsx";
 import "../form.css";
-import { login } from "../../api/authAPI.jsx";
+import { useAuth } from "../../hooks/useAuth.jsx";
 
 function LoginForm() {
 	const formRef = useRef(null);
+
+	const { user, isLoggedIn, registerUser, loginUser, logoutUser } = useAuth();
 
 	return (
 		<form className="border p-4 rounded-2" ref={formRef}>
@@ -41,7 +43,7 @@ function LoginForm() {
 					size="small"
 					color="red"
 					radius="normal"
-					onClick={() => handleFormSubmit(formRef, login)}>
+					onClick={() => handleFormSubmit(formRef, loginUser)}>
 					Prijavi se
 				</Button>
 			</div>

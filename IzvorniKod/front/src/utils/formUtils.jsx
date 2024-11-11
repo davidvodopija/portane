@@ -7,10 +7,10 @@ const validateForm = (formRef) => {
 	}
 };
 
-export const handleFormSubmit = (formRef, apiFunction) => {
+export const handleFormSubmit = (formRef, providerFunction) => {
 	if (validateForm(formRef)) {
 		const formData = new FormData(formRef.current);
 		const formJson = Object.fromEntries(formData.entries());
-		apiFunction(formJson);
+		providerFunction(formJson);
 	}
 };

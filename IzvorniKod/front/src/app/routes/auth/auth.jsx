@@ -9,7 +9,7 @@ function Auth() {
 	const { mode } = useParams();
 	return (
 		<div className="d-flex flex-column align-items-center center-screen">
-			<AuthHeading text={"Portane"}></AuthHeading>
+			<AuthHeading text={"PORTANE"}></AuthHeading>
 			<AuthSelector mode={mode}></AuthSelector>
 		</div>
 	);
