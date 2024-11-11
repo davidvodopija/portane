@@ -1,10 +1,12 @@
 import Button from "../button/button";
 import SearchBar from "../searchBar/searchBar";
 import "./header.css";
+import { useAuth } from "../../features/auth/hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
-	let isLoggedIn = true;
-	let imeKorisnika = "Ime Korisnika";
+	const { user, isLoggedIn, registerUser, loginUser, logoutUser } = useAuth();
+	const navigate = useNavigate();
 
 	return (
 		<div className="container-fluid">
@@ -21,25 +23,26 @@ function Header() {
 
 					{isLoggedIn ? (
 						<div className="authentication-container">
-							<a>{imeKorisnika}</a>
-							<i className="bi bi-person-circle opacity-75 d-flex align-items-center"></i>
+							<a>
+								{user.firstname} {user.lastname}
+							</a>
+							<i
+								className="bi bi-person-circle opacity-75 d-flex align-items-center"
+								onClick={() => navigate("/user-profile")}
+							></i>
 						</div>
 					) : (
 						<div className="authentication-container">
-							<a
-								href="#"
-								className="btn"
-								role="button"
-								data-bs-toggle="button"
-							>
+							<a href="/auth/register" className="text-dark me-2">
 								Registriraj se
 							</a>
 							<Button
 								size="small"
 								color="orange"
 								radius="standard"
+								onClick={() => navigate("/auth/login")}
 							>
-								Ulogiraj se
+								Prijavi se
 							</Button>
 						</div>
 					)}

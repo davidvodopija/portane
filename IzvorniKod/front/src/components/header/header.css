@@ -12,11 +12,12 @@
 }
 
 .authentication-container {
+	font-size: 0.9rem;
 	display: flex;
 	justify-content: end;
 	align-items: center;
 	gap: 20px;
-	min-width:250px;
+	min-width: 250px;
 }
 
 .smalltext {
@@ -26,7 +27,6 @@
 	font-style: italic;
 }
 
-.bi-person-circle{
+.bi-person-circle {
 	font-size: 1.75rem;
 }
-

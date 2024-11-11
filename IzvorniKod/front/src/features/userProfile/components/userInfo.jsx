@@ -3,8 +3,15 @@ import "./userInfo.css";
 import userLogo from "../../../assets/userLogo.png";
 import mailLogo from "../../../assets/mailLogo.png";
 import Button from "../../../components/button/button";
+import { useAuth } from "../../auth/hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 function UserInfo() {
+	const { user, isLoggedIn, registerUser, loginUser, logoutUser } = useAuth();
+	const navigate = useNavigate();
+
+	if (!isLoggedIn) return <></>;
+
 	return (
 		<div className="d-flex userinfocard-container">
 			<div className="firstcolumn-container">
@@ -21,7 +28,9 @@ function UserInfo() {
 			</div>
 
 			<div className="d-flex flex-column justify-content-center left-padding-secondcolumn info-size-spacing pb-5">
-				<div>Ime Prezime</div>
+				<div>
+					{user.firstname} {user.lastname}
+				</div>
 				<div className="d-flex">
 					<div>
 						<img
@@ -30,7 +39,7 @@ function UserInfo() {
 							className="mail-logo"
 						/>
 					</div>
-					<div> korisnik@user.com</div>
+					<div> {user.email} </div>
 				</div>
 
 				<div> UKUPNO ORMARA: n</div>
@@ -38,7 +47,12 @@ function UserInfo() {
 			</div>
 
 			<div className="d-grid gap-3 col-6 buttons-container">
-				<Button size="medium" color="orange" radius="rounded">
+				<Button
+					size="medium"
+					color="orange"
+					radius="rounded"
+					onClick={() => navigate("/create-wardrobe")}
+				>
 					DODAJ NOVI ORMAR
 				</Button>
 				<Button size="medium" color="orange" radius="rounded">
