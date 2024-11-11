@@ -1,4 +1,6 @@
 import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import "./carouselAuto.css";
 import Button from "../button/button";
 
@@ -20,7 +22,7 @@ export const CarouselAuto = () => {
         <div className="row row-cols-1">
           <a>Posloži,</a>
           <a>Pretraži,</a>
-          <a>Prodaj,</a>
+          <a>Prodaj -</a>
         </div>
         <div className="naslov">PORTANE</div>
         <div className="btnContainer"><Button size="small" color="red" radius="rounded">Otvori vrata svog stila!</Button></div>

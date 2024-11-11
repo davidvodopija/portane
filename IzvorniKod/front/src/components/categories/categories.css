@@ -1,0 +1,22 @@
+.container {
+    padding-top: 4rem;
+    margin: 0 auto;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding-top: 3rem;
+    justify-items: center;
+}
+
+.title {
+    color: #AF0000;
+    font-size: 2rem;
+    border-bottom-style: solid;
+    border-width: 3px;
+    border-color: #FFC8C8;
+    margin-right: 15rem;
+    margin-bottom: 2rem;
+}
