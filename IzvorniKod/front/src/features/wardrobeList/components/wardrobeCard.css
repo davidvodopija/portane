@@ -1,0 +1,45 @@
+.wardrobe-card .card {
+	width: 20rem;
+	height: 20rem;
+	background-color: #fffdf8;
+	border: 2px solid #e6e6e6;
+	border-radius: 24px;
+	padding: 20px;
+	position: relative;
+}
+
+.wardrobe-card .card:hover {
+	border: 2px solid #b43600c0;
+}
+
+.wardrobe-card .card-img-top {
+	width: 130px;
+	padding: 5px;
+}
+
+.wardrobe-card .card-text {
+	font-size: 1.4rem;
+	color: #af0000;
+	font-weight: bold;
+}
+
+.close-button-wrapper {
+	position: absolute;
+	top: 1px;
+	right: 1px;
+	width: 120px;
+	height: 120px;
+}
+
+.btn-close {
+	margin-top: 15px;
+	margin-left: 70px;
+}
+
+.close-button-wrapper .btn-close {
+	display: none;
+}
+
+.close-button-wrapper:hover .btn-close {
+	display: block;
+}

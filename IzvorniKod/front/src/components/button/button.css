@@ -4,6 +4,11 @@
 	font-size: 0.85rem;
 }
 
+.btn-medium {
+	padding: 20px 50px;
+	font-size: 1.1rem;
+}
+
 /*color variants*/
 .btn-orange {
 	background-color: #b43600;
