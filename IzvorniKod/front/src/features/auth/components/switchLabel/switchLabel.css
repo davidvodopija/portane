@@ -1,0 +1,24 @@
+.switchlabel {
+	font-size: 1.3rem;
+	padding-left: 10px;
+	padding-right: 10px;
+	min-width: 170px;
+}
+
+.switchlabel:hover {
+	background-color: #fef3f3;
+	color: #af0000;
+	border-bottom: 3px solid #ffc8c8;
+}
+
+.switchlabel-active {
+	background-color: #ffffff00;
+	border-bottom: 3px solid #ffc8c8;
+	color: #b40000;
+}
+
+.switchlabel-passive {
+	background-color: #ffffff00;
+	border-bottom: 3px solid #dedede;
+	color: #757575;
+}

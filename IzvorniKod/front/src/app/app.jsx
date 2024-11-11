@@ -3,11 +3,7 @@ import Router from "./router";
 import AppProvider from "./provider";
 
 function App() {
-	return (
-		<AppProvider>
-			<Router />
-		</AppProvider>
-	);
+	return <Router />;
 }
 
 export default App;
