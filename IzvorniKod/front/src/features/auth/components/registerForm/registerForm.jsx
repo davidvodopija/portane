@@ -7,7 +7,7 @@ import { useAuth } from "../../hooks/useAuth.jsx";
 function RegisterForm() {
 	const formRef = useRef(null);
 
-	const { user, isLoggedIn, registerUser, loginUser, logoutUser } = useAuth();
+	const { user, isLoggedIn, registerUser, loginUser } = useAuth();
 
 	return (
 		<form className="border p-4 rounded-2" ref={formRef}>
@@ -69,7 +69,8 @@ function RegisterForm() {
 					size="small"
 					color="red"
 					radius="normal"
-					onClick={() => handleFormSubmit(formRef, registerUser)}>
+					onClick={() => handleFormSubmit(formRef, registerUser)}
+				>
 					Registriraj se
 				</Button>
 			</div>

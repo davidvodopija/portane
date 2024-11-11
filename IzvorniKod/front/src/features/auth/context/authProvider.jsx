@@ -34,6 +34,7 @@ export const AuthProvider = ({ children }) => {
 			const tmpUser = await register(user);
 			setUser(tmpUser);
 			setIsLoggedIn(true);
+			navigate("/user-profile");
 		} catch (error) {
 			setUser(null);
 			setIsLoggedIn(false);
@@ -59,5 +60,7 @@ export const AuthProvider = ({ children }) => {
 		loginUser,
 	};
 
-	return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+	return (
+		<AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+	);
 };
