@@ -36,6 +36,12 @@ public class SecurityConfig {
                 .sessionManagement(securitySessionManagementConfigurer -> {
                     securitySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
                 })
+                .headers(headers -> {
+                    // Set the Content-Security-Policy header (no longer using frameOptions())
+                    headers.addHeaderWriter((request, response) -> {
+                        response.setHeader("Content-Security-Policy", "frame-ancestors 'self'");
+                    });
+                })
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .httpBasic(AbstractHttpConfigurer::disable)

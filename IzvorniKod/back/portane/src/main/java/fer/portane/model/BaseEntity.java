@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Data
 public class BaseEntity {
     @Id
-    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private boolean active;
