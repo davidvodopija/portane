@@ -23,3 +23,12 @@ export const register = async (data) => {
 		throw new Error(error);
 	}
 };
+
+export const logout = async () => {
+	try {
+		const response = await axios.get(host + "/api/auth/logout");
+	} catch {
+		alert(error.response.data.errors[0]);
+		throw new Error(error);
+	}
+};

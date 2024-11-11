@@ -1,3 +1,5 @@
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Button from "../button/button";
 import SearchBar from "../searchBar/searchBar";
 import "./header.css";
@@ -29,6 +31,10 @@ function Header() {
 							<i
 								className="bi bi-person-circle opacity-75 d-flex align-items-center"
 								onClick={() => navigate("/user-profile")}
+							></i>
+							<i
+								className="bi bi-box-arrow-right mb-2 opacity-75"
+								onClick={() => logoutUser()}
 							></i>
 						</div>
 					) : (
