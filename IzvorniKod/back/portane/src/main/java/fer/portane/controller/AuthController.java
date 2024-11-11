@@ -3,6 +3,7 @@ package fer.portane.controller;
 import fer.portane.dto.GeneralResponse;
 import fer.portane.dto.TokenDto;
 import fer.portane.dto.UserDto;
+import fer.portane.facade.AuthFacade;
 import fer.portane.facade.UserFacade;
 import fer.portane.form.LoginForm;
 import jakarta.servlet.http.Cookie;
@@ -14,16 +15,16 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
     @Autowired
     private UserFacade userFacade;
+
+    @Autowired
+    private AuthFacade authFacade;
 
     @PostMapping("/login")
     public ResponseEntity<GeneralResponse<UserDto>> login(
@@ -54,5 +55,23 @@ public class AuthController {
         return ResponseEntity.ok()
                 .header(HttpHeaders.SET_COOKIE, cookie.toString())
                 .body(generalResponse);
+    }
+
+    @GetMapping("/logout")
+    public ResponseEntity<GeneralResponse<String>> logout(HttpServletResponse response) {
+        GeneralResponse<String> generalResponse = new GeneralResponse<>();
+
+        ResponseCookie cookie = ResponseCookie.from("accessToken", "")
+                .httpOnly(true)
+                .secure(true)
+                .path("/")
+                .maxAge(0)
+                .build();
+
+        authFacade.logout();
+
+        response.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
+        generalResponse.setResult("Logged out successfully");
+        return ResponseEntity.ok(generalResponse);
     }
 }

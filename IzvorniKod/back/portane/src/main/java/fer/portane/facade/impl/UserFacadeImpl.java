@@ -10,6 +10,7 @@ import fer.portane.mapper.UserFormUserMapper;
 import fer.portane.mapper.UserUserDtoMapper;
 import fer.portane.model.User;
 import fer.portane.model.UserToken;
+import fer.portane.service.AuthService;
 import fer.portane.service.JwtService;
 import fer.portane.service.UserService;
 import fer.portane.service.UserTokenService;
@@ -34,6 +35,9 @@ public class UserFacadeImpl implements UserFacade {
 
     @Autowired
     private UserTokenService userTokenService;
+
+    @Autowired
+    private AuthService authService;
 
     @Override
     public UserDto create(UserForm userForm, TokenDto token) {
