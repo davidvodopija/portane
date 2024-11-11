@@ -4,7 +4,7 @@ import "./header.css";
 
 function Header() {
 	let isLoggedIn = true;
-	let imeKorisnika = 'Ime Korisnika';
+	let imeKorisnika = "Ime Korisnika";
 
 	return (
 		<div className="container-fluid">
@@ -17,20 +17,32 @@ function Header() {
 						</div>
 					</a>
 
-					<SearchBar></SearchBar>
+					<SearchBar size="big" />
 
-					{ isLoggedIn ? 
-						(<div className="authentication-container">
+					{isLoggedIn ? (
+						<div className="authentication-container">
 							<a>{imeKorisnika}</a>
-							<i className="bi bi-person-circle d-flex align-items-center"></i>
-							</div>):
-						(<div className="authentication-container">
-							<a href="#" className="btn" role="button" data-bs-toggle="button">Registriraj se</a>
-							<Button size="small" color="orange" radius="standard">
+							<i className="bi bi-person-circle opacity-75 d-flex align-items-center"></i>
+						</div>
+					) : (
+						<div className="authentication-container">
+							<a
+								href="#"
+								className="btn"
+								role="button"
+								data-bs-toggle="button"
+							>
+								Registriraj se
+							</a>
+							<Button
+								size="small"
+								color="orange"
+								radius="standard"
+							>
 								Ulogiraj se
 							</Button>
-						</div>)
-					}
+						</div>
+					)}
 				</div>
 			</nav>
 		</div>

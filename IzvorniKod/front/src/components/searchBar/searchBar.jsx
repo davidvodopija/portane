@@ -1,20 +1,20 @@
 import "bootstrap/dist/css/bootstrap.css";
 import "./searchBar.css";
 
-function SearchBar() {
+function SearchBar({ size = "big", text = "Pretraži" }) {
 	return (
-		<div className="search-container">
-			<form className="d-flex" role="search">
+		<div className={`search-container-${size} d-flex justify-content-end`}>
+			<form role="search">
 				<input
-					className="form-control me-2"
+					className="form-control ps-3 pe-5"
 					type="search"
-					placeholder="Pretraži"
+					placeholder={text}
 					aria-label="Search"
 				/>
-				<div className="image-container" type="submit">
-					<i class="bi bi-search"></i>
-				</div>
 			</form>
+			<div className="image-container pe-3" type="submit">
+				<i className="bi bi-search "></i>
+			</div>
 		</div>
 	);
 }

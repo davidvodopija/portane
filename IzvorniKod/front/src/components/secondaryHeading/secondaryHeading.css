@@ -5,9 +5,14 @@
 }
 
 .secondary-heading-hr {
-	width: 72%;
+	width: 100%;
 	height: 3px;
 	color: #ffc8c8;
 	background-color: #ffc8c8;
 	opacity: 100%;
+}
+
+.secondary-heading-container {
+	flex-basis: 72%;
+	max-width: 72%;
 }
