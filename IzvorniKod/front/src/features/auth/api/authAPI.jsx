@@ -1,11 +1,9 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
-var host = "http://localhost:8080";
-
 export const login = async (data) => {
 	try {
-		const response = await axios.post(host + "/api/auth/login", data);
+		const response = await axios.post("/api/auth/login", data);
 		return response.data.result;
 	} catch (error) {
 		alert(error.response.data.errors[0]);
@@ -15,7 +13,7 @@ export const login = async (data) => {
 
 export const register = async (data) => {
 	try {
-		const response = await axios.post(host + "/api/users/create", data);
+		const response = await axios.post("/api/users/create", data);
 
 		return response.data.result;
 	} catch (error) {
@@ -26,7 +24,7 @@ export const register = async (data) => {
 
 export const logout = async () => {
 	try {
-		const response = await axios.get(host + "/api/auth/logout");
+		const response = await axios.get("/api/auth/logout");
 	} catch {
 		alert(error.response.data.errors[0]);
 		throw new Error(error);
