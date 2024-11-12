@@ -8,4 +8,6 @@ import java.util.List;
 public interface ClosetFacade {
     ClosetDto create(ClosetForm closetForm);
     List<ClosetDto> findAllForAuthenticatedUser();
+
+    void delete(Long id);
 }

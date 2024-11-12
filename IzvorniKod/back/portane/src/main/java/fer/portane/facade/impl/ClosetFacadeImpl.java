@@ -64,4 +64,9 @@ public class ClosetFacadeImpl implements ClosetFacade {
                 .map(ClosetClosetDtoMapper::toClosetDto)
                 .toList();
     }
+
+    @Override
+    public void delete(Long id) {
+        closetService.deleteById(id);
+    }
 }
