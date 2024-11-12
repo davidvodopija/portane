@@ -29,4 +29,11 @@ public class ClosetController {
         generalResponse.setResult(closetFacade.findAllForAuthenticatedUser());
         return ResponseEntity.ok(generalResponse);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<GeneralResponse<Void>> delete(@PathVariable Long id) {
+        GeneralResponse<Void> generalResponse = new GeneralResponse<>();
+        closetFacade.delete(id);
+        return ResponseEntity.ok(generalResponse);
+    }
 }
