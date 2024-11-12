@@ -48,6 +48,10 @@ jobs:
           context: ./back/portane
           push: true
           tags: ghcr.io/${{ github.repository }}/backend:latest
+          build-args: |
+            ACCESS_TOKEN_EXPIRY=${{ secrets.ACCESS_TOKEN_EXPIRY }}
+            REFRESH_TOKEN_EXPIRY=${{ secrets.REFRESH_TOKEN_EXPIRY }}
+            SIGNING_KEY=${{ secrets.SIGNING_KEY }}
 
       - name: Trigger release
         if: ${{ env.BACKEND_DEPLOY_HOOK }}
