@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'front/**'
+      - "IzvorniKod/front/**"
   workflow_dispatch:
 
 jobs:
@@ -23,16 +23,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'npm'
-          cache-dependency-path: 'front/package-lock.json'
+          cache: "npm"
+          cache-dependency-path: "IzvorniKod/front/package-lock.json"
 
       - name: Install dependencies
         run: npm install
-        working-directory: front
+        working-directory: IzvorniKod/front
 
       - name: Build frontend
         run: npm run build
-        working-directory: front
+        working-directory: IzvorniKod/front
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -47,7 +47,7 @@ jobs:
       - name: Build and push frontend image
         uses: docker/build-push-action@v6
         with:
-          context: ./front
+          context: ./IzvorniKod/front
           push: true
           tags: ghcr.io/${{ github.repository }}/frontend:latest
 
