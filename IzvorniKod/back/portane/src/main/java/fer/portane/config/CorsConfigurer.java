@@ -12,7 +12,7 @@ public class CorsConfigurer implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**")
-                .allowedOriginPatterns("http://localhost:[*]")
+                .allowedOriginPatterns("http://localhost:[*]", "https://portane-front.onrender.com")
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowCredentials(true);
     }
