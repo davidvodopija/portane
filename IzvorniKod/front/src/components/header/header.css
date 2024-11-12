@@ -29,4 +29,15 @@
 
 .bi-person-circle {
 	font-size: 1.75rem;
+	cursor: pointer;
+}
+
+.bi-box-arrow-right {
+	color: #af000090;
+	font-size: 1.75rem;
+	cursor: pointer;
+}
+
+.bi-box-arrow-right:hover {
+	color: black;
 }
