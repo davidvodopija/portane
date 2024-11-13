@@ -36,7 +36,7 @@
     justify-content: center;
     align-items: flex-start;
     background-color: #E6E6E6;
-    width: 300px; /* Fixed width instead of max-width */
+    width: 300px;
     padding: 20px;
     border-top-right-radius: 24px;
     border-bottom-right-radius: 24px;

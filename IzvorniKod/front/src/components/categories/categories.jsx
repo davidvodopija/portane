@@ -9,7 +9,7 @@ import images from '../../utils/imagesUtils';
 function Categories() {
     return (
         <div className='container'>
-            <h1 className='title'>KATEGORIJE</h1>
+            <h1 id = "Cards" className='title'>KATEGORIJE</h1>
             <div className='cards-grid'>
                 <Cards
                     src={images['majiceLogo.png']}
