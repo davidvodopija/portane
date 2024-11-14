@@ -14,7 +14,7 @@ export const reformatFormData = (elements) => {
         for (let i = 1; i < formElements.length; i++) {
             const component = {
                 id: parseInt(formElements[i].id, 10),
-                quantity: parseInt(formElements[i].value, 0)
+                quantity: parseInt((formElements[i].value) ? (formElements[i].value) : 0, 0)
             };
             formattedData.componentsList.push(component);
         }

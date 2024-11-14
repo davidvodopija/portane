@@ -75,7 +75,7 @@ function CreateWardrobeForm() {
                                 name={id}
                                 value={formData[label]}
                                 onChange={(e) => handleInputChange(label, e.target.value)}
-                                placeholder={`Unesite ${label.toLowerCase()}`}
+                                placeholder={`Unesite broj ${label.toLowerCase()}`}
                                 className="form-control w-50"
                                 min="0"
                                 max="10"

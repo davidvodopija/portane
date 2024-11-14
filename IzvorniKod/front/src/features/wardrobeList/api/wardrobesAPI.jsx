@@ -11,3 +11,12 @@ export const getAllWardrobes = async () => {
         throw new Error(error);
     }
 };
+
+export const removeWardrobeByID = async (ID) => {
+    try {
+        const response = await axios.delete(`/api/closets/delete/${ID}`);
+    } catch (error) {
+        alert(error.response.data.errors[0]);
+        throw new Error(error);
+    }
+};
