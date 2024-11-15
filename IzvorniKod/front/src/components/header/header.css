@@ -1,43 +1,99 @@
 .navbar {
-	margin: 15px;
-	padding: 10px;
-	background-color: #f8c8c8;
+    padding: 10px;
+    height: fit-content;
+    min-height: 12%;
+    background-color: #f8c8c8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 4%;
+    margin-bottom: 2%;
 }
 
 .navbar-brand {
-	margin: 0px;
-	padding: 0px;
-	color: #af0000;
-	max-width: fit-content;
+    min-width: 100px;
+    max-width: 200px;
+    margin: 0;
+    padding: 0;
+    color: #af0000;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
 }
 
-.authentication-container {
-	font-size: 0.9rem;
-	display: flex;
-	justify-content: end;
-	align-items: center;
-	gap: 20px;
-	min-width: 250px;
+.brand-text {
+    font-size: clamp(1.25rem, 2.5vw, 2rem);
+    line-height: 1.2;
+    font-weight: 500;
 }
 
 .smalltext {
-	margin-left: 30px;
-	color: grey;
-	font-size: 0.75rem;
-	font-style: italic;
+    color: grey;
+    font-size: clamp(0.6rem, 1.5vw, 0.75rem);
+    font-style: italic;
+    position: absolute;
+    left: 10%; /* Moves the small text slightly to the right */
+    top: 100%; /* Places it below the logo text */
+    transform: translateY(-50%);
 }
 
-.bi-person-circle {
-	font-size: 1.75rem;
-	cursor: pointer;
+.authentication-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-width: 100px;
+    max-width: 200px;
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+}
+
+.bi-person-circle,
+.bi-box-arrow-right {
+    font-size: clamp(1.5rem, 3vw, 1.75rem);
+    cursor: pointer;
 }
 
 .bi-box-arrow-right {
-	color: #af000090;
-	font-size: 1.75rem;
-	cursor: pointer;
+    color: #af000090;
 }
 
 .bi-box-arrow-right:hover {
-	color: black;
+    color: black;
+}
+
+.flex-grow-1 {
+    max-width: 600px;
+}
+
+.authentication-container a {
+    text-decoration: none; /* Removes underline */
+    color: black; /* Sets text color to black */
+    font-weight: 400;
+}
+
+.authentication-container a:hover {
+    text-decoration: none; /* Optional: underline on hover if desired */
+    color: black; /* Keeps the hover color black */
+}
+
+@media (max-width: 576px) {
+    .navbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .navbar-brand {
+        margin-bottom: 10px; /* Adds space between logo and search bar */
+    }
+
+    .flex-grow-1 {
+        margin-top: 10px; /* Adds padding when search bar moves below logo */
+    }
+
+    .authentication-container {
+        justify-content: center;
+        margin-top: 10px;
+    }
 }

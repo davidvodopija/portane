@@ -8,7 +8,8 @@ import {useWardrobes} from "../../../features/wardrobeList/hooks/useWardrobes.js
 function CreateWardrobe() {
     const {wardrobes} = useWardrobes();
 
-    return (<><Header></Header>
+    return (<>
+        <div className="container-fluid p-0 object-fit-cover"><Header/></div>
         <div className="container-fluid">
             <CreateWardrobeForm/>
         </div>
