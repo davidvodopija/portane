@@ -1,0 +1,23 @@
+#footer {
+    background-color: #FFDFDF;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.links-container {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin-top: 0.5rem;
+    padding-left: 3rem;
+}
+
+h1 {
+    color: #B40000;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+a {
+    color: #686767;
+}

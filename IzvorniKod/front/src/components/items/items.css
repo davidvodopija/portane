@@ -1,0 +1,21 @@
+#item .d-flex {
+    border-color: #FFC8C8;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 5rem;
+    margin-left: 5rem;
+    margin-right: 20rem;
+}
+
+#item .d-flex h1 {
+    color: #AF0000;
+    font-size: 2rem;
+    margin: 0;
+}
+
+#item .d-flex #smalltxt {
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 100;
+    margin: 0;
+}

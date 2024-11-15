@@ -1,0 +1,39 @@
+#carouselBtn .container {
+    display: flex;
+    justify-content: center;
+    padding-left: 10rem;
+    padding-right: 10rem;
+}
+
+#carouselBtn .slide{
+    display: flex;
+    justify-content: center;
+}
+
+#carouselBtn .carousel {
+    position: relative;
+}
+
+#carouselBtn .carousel-item {
+    padding: 0 3rem;
+}
+
+#carouselBtn .cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    margin: 0 auto;
+
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 3rem;
+    background-color: rgba(0,0,0,0.2);
+    height: 14rem;
+    border-radius: 10px;
+}
+
+#carouselBtn .carousel-item {
+    min-height: 300px; 
+}
