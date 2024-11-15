@@ -1,46 +1,23 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 
 /* size variants */
-/* Style for the input field */
-.search-container-big {
-    width: 100%;
-    max-width: 650px; /* Maximum width the search bar can reach */
-    min-width: 50px; /* Minimum width */
-    /*position: relative; /* Ensures the icon positions correctly */
-}
-
 .search-container-big .form-control {
-    flex-grow: 2;
-    border-radius: 20px;
-    padding-right: 2.5rem; /* Space for the icon */
-    width: 100%; /* Makes the input responsive */
+	min-width: 550px;
+	border-radius: 20px;
 }
 
 .search-container-big .image-container {
-    position: absolute;
-    padding-top: 5px;
-}
-
-.search-container-small {
-    width: 100%;
-    max-width: 550px; /* Maximum width the search bar can reach */
-    min-width: 100px; /* Minimum width */
-    position: relative; /* Ensures the icon positions correctly */
+	position: absolute;
+	padding-top: 5px;
 }
 
 .search-container-small .form-control {
-    flex-grow: 1;
-    padding-right: 2.5rem; /* Space for the icon */
-    width: 100%; /* Makes the input responsive */
-    height: 2rem;
-    border-radius: 20px;
+	width: 400px;
+	height: 2rem;
+	border-radius: 20px;
 }
 
 .search-container-small .image-container {
-    position: absolute;
-    padding-top: 3px;
-}
-
-.form-responsive {
-    min-width: 135px;
+	position: absolute;
+	padding-top: 3px;
 }

@@ -15,8 +15,8 @@ function UserProfile() {
 
             <div className="d-flex justify-content-between pe-5 w-100">
                 <SecondaryHeading text={`MOJI ORMARI (${(wardrobes) ? wardrobes.length : 0})`}/>
-                <div className="mt-2 pt-5 w-75">
-                    <SearchBar size="big" text="Pretraži svoje ormare"/>
+                <div className="mt-2 pt-5">
+                    <SearchBar size="small" text="Pretraži svoje ormare"/>
                 </div>
             </div>
 
