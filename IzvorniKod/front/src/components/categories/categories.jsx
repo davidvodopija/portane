@@ -5,11 +5,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import "./categories.css"
 import images from '../../utils/imagesUtils';
+import SecondaryHeading from "../secondaryHeading/secondaryHeading.jsx";
 
 function Categories() {
     return (
-        <div id = "categories" className='container-fluid'>
-            <h1 id = "Cards" className='title'>KATEGORIJE</h1>
+        <div id="categories" className='container-fluid'>
+            <SecondaryHeading text="KATEGORIJE"></SecondaryHeading>
             <div className='cards-grid'>
                 <Cards
                     src={images['majiceLogo.png']}

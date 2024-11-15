@@ -1,6 +1,4 @@
 #item .d-flex {
-    border-bottom-style: solid;
-    border-width: 3px;
     border-color: #FFC8C8;
     justify-content: space-between;
     align-items: flex-end;

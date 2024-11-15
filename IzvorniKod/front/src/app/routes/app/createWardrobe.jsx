@@ -9,9 +9,7 @@ function CreateWardrobe() {
     const {wardrobes} = useWardrobes();
 
     return (<><Header></Header>
-        <div className="container-fluid">
-            <CreateWardrobeForm/>
-        </div>
+        <CreateWardrobeForm/>
         <div className="container-fluid">
             <div className="d-flex justify-content-between pe-5 w-100">
                 <SecondaryHeading text={`MOJI ORMARI (${(wardrobes) ? wardrobes.length : 0})`}/>

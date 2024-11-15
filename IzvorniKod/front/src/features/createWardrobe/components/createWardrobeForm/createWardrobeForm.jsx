@@ -47,7 +47,7 @@ function CreateWardrobeForm() {
     }
 
     return (
-        <div className="border ms-3 p-4 create-closet-form col-8">
+        <div className="border p-4 create-closet-form col-8">
             <p className="fs-3 title-style">NOVI ORMAR - NOVI PROSTOR ZA STIL</p>
             <form ref={formRef}>
                 <div className="mb-3">

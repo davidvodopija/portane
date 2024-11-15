@@ -1,17 +1,15 @@
 import React from 'react';
 import CarouselBtn from '../carousel/carouselBtn';
 import "./items.css";
+import SecondaryHeading from "../secondaryHeading/secondaryHeading.jsx";
 
 export default function items() {
     return (
-      <div id="item">
-        <div className='container-fluid'>
-          <div className='d-flex justify-content-between align-items-center'>
-            <h1>STILOVI TVOG KVARTA</h1>
-            <a id='smalltxt'>istraži ormare u svojoj blizini</a>
-          </div>
+        <div id="item">
+            <div className='container-fluid'>
+                <SecondaryHeading text="STILOVI TVOG KVARTA"/>
+            </div>
+            <CarouselBtn></CarouselBtn>
         </div>
-        <CarouselBtn></CarouselBtn>
-      </div>
     );
-  }
+}
