@@ -1,0 +1,16 @@
+.title-style {
+    color: #b40000;
+    font-size: large;
+    font-weight: 500;
+}
+
+.create-closet-form {
+    color: black;
+    font-size: medium;
+    font-weight: normal;
+    background-color: #f0f0f0;
+}
+
+.map {
+    height: 400px;
+}

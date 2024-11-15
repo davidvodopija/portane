@@ -1,0 +1,30 @@
+/* Center the modal overlay to cover the entire screen */
+.modal-overlay {
+    position: fixed; /* Fixed positioning to cover the whole screen */
+    top: 25vh;
+    left: 25vw;
+    width: 50vw;
+    height: 30vh;
+    display: flex; /* Flex to center content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: white; /* Semi-transparent background */
+    z-index: 1050; /* Ensure it's above other content */
+    border-radius: 10px;
+    border: 2px solid;
+    border-color: #b40000;
+    color: #b40000;
+}
+
+/* Ensure the modal dialog is centered */
+.modal-message {
+    color: black;
+}
+
+.close-button {
+    position: absolute; /* Allows precise positioning */
+    top: 2%; /* 2% from the top */
+    right: 2%; /* 2% from the right */
+    z-index: 1000;
+
+}
