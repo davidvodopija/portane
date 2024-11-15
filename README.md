@@ -10,26 +10,8 @@ Aplikacija podržava prijavu oglašivača koji reklamiraju svoje artikle.
 
 
 # Funkcijski zahtjevi
-> Responzivna web aplikacija prilagođena mobilnim korisnicima
 
-> Podrška više korisnika u stvarnom vremenu
-
-> Podrška neregistriranih i registriranih korisnika te oglašivača
-
-> Definiranje virtualnog ormara i definiranje njegove strukture
-
-> Dodavanje artikala u ormar
-
-> Pretraživanje vlastitih ormara po karakteristikama artikala
-
-> Dijeljenje artikala drugim korisnicima
-
-> Prijedlog odabira odjevne kombinacije na temelju unesenih kriterija
-
-> Uklanjanje virtualnog ormara, izmjena strukture ormara i uklanjanje artikala iz virtualnog ormara
-
-> Povezivanje s vanjskom uslugom radi vremenske prognoze
-
+https://github.com/davidvodopija/portane/wiki/2.-Analiza-zahtjeva
 
 # Tehnologije
 PostgreSQL baza podataka
@@ -59,8 +41,7 @@ Spring Boot
 > Marko Ćiril Zovko
 
 # Kontribucije
->Pravila ovise o organizaciji tima i su često izdvojena u CONTRIBUTING.md
-
+https://github.com/davidvodopija/portane/wiki/8.-Prikaz-aktivnosti-grupe
 
 
 # 📝 Kodeks ponašanja [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
