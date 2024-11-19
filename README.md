@@ -23,6 +23,9 @@ React js.
 Spring Boot
 
 # Instalcija
+Link na stranicu: https://portane-front.onrender.com/
+
+Sustavu će vjerojatno trebati malo vremena da odgovori na zahtjeve korisnika jer se server treba pokrenuti.
 
 # Članovi tima 
 
