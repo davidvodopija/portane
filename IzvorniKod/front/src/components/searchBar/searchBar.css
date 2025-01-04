@@ -1,44 +1,86 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 
-/* Search container adjustments for responsiveness */
+
+/*big search bar*/
 .search-container-big {
-    display: flex;
-    width: 100%; /* Allows the search bar to expand within the parent container */
-    max-width: 650px; /* Maximum width */
-    min-width: 150px; /* Minimum width */
-    position: relative; /* For positioning the search icon */
+    width: 30vw;
+    position: relative; 
 }
 
-/* Style for the input field */
 .search-container-big .form-control {
-    flex-grow: 1; /* Makes the input take up available space */
-    border-radius: 20px; /* Rounded corners */
-    padding-right: 2.5rem; /* Space for the search icon */
-    min-width: 150px; /* Minimum width */
-    max-width: 650px; /* Maximum width */
-    width: 100%; /* Fully responsive */
+    border-radius: 100vw; 
+    width: 30vw;
+    padding-right: 2.5rem;
+    height: clamp(1.2rem, 15vw, 2rem); 
 }
 
-/* Search icon container */
+.search-container-big .form-control::placeholder {
+    font-size:clamp(0.8rem, 1vw, 0.9rem);
+}
+
 .search-container-big .image-container {
     position: absolute;
-    top: 50%; /* Vertically center the icon */
-    right: 10px; /* Position the icon */
-    transform: translateY(-50%); /* Adjust for perfect vertical alignment */
-    cursor: pointer; /* Makes the icon clickable */
-    color: #6c757d; /* Icon color */
-    font-size: 1.25rem; /* Adjust icon size */
+    top: 45%; 
+    right: clamp(1rem, 1vw, 1.5rem);
+    transform: translateY(-50%); 
+    cursor: pointer; 
+    color: #6c757d; 
 }
 
-/* Media queries for smaller screens */
-@media (max-width: 576px) {
+/*small search bar*/
+.search-container-small {
+    width: 100%;
+    position: relative; 
+}
+
+.search-container-small .form-control {
+    border-radius: 100vw; 
+    width: 100%;
+    padding-right: 2.5rem;
+    height: clamp(1.2rem, 15vw, 2rem); 
+}
+
+.search-container-small .form-control::placeholder {
+    font-size:clamp(0.8rem, 1vw, 0.9rem);
+}
+
+.search-container-small .image-container {
+    position: absolute;
+    top: 45%; 
+    right: clamp(1rem, 1vw, 1.5rem);
+    transform: translateY(-50%); 
+    cursor: pointer; 
+    color: #6c757d; 
+}
+
+@media (max-width: 768px) {
+
+    .search-container-big{
+        padding-bottom: 2%;
+    }
+
     .search-container-big .form-control {
-        padding-right: 2rem; /* Adjust padding for smaller screens */
+        max-height: 4.5vw; 
+        font-size: 0.8rem; 
+        padding-right: 2rem; 
     }
 
-    .search-container-big {
-        max-width: 100%; /* Allow full-width on small screens */
-        min-width: 150px; /* Respect the minimum width */
+    .search-container-big .image-container{
+        top:35%;
+    }
+
+    .search-container-small{
+        width: 35vw;
+        padding-bottom: 2%;
+    }
+
+    .search-container-small .form-control {
+        width: 35vw;
+        font-size: 0.8rem; 
+        padding-right: 2rem; 
+    }
+
+    .search-container-small .image-container{
+        top:35%;
     }
 }
-

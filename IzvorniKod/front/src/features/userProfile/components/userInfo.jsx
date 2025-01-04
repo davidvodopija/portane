@@ -15,21 +15,22 @@ function UserInfo() {
 	if (!isLoggedIn) return <>Nemate pristup!</>;
 
 	return (
-		<div className="d-flex userinfocard-container">
-			<div className="firstcolumn-container">
+		<div className="d-flex userinfocard-container mx-3">
+			<div className="profile-info-container d-flex w-100">
+			<div className="pe-4">
 				<div className="pic-container">
 					<img src={userLogo} alt="User logo icon" className="big-userlogo" />
 				</div>
-				<div className="fs-4 pt-4 text-center username-color">MOJ PROFIL</div>
+				<div className=" pt-4 text-center username-color">MOJ PROFIL</div>
 			</div>
 
-			<div className="d-flex flex-column justify-content-center left-padding-secondcolumn info-size-spacing pb-5">
+			<div className="info-size-spacing d-flex flex-column justify-content-center gap-4 pb-5">
 				<div>
 					{user.firstname} {user.lastname}
 				</div>
 				<div className="d-flex">
 					<div>
-						<img src={mailLogo} alt="Mail logo" className="mail-logo" />
+						<img src={mailLogo} alt="Mail logo" className="mail-logo pe-3" />
 					</div>
 					<div> {user.email} </div>
 				</div>
@@ -38,7 +39,9 @@ function UserInfo() {
 				<div> UKUPNO ARTIKALA: 0</div>
 			</div>
 
-			<div className="d-grid gap-3 col-6 buttons-container">
+			</div>
+
+			<div className="buttons-container d-grid gap-4 col-6 my-4 pe-5">
 				<Button
 					size="medium"
 					color="orange"

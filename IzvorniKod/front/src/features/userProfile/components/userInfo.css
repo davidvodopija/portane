@@ -1,50 +1,64 @@
 .userinfocard-container {
-    margin: 1%;
-    margin-top: 40px;
-    padding: 50px;
-    padding-left: 120px;
+    margin-top: 2.5%;
     background-color: #fef3f3;
-}
-
-.firstcolumn-container {
-    width: 300px;
-    height: 340px;
-    padding-right: 20px;
+    padding: 4%;
+    padding-bottom: 2%;
 }
 
 .pic-container {
     background-color: white;
-    padding: 40px;
-    border-radius: 100%;
+    border-radius: 100%; 
+    border: white solid 2vw;
 }
 
 .big-userlogo {
-    opacity: 0.7;
-    width: 100%;
+    opacity: 0.8;
+    width: 12vw;
 }
 
 .username-color {
+    font-size: clamp(1rem, 1.5vw, 2rem);
     font-weight: bold;
     color: #b40000;
 }
 
-.left-padding-secondcolumn {
-    padding-left: 140px;
-}
-
 .info-size-spacing {
-    font-size: 1.2rem;
-    gap: 30px;
+    padding-left: 12%;
+    font-size: clamp(1rem, 1.2vw, 1.5rem);
 }
 
 .mail-logo {
-    width: 40px;
-    margin-right: 10px;
+    width: clamp(2.5rem, 3.5vw, 4.5rem); 
 }
 
 .buttons-container {
-    margin-top: 90px;
-    margin-left: 300px;
-    width: 400px;
-    height: 100px;
+    padding-top: 2%;
+    width: 30vw;
+    height: 10%;
+}
+
+@media (max-width: 768px) {
+     .userinfocard-container {
+        flex-direction: column; 
+        align-items: center; 
+    }
+
+    .pic-container{
+        border: white solid 3.5vw;
+    }
+
+    .userinfocard-container > .profile-info-container {
+        justify-content: center; 
+        gap: 2rem;
+    }
+
+    .buttons-container {
+        margin-left: 10%;
+        padding: 0;
+        width: 100%; 
+    }
+
+    .buttons-container .btn {
+        border-radius: 10px;
+    }
 }

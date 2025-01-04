@@ -1,12 +1,12 @@
 /*size variants*/
 button.btn-small {
-    padding: 8px 16px;
+    padding: 0.5vw 1.4vw;
     font-size: 0.85rem;
 }
 
 button.btn-medium {
-    padding: 20px 50px;
-    font-size: 1.1rem;
+    padding: 1.2vw 2vw;
+    font-size: clamp(0.7rem, 1vw, 1.3rem);
 }
 
 button.btn-long {
@@ -47,3 +47,8 @@ button.btn-standard {
 button.btn-rounded {
     border-radius: 20px;
 }
+
+
+
+
+

@@ -11,21 +11,19 @@ function Header() {
     const navigate = useNavigate();
 
     return (
-        <div className=" d-flex align-items-center justify-content-between navbar">
-            <a href="/" className="navbar-brand text-center">
-        <span className="brand-text">
+        <div className="d-flex align-items-center justify-content-between p-2 m-3 navbar">
+            <a href="/" className="navbar-brand pb-2 mb-1">
+        <span className="brand-text ps-3">
             PORTANE
         </span>
-                <div className="smalltext">
+                <div className="smalltext pb-4 pt-1 ps-3">
                     - tvoj portable virtualni ormar
                 </div>
             </a>
-            <div className="flex-grow-1 mx-4">
                 <SearchBar size="big"/>
-            </div>
             {isLoggedIn ? (
                 <div className="authentication-container d-flex align-items-center justify-content-end">
-                    <a className="me-2">
+                    <a className="m-0 text-black username">
                         {user.firstname} {user.lastname}
                     </a>
                     <i
