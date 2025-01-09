@@ -1,18 +1,19 @@
 import React from "react";
+import "./categoryCard.css"
 
-function Cards({src, txt}) {
+function CategoryCard({src, txt}) {
     return (
-        <div className="card" style={{width: "10rem"}}>
+        <div className="card category-card">
             <img 
                 src={src} 
                 className="card-img-top" 
                 alt={txt}
             />
             <div className="card-body">
-                <p className="card-text">{txt}</p>
+                <p className="card-text text-center">{txt}</p>
             </div>
         </div>
     );
 }
 
-export default Cards;
+export default CategoryCard;

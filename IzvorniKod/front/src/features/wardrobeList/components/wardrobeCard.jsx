@@ -31,12 +31,12 @@ function WardrobeCard({wardrobeName, numOfShelves, numOfDrawers, numOfRods, ward
                 </div>
                 <img
                     src={wardrobeLogo}
-                    className="card-img-top mx-auto"
+                    className="card-img-top mx-auto pt-4"
                     alt="Wardrobe icon"
                 />
-                <div className="card-body mx-auto">
-                    <p className="card-text">{wardrobeName}</p>
-                    <div className="text-secondary">
+                <div className="card-body p-0 d-flex flex-column align-items-center">
+                    <p className="card-txt m-0">{wardrobeName}</p>
+                    <div className="m-3 text-secondary">
                         <div>Polica: {numOfShelves.quantity}</div>
                         <div>Ladica: {numOfDrawers.quantity}</div>
                         <div>Šipki za odjeću: {numOfRods.quantity}</div>

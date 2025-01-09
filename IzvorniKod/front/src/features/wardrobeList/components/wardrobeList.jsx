@@ -36,12 +36,12 @@ function WardrobeList() {
 	}
 
 	return (
-		<div className="w-75">
-			<div className="wardrobes-container d-flex flex-wrap mx-5 ">
+		
+			<div className="wardrobes-container d-flex flex-wrap mx-5">
 				{wardrobes.map((wardrobe) => {
 					const { title, id, componentsList } = wardrobe;
 					return (
-						<div key={id} className="form-group mb-3">
+						<div key={id} className="form-group">
 							<WardrobeCard
 								wardrobeName={title}
 								numOfShelves={componentsList[0]}
@@ -53,7 +53,6 @@ function WardrobeList() {
 					);
 				})}
 			</div>
-		</div>
 	);
 }
 

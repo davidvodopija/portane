@@ -24,7 +24,7 @@ function UserInfo() {
 				<div className=" pt-4 text-center username-color">MOJ PROFIL</div>
 			</div>
 
-			<div className="info-size-spacing d-flex flex-column justify-content-center gap-4 pb-5">
+			<div className="info-size-spacing d-flex flex-column justify-content-center gap-4 pb-4">
 				<div>
 					{user.firstname} {user.lastname}
 				</div>
@@ -45,11 +45,11 @@ function UserInfo() {
 				<Button
 					size="medium"
 					color="orange"
-					radius="rounded"
+					radius="mediumround"
 					onClick={() => navigate("/create-wardrobe")}>
 					DODAJ NOVI ORMAR
 				</Button>
-				<Button size="medium" color="orange" radius="rounded">
+				<Button size="medium" color="orange" radius="mediumround">
 					IZGRADI ODJEVNU KOMBINACIJU
 				</Button>
 			</div>

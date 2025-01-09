@@ -47,8 +47,8 @@ function CreateWardrobeForm() {
     }
 
     return (
-        <div className="border p-4 create-closet-form col-8">
-            <p className="fs-3 title-style">NOVI ORMAR - NOVI PROSTOR ZA STIL</p>
+        <div className="m-3 mt-4 p-4 create-closet-form">
+            <p className="title-style">NOVI ORMAR - NOVI PROSTOR ZA STIL</p>
             <form ref={formRef}>
                 <div className="mb-3">
                     <label htmlFor="wardrobeName" className="form-label">NAZIV ORMARA</label>
@@ -67,7 +67,7 @@ function CreateWardrobeForm() {
                     const {label, id} = component;
 
                     return (
-                        <div key={id} className="form-group mb-3">
+                        <div key={id} className="form-group mb-4">
                             <label htmlFor={label} className="form-label">{label.toUpperCase()}</label>
                             <input
                                 type="number"
@@ -91,10 +91,12 @@ function CreateWardrobeForm() {
                     </div>
                 </div>*/}
 
-                <Button size="small" color="red" radius="rounded" type="submit"
-                        onClick={() => handleFormSubmit(formRef, addWardrobe)}>
-                    Kreiraj ormar
-                </Button>
+                <div className="mt-4 pt-2">
+                    <Button size="small" color="red" radius="rounded" type="submit"
+                            onClick={() => handleFormSubmit(formRef, addWardrobe)}>
+                        Kreiraj ormar
+                    </Button>
+                </div>
             </form>
         </div>
     );

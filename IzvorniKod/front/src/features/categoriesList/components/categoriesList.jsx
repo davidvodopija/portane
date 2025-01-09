@@ -1,38 +1,38 @@
 // Categories.jsx
 import React from 'react'
-import Cards from '../cards/cards';
+import CategoryCard from './categoryCard.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import "./categories.css"
-import images from '../../utils/imagesUtils';
-import SecondaryHeading from "../secondaryHeading/secondaryHeading.jsx";
+import "./categoriesList.css"
+import images from '../../../utils/imagesUtils.js';
+import SecondaryHeading from "../../../components/secondaryHeading/secondaryHeading.jsx";
 
 function Categories() {
     return (
         <div id="categories" className='container-fluid'>
             <SecondaryHeading text="KATEGORIJE"></SecondaryHeading>
-            <div className='cards-grid'>
-                <Cards
+            <div className='categories-list d-flex flex-wrap'>
+                <CategoryCard
                     src={images['majiceLogo.png']}
                     txt="Majice"
                 />
-                <Cards
+                <CategoryCard
                     src={images['haljineLogo.png']}
                     txt="Haljine"
                 />
-                <Cards
+                <CategoryCard
                     src={images['dzemperiVesteLogo.png']}
                     txt="Džemperi i veste"
                 />
-                <Cards
+                <CategoryCard
                     src={images['hlaceLogo.png']}
-                    txt="Hlaće"
+                    txt="Hlače"
                 />
-                <Cards
+                <CategoryCard
                     src={images['jakneKaputiLogo.png']}
                     txt="Jakne i kaputi"
                 />
-                <Cards
+                <CategoryCard
                     src={images['obucaLogo.png']}
                     txt="Obuća"
                 />

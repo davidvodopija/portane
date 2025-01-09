@@ -37,7 +37,7 @@
     border-radius: 100vw; 
     width: 100%;
     padding-right: 2.5rem;
-    height: clamp(1.2rem, 15vw, 2rem); 
+    height: clamp(1.2rem, 15vw, 1.8rem); 
 }
 
 .search-container-small .form-control::placeholder {
@@ -60,13 +60,15 @@
     }
 
     .search-container-big .form-control {
-        max-height: 4.5vw; 
+        max-height: 4vw; 
         font-size: 0.8rem; 
-        padding-right: 2rem; 
+        padding-right: 1rem; 
     }
 
     .search-container-big .image-container{
         top:35%;
+        font-size: 0.8rem;
+        padding-bottom: 0.5vw;
     }
 
     .search-container-small{
@@ -75,6 +77,7 @@
     }
 
     .search-container-small .form-control {
+        max-height: 5vw;
         width: 35vw;
         font-size: 0.8rem; 
         padding-right: 2rem; 
@@ -82,5 +85,16 @@
 
     .search-container-small .image-container{
         top:35%;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+     .search-container-big{
+        width: 22vw;
+    }
+
+    .search-container-big .form-control {
+        width: 22vw;
     }
 }

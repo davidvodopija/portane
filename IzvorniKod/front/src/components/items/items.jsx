@@ -1,5 +1,5 @@
 import React from 'react';
-import CarouselBtn from '../carousel/carouselBtn';
+import CarouselBtn from '../../features/carouselBtn/components/carouselBtn.jsx';
 import "./items.css";
 import SecondaryHeading from "../secondaryHeading/secondaryHeading.jsx";
 

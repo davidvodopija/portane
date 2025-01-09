@@ -11,8 +11,8 @@ function Header() {
     const navigate = useNavigate();
 
     return (
-        <div className="d-flex align-items-center justify-content-between p-2 m-3 navbar">
-            <a href="/" className="navbar-brand pb-2 mb-1">
+        <div className="navbar p-2 ps-0 m-3">
+            <a href="/" className="navbar-brand pb-2 mb-1 m-0">
         <span className="brand-text ps-3">
             PORTANE
         </span>
