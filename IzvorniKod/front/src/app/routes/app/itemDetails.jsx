@@ -1,11 +1,11 @@
 import "bootstrap/dist/css/bootstrap.css";
 import ItemInfo from "../../../features/itemInfo/components/itemInfo";
 import ContactInfo from "../../../features/itemInfo/components/contactInfo";
-import WardrobeCard from "../../../features/wardrobeList/components/wardrobeCard";
-
+import Header from "../../../components/header/header" 
 function itemDetailView() {
 	return (
 		<>
+			<Header/>
 			<ItemInfo />
 			<ContactInfo />
 		</>

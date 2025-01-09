@@ -1,12 +1,15 @@
 .contact-card {
+	width: 20vw;
+	min-width: fit-content;
 	background-color: #fffdf8;
+	font-size: clamp(0.8rem, 1.1vw, 1.1rem);
 }
 
 .text-color {
 	color: #af0000;
+	font-weight: 500;
 }
 
 .mail-logo {
-	height: 25px;
 	opacity: 0.85;
 }

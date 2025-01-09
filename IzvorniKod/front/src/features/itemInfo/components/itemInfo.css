@@ -1,29 +1,41 @@
-.item-info-container {
-	height: 600px;
-	margin: 25px;
-	padding: 40px;
-	padding-left: 120px;
+.item-details-container {
+	padding-left: 7vw;
 	background-color: #fef3f3;
 }
 
-.item-image {
-	width: 500px;
-	height: auto;
+.large-black-text{
+	font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+	font-weight: 500;
 }
 
-.container-margin {
-	margin-left: 130px;
+.image-col{
+	gap: 1.5vw;
+	margin-top: 0.8vw;
+	padding: 2vw 0 2vw 0;
+}
+
+.item-image {
+	width: 35vw;
+	min-height: 250px;
+}
+
+.details-container {
+	margin-top: 18vw;
+	margin-left: 8vw;
+	height: fit-content;
 }
 
 .large-red-text {
+	font-size: clamp(1rem, 1.5vw, 1.5rem);
 	font-weight: 500;
 	color: #b40000;
 }
 
 .list-unstyled > li {
 	border-bottom: 1px solid #ddd;
-	padding-bottom: 10px;
-	margin-bottom: 10px;
+	padding-bottom: 0.7vw;
+	margin-bottom: 0.8vw;
+	font-size: clamp(0.8rem, 1.2vw, 1rem);
 }
 
 .list-unstyled li:last-child {
@@ -31,5 +43,28 @@
 }
 
 .list-unstyled strong {
-	margin-right: 10px;
+	margin-right: 0.5vw;
+}
+
+@media (max-width:768px) {
+	.item-details-container {
+		flex-direction: column;
+		padding-left: 0;
+	}
+
+	.item-image {
+		width: 100%;
+	}
+
+	.image-col{
+		margin-top: 3vw;
+		margin-left: 10vw;
+		margin-right: 10vw;
+	}
+
+	.details-container {
+		margin-left: 10vw;
+		width: 75vw;
+		margin-top: 0;
+	}
 }

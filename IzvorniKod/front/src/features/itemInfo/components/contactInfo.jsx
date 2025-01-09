@@ -5,18 +5,18 @@ import mailLogo from "../../../assets/mailLogo.png";
 function ContactInfo() {
 	return (
 		<div className="d-flex justify-content-end">
-			<div className="card w-25 mx-4 my-4 contact-card">
+			<div className="card m-4 contact-card">
 				<div className="card-body">
-					<p className="card-text">
+					<p className="card-text text-color">
 						Artikl podijelio: <i> korisnikUser</i>
 					</p>
-					<h6 className="card-subtitle mb-3 text-color">
-						Kontaktiraj korisnika:
-					</h6>
+					<p> Kontakt:</p>
 					<div className="d-flex">
-						<img src={mailLogo} className="mail-logo"></img>
-						<p className="card-text mx-1">korisnik@user.com</p>
+					<div>
+						<img src={mailLogo} alt="Mail logo" className="mail-logo pe-3" />
 					</div>
+					<div> korisnik@user.com</div>
+				</div>
 				</div>
 			</div>
 		</div>

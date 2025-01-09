@@ -4,17 +4,17 @@ import PlaceholderImg from "../../../assets/placeholderImg.png";
 
 function ItemInfo() {
 	return (
-		<div className="d-flex item-info-container mt-5 align-items-start">
-			<div className="d-flex flex-column gap-4 fs-4 mb-2">
-				<div className="pt-4"> NAZIV PROIZVODA</div>
+		<div className="d-flex item-details-container mt-5 m-3 ">
+			<div className="image-col d-flex flex-column">
+				<div className="large-black-text"> NAZIV PROIZVODA</div>
 				<img
 					src={PlaceholderImg}
 					className="item-image"
 					alt="Slika proizvoda"
 				/>
 			</div>
-			<div className="container container-margin bg-white w-50 p-4 mt-4 rounded-3 shadow-sm">
-				<div className="mb-3 fs-4 large-red-text">
+			<div className="container details-container bg-white p-4 my-5 me-4 rounded-3 shadow-sm">
+				<div className="mb-3 large-red-text">
 					INFORMACIJE O PROIZVODU
 				</div>
 				<ul className="list-unstyled mb-0">
