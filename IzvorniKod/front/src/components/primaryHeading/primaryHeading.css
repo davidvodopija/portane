@@ -1,0 +1,16 @@
+.primary-heading-container {
+	margin: 2.5vw 0 4vw 0;
+}
+
+.primary-heading-text {
+	font-size: clamp(1.5rem, 2.2vw, 2rem);
+	font-weight: 500;
+	color: #af0000;
+}
+
+.primary-heading-hr {
+	height: 3px;
+	color: #ffc8c8;
+	background-color: #ffc8c8;
+	opacity: 100%;
+}

@@ -1,0 +1,62 @@
+.wardrobe-item-card {
+	width: 15vw;
+	border-radius: 0;
+	border: 1.2px solid #e6e6e6;
+	background-color: #fff;
+}
+
+.wardrobe-item-card .card-img-top {
+	height: 14vw;
+	object-fit: cover;
+	border: 10px solid white;
+	border-radius: 0;
+}
+
+.card-location {
+	font-size: 0.8rem;
+	color: #333;
+}
+
+.card-text {
+	color: #333;
+	font-size: clamp(1rem, 1.2vw, 1.2rem);
+	font-weight: 500;
+}
+
+@media (max-width: 768px) {
+	.wardrobe-item-card {
+		min-width: 20vw;
+	}
+
+	.wardrobe-item-card .card-img-top {
+		height: 20vw;
+		border: 8px solid white;
+	}
+
+	.card-location {
+		font-size: 0.7rem;
+	}
+
+	.card-text {
+		font-size: clamp(0.8rem, 1vw, 1rem);
+	}
+}
+
+@media (max-width: 480px) {
+	.wardrobe-item-card {
+		min-width: 26vw;
+	}
+
+	.wardrobe-item-card .card-img-top {
+		height: 25vw;
+		border: 8px solid white;
+	}
+
+	.card-location {
+		font-size: 0.7rem;
+	}
+
+	.card-text {
+		font-size: clamp(0.8rem, 1vw, 1rem);
+	}
+}
