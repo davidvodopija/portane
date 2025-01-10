@@ -1,0 +1,5 @@
+@media (max-width: 768px) {
+	.wardrobe-view {
+		flex-direction: column-reverse;
+	}
+}
