@@ -28,7 +28,15 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> {
                     authorizationManagerRequestMatcherRegistry
-                            .requestMatchers("/api/auth/login", "/api/users/create", "/h2-console/**") // authorize any that's in this list
+                            .requestMatchers(
+                                    "/api/auth/login",
+                                    "/api/users/create",
+                                    "/h2-console/**",
+                                    "/api/docs",
+                                    "/v3/api-docs/**",
+                                    "/api/swagger-ui/**",
+                                    "/api/swagger-ui.html"
+                            )
                             .permitAll()
                             .anyRequest()
                             .authenticated();

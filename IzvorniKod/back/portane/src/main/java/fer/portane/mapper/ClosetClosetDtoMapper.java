@@ -3,6 +3,7 @@ package fer.portane.mapper;
 import fer.portane.dto.ClosetComponentWithQuantityDto;
 import fer.portane.dto.ClosetDto;
 import fer.portane.model.Closet;
+import fer.portane.model.ClosetCustomComponent;
 
 import java.util.stream.Collectors;
 
@@ -12,14 +13,17 @@ public class ClosetClosetDtoMapper {
         closetDto.setId(closet.getId());
         closetDto.setTitle(closet.getTitle());
         closetDto.setComponentsList(closet.getComponents().stream()
-                .map(closetClosetComponent -> {
+                .collect(Collectors.groupingBy(ClosetCustomComponent::getClosetComponent))
+                .entrySet().stream()
+                .map(entry -> {
                     ClosetComponentWithQuantityDto closetComponentWithQuantityDto = new ClosetComponentWithQuantityDto();
-                    closetComponentWithQuantityDto.setId(closetClosetComponent.getClosetComponent().getId());
-                    closetComponentWithQuantityDto.setLabel(closetClosetComponent.getClosetComponent().getLabel());
-                    closetComponentWithQuantityDto.setQuantity(closetClosetComponent.getQuantity());
+                    closetComponentWithQuantityDto.setId(entry.getKey().getId());
+                    closetComponentWithQuantityDto.setLabel(entry.getKey().getLabel());
+                    closetComponentWithQuantityDto.setQuantity(entry.getValue().size());
                     return closetComponentWithQuantityDto;
                 })
-                .collect(Collectors.toList()));
+                .collect(Collectors.toList())
+        );
         return closetDto;
     }
 }
