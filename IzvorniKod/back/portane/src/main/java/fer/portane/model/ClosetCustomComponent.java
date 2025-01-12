@@ -3,10 +3,12 @@ package fer.portane.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Data
 @Table(name = "closet_closet_components")
-public class ClosetClosetComponent extends BaseEntity {
+public class ClosetCustomComponent extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "closet_id")
     private Closet closet;
@@ -15,5 +17,9 @@ public class ClosetClosetComponent extends BaseEntity {
     @JoinColumn(name = "closet_component_id")
     private ClosetComponent closetComponent;
 
-    private Integer quantity;
+    @OneToMany
+    @JoinColumn(name = "closet_custom_component_id")
+    private List<Article> articles;
+
+    private String title;
 }

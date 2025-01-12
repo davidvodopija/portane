@@ -1,8 +1,6 @@
 package fer.portane.mapper;
 
 import fer.portane.dto.ClosetComponentDto;
-import fer.portane.dto.ClosetComponentWithQuantityDto;
-import fer.portane.model.ClosetClosetComponent;
 import fer.portane.model.ClosetComponent;
 
 public class ClosetComponentClosetComponentDtoMapper {
