@@ -1,8 +1,7 @@
 # Virtualni Ormar
 
 # Opis projekta
-Ovaj projekt je reultat timskog rada u sklopu projeknog zadatka kolegija [Programsko inženjerstvo](https://www.fer.unizg.hr/predmet/proinz) na Fakultetu elektrotehnike i računarstva Sveučilišta u Zagrebu. 
-
+Ovaj je projekt rezultat timskog rada u sklopu projeknog zadatka kolegija [Programsko inženjerstvo](https://www.fer.unizg.hr/predmet/proinz) na Fakultetu elektrotehnike i računarstva Sveučilišta u Zagrebu. 
 Projekt se sastoji od izrade responzivne web aplikacije u kojoj korisnici definiraju vlastiti virtualni ormar, njegovu strukturu (broj polica, ladica ili šipka za odjeću). 
 Korisnici mogu dodavati artikle odjeće ili obuće te definirati njihove karakteristike (naziv, slika, opća kategorija, kategorija godišnjeg doba, kategorija ležernosti, glavnu i sporednu boju, opis stanja artikla te lokaciju u virtualnom ormaru). 
 Korisnici mogu izraditi odjevnu kombinaciju zadavanjem kriterija, rezultira popisom preporučenih artikala. 
