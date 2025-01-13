@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./UploadImage.css";
+import "./uploadImage.css";
 import Button from "../../../components/button/button";
 
 function UploadImage() {
