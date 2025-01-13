@@ -8,4 +8,5 @@ public interface ClosetCustomComponentService {
     List<ClosetCustomComponent> findForCloset(Long closetId);
     ClosetCustomComponent save(Long id, String title);
     void delete(Long id);
+    ClosetCustomComponent findById(Long id);
 }

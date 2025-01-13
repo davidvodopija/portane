@@ -1,6 +1,6 @@
 package fer.portane.service.impl;
 
-import fer.portane.model.ClosetComponent;
+import fer.portane.model.lut.ClosetComponent;
 import fer.portane.repository.ClosetComponentRepository;
 import fer.portane.service.ClosetComponentService;
 import org.springframework.beans.factory.annotation.Autowired;

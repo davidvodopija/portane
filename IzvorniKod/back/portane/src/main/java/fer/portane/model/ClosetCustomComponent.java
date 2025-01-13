@@ -1,5 +1,6 @@
 package fer.portane.model;
 
+import fer.portane.model.lut.ClosetComponent;
 import jakarta.persistence.*;
 import lombok.Data;
 

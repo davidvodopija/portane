@@ -1,9 +1,7 @@
 package fer.portane.service;
 
-import fer.portane.model.ClosetComponent;
-import org.springframework.stereotype.Service;
+import fer.portane.model.lut.ClosetComponent;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
