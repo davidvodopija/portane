@@ -4,7 +4,7 @@ axios.defaults.withCredentials = true;
 export const getAllWardrobeParts = async (id) => {
 	try {
 		const response = await axios.get(
-			`/api/closet-custom-component/find-for-closet/${id}`
+			`/api/closet-custom-components/find-for-closet/${id}`
 		);
 		return response.data.result;
 	} catch (error) {

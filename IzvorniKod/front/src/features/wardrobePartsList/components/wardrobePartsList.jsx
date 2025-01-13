@@ -95,6 +95,10 @@ function WardrobePartsList() {
 		setEditingPartId(null);
 	};
 
+	if (!wardrobePartsList) {
+		return <div>Loading...</div>;
+	}
+
 	return (
 		<div className="container p-3">
 			<table className="table table-striped text-center align-middle">

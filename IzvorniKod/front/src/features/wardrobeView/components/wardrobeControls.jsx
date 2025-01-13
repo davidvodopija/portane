@@ -16,7 +16,7 @@ function WardrobeControls() {
 					size="small"
 					color="orange"
 					radius="mediumround"
-					onClick={() => navigate("/add-item")}>
+					onClick={() => navigate(`/wardrobes/${wardrobeId}/add-item`)}>
 					DODAJ NOVI KOMAD ODJEĆE
 				</Button>
 			</div>

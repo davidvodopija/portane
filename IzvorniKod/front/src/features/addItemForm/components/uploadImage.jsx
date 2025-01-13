@@ -37,6 +37,7 @@ function UploadImage() {
 				className="file-upload-area"
 				aria-label="Upload Image"
 				onChange={handleFileChange}
+				disabled
 			/>
 			{fileUploaded && (
 				<div className="upload-indicator d-flex flex-column align-items-center justify-content-center gap-2">
@@ -49,8 +50,7 @@ function UploadImage() {
 							size="xs"
 							color="orange"
 							radius="standard"
-							onClick={handleRemoveFile}
-						>
+							onClick={handleRemoveFile}>
 							Remove
 						</Button>
 					</div>
