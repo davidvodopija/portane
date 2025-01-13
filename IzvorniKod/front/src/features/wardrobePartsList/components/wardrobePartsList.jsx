@@ -7,17 +7,17 @@ import {
 	removeWardrobePart,
 	renameWardrobePart,
 } from "../api/wardrobePartsListAPI";
-import { getFormCategories } from "../../createWardrobe/api/createWardrobeAPI";
 import { handleFormSubmit } from "../../auth/utils/formUtils";
 import { useRef } from "react";
+import { useWardrobeComponents } from "../../createWardrobe/hooks/useWardrobeComponents";
 
 function WardrobePartsList() {
 	const { wardrobeId } = useParams();
 	const [wardrobePartsList, setWardrobePartsList] = useState([]);
 	const [editingPartId, setEditingPartId] = useState(null);
 	const [editedPart, setEditedPart] = useState("");
-	const [categories, setCategories] = useState([]);
 	const formRef = useRef(null);
+	const { getComponents, wardrobeComponents } = useWardrobeComponents();
 
 	useEffect(() => {
 		getAllWardrobeParts(wardrobeId)
@@ -28,9 +28,9 @@ function WardrobePartsList() {
 				console.error("Error getting wardrobe parts:", error);
 			});
 
-		getFormCategories().then((response) => {
-			setCategories(response);
-		});
+		if (!wardrobeComponents) {
+			getComponents();
+		}
 	}, [wardrobeId]);
 
 	const handleDelete = (id) => {
@@ -171,7 +171,7 @@ function WardrobePartsList() {
 						<option disabled value="DEFAULT">
 							Odaberi vrstu komponente
 						</option>
-						{categories.map((category) => {
+						{wardrobeComponents.map((category) => {
 							return (
 								<option key={category.id} value={category.id}>
 									{category.label}
