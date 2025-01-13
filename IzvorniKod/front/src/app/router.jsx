@@ -6,6 +6,7 @@ import Auth from "./routes/auth/auth";
 import AppProvider from "./provider";
 import WardrobeView from "./routes/app/wardrobeView";
 import EditWardrobe from "./routes/app/editWardrobe";
+import AddItem from "./routes/app/addItem";
 
 function Router() {
 	return (
@@ -22,6 +23,7 @@ function Router() {
 						path="/wardrobes/:wardrobeId/edit"
 						element={<EditWardrobe />}
 					/>
+					<Route path="/wardrobes/:wardrobeId/add-item" element={<AddItem />} />
 					<Route path="*" element={<Navigate to="/" replace />} />
 				</Routes>
 			</AppProvider>
