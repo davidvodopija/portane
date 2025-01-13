@@ -36,4 +36,9 @@ public class ClosetCustomComponentServiceImpl implements ClosetCustomComponentSe
 
         closetCustomComponentRepository.deleteById(id);
     }
+
+    @Override
+    public ClosetCustomComponent findById(Long id) {
+        return closetCustomComponentRepository.findById(id).orElseThrow(() -> new RuntimeException("Closet custom component with id = " + id + " not found"));
+    }
 }

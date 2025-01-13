@@ -1,15 +1,13 @@
-package fer.portane.model;
+package fer.portane.model.lut;
 
 import jakarta.persistence.*;
 import lombok.Data;
 
-@Entity
-@Table(name = "lut.styles")
+@MappedSuperclass
 @Data
-public class Style {
+public class LutBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
 }

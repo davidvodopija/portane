@@ -1,7 +1,7 @@
 package fer.portane.mapper;
 
 import fer.portane.dto.ClosetComponentDto;
-import fer.portane.model.ClosetComponent;
+import fer.portane.model.lut.ClosetComponent;
 
 public class ClosetComponentClosetComponentDtoMapper {
     public static ClosetComponentDto toClosetComponentDto(ClosetComponent closetComponent) {

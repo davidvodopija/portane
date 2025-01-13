@@ -1,7 +1,6 @@
 package fer.portane.service;
 
 import fer.portane.model.Closet;
-import fer.portane.model.ClosetComponent;
 
 import java.util.List;
 

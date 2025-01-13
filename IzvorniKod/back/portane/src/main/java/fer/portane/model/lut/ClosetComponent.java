@@ -1,4 +1,4 @@
-package fer.portane.model;
+package fer.portane.model.lut;
 
 import jakarta.persistence.*;
 import lombok.Data;
