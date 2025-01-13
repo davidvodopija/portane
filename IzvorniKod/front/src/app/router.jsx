@@ -13,16 +13,16 @@ function Router() {
 			<AppProvider>
 				<Routes>
 					<Route path="/user-profile" element={<UserProfile />} />
-					<Route
-						path="/create-wardrobe"
-						element={<CreateWardrobe />}
-					/>
+					<Route path="/create-wardrobe" element={<CreateWardrobe />} />
 					<Route path="/" element={<Home />} />
 					<Route path="/auth/:mode" element={<Auth />} />
 					<Route path="/auth" element={<Auth />} />
-					<Route path="/wardrobe-view" element={<WardrobeView />} />
+					<Route path="/wardrobes/:wardrobeId" element={<WardrobeView />} />
+					<Route
+						path="/wardrobes/:wardrobeId/edit"
+						element={<EditWardrobe />}
+					/>
 					<Route path="*" element={<Navigate to="/" replace />} />
-					<Route path="/edit-wardrobe" element={<EditWardrobe />} />
 				</Routes>
 			</AppProvider>
 		</BrowserRouter>

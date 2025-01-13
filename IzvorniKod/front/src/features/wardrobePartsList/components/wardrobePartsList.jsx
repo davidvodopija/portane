@@ -1,7 +1,100 @@
 import "bootstrap/dist/css/bootstrap.css";
-import "./wardrobePartsList.css";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import {
+	createWardrobePart,
+	getAllWardrobeParts,
+	removeWardrobePart,
+	renameWardrobePart,
+} from "../api/wardrobePartsListAPI";
+import { getFormCategories } from "../../createWardrobe/api/createWardrobeAPI";
+import { handleFormSubmit } from "../../auth/utils/formUtils";
+import { useRef } from "react";
 
 function WardrobePartsList() {
+	const { wardrobeId } = useParams();
+	const [wardrobePartsList, setWardrobePartsList] = useState([]);
+	const [editingPartId, setEditingPartId] = useState(null);
+	const [editedPart, setEditedPart] = useState("");
+	const [categories, setCategories] = useState([]);
+	const formRef = useRef(null);
+
+	useEffect(() => {
+		getAllWardrobeParts(wardrobeId)
+			.then((response) => {
+				setWardrobePartsList(response);
+			})
+			.catch((error) => {
+				console.error("Error getting wardrobe parts:", error);
+			});
+
+		getFormCategories().then((response) => {
+			setCategories(response);
+		});
+	}, [wardrobeId]);
+
+	const handleDelete = (id) => {
+		removeWardrobePart(id)
+			.then(() => {
+				getAllWardrobeParts(wardrobeId)
+					.then((response) => {
+						setWardrobePartsList(response);
+					})
+					.catch((error) => {
+						console.error("Error getting wardrobe parts:", error);
+					});
+			})
+			.catch((error) => {
+				console.error("Error deleting wardrobe part:", error);
+			});
+	};
+
+	const handleSave = (id, newName) => {
+		renameWardrobePart(id, newName)
+			.then(() => {
+				getAllWardrobeParts(wardrobeId)
+					.then((response) => {
+						setWardrobePartsList(response);
+					})
+
+					.catch((error) => {
+						console.error("Error getting wardrobe parts:", error);
+					});
+			})
+			.catch((error) => {
+				console.error("Error renaming wardrobe part:", error);
+			});
+	};
+
+	const handleAdd = () => {
+		handleFormSubmit(formRef, createWardrobePart);
+		getAllWardrobeParts(wardrobeId)
+			.then((response) => {
+				setWardrobePartsList(response);
+			})
+			.catch((error) => {
+				console.error("Error getting wardrobe parts:", error);
+			});
+	};
+
+	const handleEditClick = (part) => {
+		setEditingPartId(part.id);
+		setEditedPart(part.title);
+	};
+
+	const handleInputChange = (e) => {
+		setEditedPart(e.target.value);
+	};
+
+	const handleSaveClick = () => {
+		handleSave(editingPartId, editedPart);
+		setEditingPartId(null);
+	};
+
+	const handleCancelClick = () => {
+		setEditingPartId(null);
+	};
+
 	return (
 		<div className="container p-3">
 			<table className="table table-striped text-center align-middle">
@@ -12,68 +105,85 @@ function WardrobePartsList() {
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>Ladica 1</td>
-						<td>Ladica</td>
-						<td>
-							<button className="btn btn-link border-0 text-danger p-0 me-2">
-								Edit
-							</button>
-							<button className="btn btn-link border-0 text-danger p-0 ms-2">
-								Delete
-							</button>
-						</td>
-					</tr>
-
-					<tr>
-						<td>Polica 1</td>
-						<td>Polica</td>
-						<td>
-							<button className="btn btn-link border-0 text-danger p-0 me-2">
-								Edit
-							</button>
-
-							<button className="btn btn-link border-0 text-danger p-0 ms-2">
-								Delete
-							</button>
-						</td>
-					</tr>
-
-					<tr>
-						<td>Polica 3</td>
-						<td>Polica</td>
-						<td>
-							<button className="btn btn-link border-0 text-danger p-0 me-2">
-								Edit
-							</button>
-
-							<button className="btn btn-link border-0 text-danger p-0 ms-2">
-								Delete
-							</button>
-						</td>
-					</tr>
+					{wardrobePartsList.map((part) => {
+						return (
+							<tr key={part.id}>
+								<td>
+									{editingPartId === part.id ? (
+										<input
+											type="text"
+											name="title"
+											value={editedPart}
+											onChange={handleInputChange}
+										/>
+									) : (
+										part.title
+									)}
+								</td>
+								<td>{part.componentType}</td>
+								<td>
+									{editingPartId === part.id ? (
+										<>
+											<button
+												className="btn btn-link border-0 text-primary p-0 me-2"
+												onClick={handleSaveClick}>
+												Save
+											</button>
+											<button
+												className="btn btn-link border-0 text-danger p-0 ms-2"
+												onClick={handleCancelClick}>
+												Cancel
+											</button>
+										</>
+									) : (
+										<>
+											<button
+												className="btn btn-link border-0 text-primary p-0 me-2"
+												onClick={() => handleEditClick(part)}>
+												Edit
+											</button>
+											<button
+												className="btn btn-link border-0 text-danger p-0 ms-2"
+												onClick={() => handleDelete(part.id)}>
+												Delete
+											</button>
+										</>
+									)}
+								</td>
+							</tr>
+						);
+					})}
 				</tbody>
 			</table>
-
-			<div className="d-flex align-items-center justify-content-around mt-3">
+			<form
+				className="d-flex align-items-center justify-content-around mt-3"
+				ref={formRef}>
 				<div className="d-flex gap-3 w-75">
 					<h4 className="bi bi-plus pt-1"></h4>
 					<input
 						type="text"
 						className="form-control"
 						placeholder="Naziv komponente"
+						name="title"
+						required
 					/>
-					<select className="form-select text-secondary">
-						<option>Odaberi vrstu komponente</option>
-						<option>Polica</option>
-						<option>Ladica</option>
-						<option>Šipka za odjeću</option>
+					<select className="form-select text-secondary" name="id" required>
+						<option disabled value="DEFAULT">
+							Odaberi vrstu komponente
+						</option>
+						{categories.map((category) => {
+							return (
+								<option key={category.id} value={category.id}>
+									{category.label}
+								</option>
+							);
+						})}
 					</select>
 				</div>
-				<a href="#" className="text-danger">
+				<a className="text-danger" onClick={() => handleAdd()}>
 					Add new
 				</a>
-			</div>
+			</form>
 		</div>
 	);
 }
