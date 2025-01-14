@@ -18,7 +18,7 @@ public class ClosetClosetDtoMapper {
                 .map(entry -> {
                     ClosetComponentWithQuantityDto closetComponentWithQuantityDto = new ClosetComponentWithQuantityDto();
                     closetComponentWithQuantityDto.setId(entry.getKey().getId());
-                    closetComponentWithQuantityDto.setLabel(entry.getKey().getLabel());
+                    closetComponentWithQuantityDto.setLabel(entry.getKey().getName());
                     closetComponentWithQuantityDto.setQuantity(entry.getValue().size());
                     return closetComponentWithQuantityDto;
                 })

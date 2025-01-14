@@ -16,6 +16,6 @@ public class ArticleDto {
     private LutDto primaryColor;
     private LutDto secondaryColor;
     private List<LutDto> styles;
-    private List<LutDto> seasons;
+    private LutDto season;
     private ClosetCustomComponentDto closetCustomComponent;
 }

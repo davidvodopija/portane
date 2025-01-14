@@ -47,9 +47,8 @@ public class ClosetFacadeImpl implements ClosetFacade {
                 closetCustomComponent.setClosetComponent(
                         closetComponentService
                                 .findById(componentForm.getId())
-                                .orElseThrow(() -> new NotFound(String.format("Closet component with id = %s not found", componentForm.getId())))
                 );
-                closetCustomComponent.setTitle(closetCustomComponent.getClosetComponent().getLabel() + " " + index);
+                closetCustomComponent.setTitle(closetCustomComponent.getClosetComponent().getName() + " " + index);
                 closet.getComponents().add(closetCustomComponent);
             }
         });

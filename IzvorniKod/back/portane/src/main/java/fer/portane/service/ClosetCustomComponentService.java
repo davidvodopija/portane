@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ClosetCustomComponentService {
     List<ClosetCustomComponent> findForCloset(Long closetId);
-    ClosetCustomComponent save(Long id, String title);
+    ClosetCustomComponent save(ClosetCustomComponent closetCustomComponent);
     void delete(Long id);
     ClosetCustomComponent findById(Long id);
 }

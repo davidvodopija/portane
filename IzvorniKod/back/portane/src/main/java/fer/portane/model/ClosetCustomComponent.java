@@ -18,8 +18,7 @@ public class ClosetCustomComponent extends BaseEntity {
     @JoinColumn(name = "closet_component_id")
     private ClosetComponent closetComponent;
 
-    @OneToMany
-    @JoinColumn(name = "closet_custom_component_id")
+    @OneToMany(mappedBy = "closetCustomComponent")
     private List<Article> articles;
 
     private String title;

@@ -2,6 +2,7 @@ package fer.portane.controller;
 
 import fer.portane.dto.ClosetCustomComponentDto;
 import fer.portane.dto.GeneralResponse;
+import fer.portane.facade.ClosetCustomComponentFacade;
 import fer.portane.form.ClosetCustomComponentForm;
 import fer.portane.mapper.ClosetCustomComponentDtoMapper;
 import fer.portane.service.ClosetCustomComponentService;
@@ -16,25 +17,26 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/closet-custom-components")
 public class ClosetCustomComponentController {
     @Autowired
-    private ClosetCustomComponentService closetCustomComponentService;
+    private ClosetCustomComponentFacade closetCustomComponentFacade;
 
     @GetMapping("/find-for-closet/{id}")
     public ResponseEntity<GeneralResponse<List<ClosetCustomComponentDto>>> findForCloset(@PathVariable Long id) {
-        return ResponseEntity.ok(new GeneralResponse<>(closetCustomComponentService.findForCloset(id)
-                .stream().map(ClosetCustomComponentDtoMapper::toDto)
-                .collect(Collectors.toList())));
+        return ResponseEntity.ok(new GeneralResponse<>(closetCustomComponentFacade.findForCloset(id)));
     }
 
     @PutMapping("/save/{id}")
     public ResponseEntity<GeneralResponse<ClosetCustomComponentDto>> save(@PathVariable Long id, @RequestBody ClosetCustomComponentForm form) {
-        return ResponseEntity.ok(new GeneralResponse<>(ClosetCustomComponentDtoMapper
-                .toDto(
-                        closetCustomComponentService.save(id, form.getTitle()))));
+        return ResponseEntity.ok(new GeneralResponse<>(closetCustomComponentFacade.save(id, form.getTitle())));
     }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<GeneralResponse<Void>> delete(@PathVariable Long id) {
-        closetCustomComponentService.delete(id);
+        closetCustomComponentFacade.delete(id);
         return ResponseEntity.ok(new GeneralResponse<>());
+    }
+
+    @PostMapping("/add/{closetId}")
+    public ResponseEntity<GeneralResponse<ClosetCustomComponentDto>> add(@PathVariable Long closetId, @RequestBody ClosetCustomComponentForm form) {
+        return ResponseEntity.ok(new GeneralResponse<>(closetCustomComponentFacade.add(closetId, form)));
     }
 }

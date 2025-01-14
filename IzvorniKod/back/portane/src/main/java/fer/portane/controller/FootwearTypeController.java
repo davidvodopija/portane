@@ -5,6 +5,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/footwear-types")
+@RequestMapping("/api/lut/footwear-types")
 public class FootwearTypeController extends LutController<FootwearType> {
 }

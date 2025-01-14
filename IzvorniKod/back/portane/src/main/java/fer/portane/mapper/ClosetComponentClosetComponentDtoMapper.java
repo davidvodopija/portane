@@ -7,7 +7,7 @@ public class ClosetComponentClosetComponentDtoMapper {
     public static ClosetComponentDto toClosetComponentDto(ClosetComponent closetComponent) {
         ClosetComponentDto closetComponentDto = new ClosetComponentDto();
         closetComponentDto.setId(closetComponent.getId());
-        closetComponentDto.setLabel(closetComponent.getLabel());
+        closetComponentDto.setLabel(closetComponent.getName());
         return closetComponentDto;
     }
 }
