@@ -48,6 +48,7 @@
             primary_color_id integer,
             secondary_color_id integer,
             footwear_type_id integer,
+            season_id integer,
             active bool DEFAULT true,
             created_at datetime DEFAULT (now()),
             last_updated datetime DEFAULT (now())
@@ -55,7 +56,7 @@
 
         CREATE TABLE lut.closet_components (
             id integer generated always as identity PRIMARY KEY,
-            label varchar
+            name varchar
         );
 
         CREATE TABLE lut.categories (
@@ -109,16 +110,7 @@
 
         ALTER TABLE articles ADD FOREIGN KEY (footwear_type_id) REFERENCES lut.footwear_types (id);
 
-        CREATE TABLE articles_seasons (
-            articles_id integer,
-            seasons_id integer,
-            PRIMARY KEY (articles_id, seasons_id)
-        );
-
-        ALTER TABLE articles_seasons ADD FOREIGN KEY (articles_id) REFERENCES articles (id);
-
-        ALTER TABLE articles_seasons ADD FOREIGN KEY (seasons_id) REFERENCES lut.seasons (id);
-
+        ALTER TABLE articles ADD FOREIGN KEY (season_id) REFERENCES lut.seasons (id);
 
         CREATE TABLE articles_styles (
             articles_id integer,

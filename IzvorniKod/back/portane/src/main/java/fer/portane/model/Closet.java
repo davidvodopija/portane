@@ -14,6 +14,6 @@ public class Closet extends BaseEntity {
     @ManyToOne
     private User user;
 
-    @OneToMany(mappedBy = "closet", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "closet", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ClosetCustomComponent> components;
 }

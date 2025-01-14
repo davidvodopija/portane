@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ClosetCustomComponentRepository extends JpaRepository<ClosetCustomComponent, Long> /*, ClosetCustomComponentCustomRepository*/ {
+public interface ClosetCustomComponentRepository extends JpaRepository<ClosetCustomComponent, Long> {
     List<ClosetCustomComponent> findAllByClosetId(Long closetId);
 }

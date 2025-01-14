@@ -10,6 +10,4 @@ import java.util.List;
 @Table(schema = "lut", name = "seasons")
 @Data
 public class Season extends LutBase {
-    @ManyToMany(mappedBy = "seasons")
-    private List<Article> articles;
 }

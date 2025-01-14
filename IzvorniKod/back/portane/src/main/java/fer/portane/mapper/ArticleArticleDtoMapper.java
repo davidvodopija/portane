@@ -36,7 +36,7 @@ public class ArticleArticleDtoMapper {
         articleDto.setFootwearType(footwearTypeLutDtoMapper.toDto(article.getFootwearType()));
         articleDto.setPrimaryColor(colorLutDtoMapper.toDto(article.getPrimaryColor()));
         articleDto.setSecondaryColor(colorLutDtoMapper.toDto(article.getSecondaryColor()));
-        articleDto.setSeasons(article.getSeasons().stream().map(seasonLutDtoMapper::toDto).toList());
+        articleDto.setSeason(seasonLutDtoMapper.toDto(article.getSeason()));
         articleDto.setStyles(article.getStyles().stream().map(styleLutDtoMapper::toDto).toList());
         articleDto.setClosetCustomComponent(ClosetCustomComponentDtoMapper.toDto(article.getClosetCustomComponent()));
 

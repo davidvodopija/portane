@@ -35,13 +35,9 @@ public class Article extends BaseEntity {
     @JoinColumn(name = "secondary_color_id")
     private Color secondaryColor;
 
-    @ManyToMany
-    @JoinTable(
-            name = "articles_seasons",
-            joinColumns = @JoinColumn(name = "articles_id"),
-            inverseJoinColumns = @JoinColumn(name = "seasons_id")
-    )
-    private List<Season> seasons;
+    @ManyToOne
+    @JoinColumn(name = "season_id")
+    private Season season;
 
     @ManyToMany
     @JoinTable(
@@ -51,7 +47,7 @@ public class Article extends BaseEntity {
     )
     private List<Style> styles;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "closet_custom_component_id")
     private ClosetCustomComponent closetCustomComponent;
 }

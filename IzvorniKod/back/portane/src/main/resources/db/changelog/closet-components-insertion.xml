@@ -6,9 +6,9 @@
 
     <changeSet id="2" author="bspanic">
         <sql dbms="h2,postgresql">
-            insert into lut.closet_components (label) values ('Polica');
-            insert into lut.closet_components (label) values ('Ladica');
-            insert into lut.closet_components (label) values ('Šipka za odjeću');
+            insert into lut.closet_components (name) values ('Polica');
+            insert into lut.closet_components (name) values ('Ladica');
+            insert into lut.closet_components (name) values ('Šipka za odjeću');
         </sql>
 
         <sql dbms="h2,postgresql">

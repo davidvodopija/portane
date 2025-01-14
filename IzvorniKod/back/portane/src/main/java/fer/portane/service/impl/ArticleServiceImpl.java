@@ -19,6 +19,11 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public void deleteById(Long id) {
+        Article article = articleRepository.findById(id).orElse(null);
+        if (article == null) {
+            throw new RuntimeException("Article with id = " + id + " not found");
+        }
+        article.getClosetCustomComponent().getArticles().remove(article);
         articleRepository.deleteById(id);
     }
 
