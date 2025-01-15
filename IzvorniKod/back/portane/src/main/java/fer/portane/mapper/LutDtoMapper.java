@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class LutDtoMapper<T extends LutBase> {
     public LutDto toDto(T entity) {
+        if (entity == null) {
+            return null;
+        }
         LutDto lutDto = new LutDto();
         lutDto.setId(entity.getId());
         lutDto.setName(entity.getName());
