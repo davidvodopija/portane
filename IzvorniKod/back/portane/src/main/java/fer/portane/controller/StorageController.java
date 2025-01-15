@@ -20,7 +20,7 @@ public class StorageController {
     @Autowired
     private StorageFacade storageFacade;
 
-    @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    @PostMapping(path = "/upload", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<GeneralResponse<StorageDto>> upload(
             @RequestParam("file") MultipartFile file) throws IOException {
         return ResponseEntity.ok(new GeneralResponse<>(storageFacade.upload(file)));

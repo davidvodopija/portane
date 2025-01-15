@@ -17,6 +17,11 @@ public class StorageService {
         InputStream inputStream = file.getInputStream();
         String contentType = file.getContentType();
 
+        boolean found = minioClient.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build());
+        if (!found) {
+            minioClient.makeBucket(MakeBucketArgs.builder().bucket(bucketName).build());
+        }
+
         // Upload the file
         minioClient.putObject(
                 PutObjectArgs.builder()
