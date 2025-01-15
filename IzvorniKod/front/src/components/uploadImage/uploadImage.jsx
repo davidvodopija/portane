@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./uploadImage.css";
-import Button from "../../../components/button/button";
+import Button from "../button/button";
 
 function UploadImage() {
 	const [fileUploaded, setFileUploaded] = useState(false);
@@ -50,7 +50,8 @@ function UploadImage() {
 							size="xs"
 							color="orange"
 							radius="standard"
-							onClick={handleRemoveFile}>
+							onClick={handleRemoveFile}
+						>
 							Remove
 						</Button>
 					</div>

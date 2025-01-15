@@ -5,7 +5,7 @@ import { wardrobesContext } from "../../wardrobeList/context/wardrobesContext.js
 import { getAllWardrobeParts } from "../../wardrobePartsList/api/wardrobePartsListAPI.jsx";
 import { addItemFormAPI } from "../api/addItemFormAPI.jsx";
 import "./addItemForm.css";
-import UploadImage from "./uploadImage.jsx";
+import UploadImage from "../../../components/uploadImage/uploadImage.jsx";
 import { useState, useEffect, useContext, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -88,14 +88,19 @@ function AddItemForm() {
 			<div className="d-flex justify-content-between mx-4 mb-2 top-text">
 				<h1 className="title-style mb-3">DODAJ NOVI KOMAD ODJEĆE</h1>
 				<h1 className="title-style mb-3">
-					{wardrobes.find((wardrobe) => wardrobe.id == wardrobeId).title}
+					{
+						wardrobes.find((wardrobe) => wardrobe.id == wardrobeId)
+							.title
+					}
 				</h1>
 			</div>
 
 			<form className="new-item-form border rounded p-4" ref={formRef}>
 				<div className="d-flex justify-content-center">
 					<UploadImage
-						onUpload={(url) => setFormData({ ...formData, picture: url })}
+						onUpload={(url) =>
+							setFormData({ ...formData, picture: url })
+						}
 					/>
 				</div>
 
@@ -123,7 +128,8 @@ function AddItemForm() {
 								className="form-select"
 								required
 								defaultValue=""
-								onChange={handleChange}>
+								onChange={handleChange}
+							>
 								<option value="" disabled>
 									Izaberi
 								</option>
@@ -153,7 +159,10 @@ function AddItemForm() {
 						</div>
 
 						<div className="mb-3">
-							<label htmlFor="secondaryColorId" className="form-label">
+							<label
+								htmlFor="secondaryColorId"
+								className="form-label"
+							>
 								SPOREDNA BOJA
 							</label>
 							<select
@@ -161,7 +170,8 @@ function AddItemForm() {
 								className="form-select"
 								onChange={handleChange}
 								defaultValue=""
-								required>
+								required
+							>
 								<option value="" disabled>
 									Izaberi
 								</option>
@@ -174,7 +184,10 @@ function AddItemForm() {
 						</div>
 
 						<div>
-							<label htmlFor="closetCustomComponentId" className="form-label">
+							<label
+								htmlFor="closetCustomComponentId"
+								className="form-label"
+							>
 								LOKACIJA U ORMARU
 							</label>
 							<select
@@ -182,7 +195,8 @@ function AddItemForm() {
 								className="form-select"
 								required
 								onChange={handleChange}
-								defaultValue="">
+								defaultValue=""
+							>
 								<option value="" disabled>
 									Izaberi
 								</option>
@@ -205,12 +219,16 @@ function AddItemForm() {
 								className="form-select"
 								required
 								onChange={handleChange}
-								defaultValue="">
+								defaultValue=""
+							>
 								<option value="" disabled>
 									Izaberi
 								</option>
 								{codebooks.categories.map((category) => (
-									<option key={category.id} value={category.id}>
+									<option
+										key={category.id}
+										value={category.id}
+									>
 										{category.name}
 									</option>
 								))}
@@ -218,7 +236,10 @@ function AddItemForm() {
 						</div>
 
 						<div className="mb-3">
-							<label htmlFor="primaryColorId" className="form-label">
+							<label
+								htmlFor="primaryColorId"
+								className="form-label"
+							>
 								GLAVNA BOJA
 							</label>
 							<select
@@ -226,7 +247,8 @@ function AddItemForm() {
 								className="form-select"
 								required
 								onChange={handleChange}
-								defaultValue="">
+								defaultValue=""
+							>
 								<option value="" disabled>
 									Izaberi
 								</option>
@@ -247,12 +269,16 @@ function AddItemForm() {
 								className="form-select"
 								required
 								defaultValue=""
-								onChange={handleChange}>
+								onChange={handleChange}
+							>
 								<option value="" disabled>
 									Izaberi
 								</option>
 								{codebooks.conditions.map((condition) => (
-									<option key={condition.id} value={condition.id}>
+									<option
+										key={condition.id}
+										value={condition.id}
+									>
 										{condition.name}
 									</option>
 								))}
@@ -261,7 +287,10 @@ function AddItemForm() {
 
 						{formData.categoryId == 6 && (
 							<div className="mb-3">
-								<label htmlFor="footwearTypeId" className="form-label">
+								<label
+									htmlFor="footwearTypeId"
+									className="form-label"
+								>
 									OTVORENOST
 								</label>
 								<select
@@ -269,7 +298,8 @@ function AddItemForm() {
 									className="form-select"
 									required
 									onChange={handleChange}
-									defaultValue="">
+									defaultValue=""
+								>
 									<option value="" disabled>
 										Izaberi
 									</option>
@@ -300,7 +330,8 @@ function AddItemForm() {
 						size="long"
 						color="red"
 						radius="rounded"
-						onClick={() => handleFormSubmit(formRef, handleSubmit)}>
+						onClick={() => handleFormSubmit(formRef, handleSubmit)}
+					>
 						DODAJ ARTIKL U ORMAR
 					</Button>
 				</div>
