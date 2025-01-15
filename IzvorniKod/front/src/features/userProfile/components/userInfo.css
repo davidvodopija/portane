@@ -1,74 +1,79 @@
 .userinfocard-container {
-    margin-top: 2.5%;
-    background-color: #fef3f3;
-    padding: 4%;
-    padding-bottom: 2%;
+	margin-top: 2.5%;
+	background-color: #fef3f3;
+	padding: 4%;
+	padding-bottom: 2%;
 }
 
 .pic-container {
-    width: fit-content;
-    background-color: white;
-    border-radius: 100%; 
-    border: white solid 2vw;
+	width: fit-content;
+	background-color: white;
+	border-radius: 100%;
+	border: white solid 2vw;
 }
 
 .big-userlogo {
-    opacity: 0.8;
-    width: 12vw;
-    aspect-ratio: 1/1;
+	opacity: 0.8;
+	width: 12vw;
+	aspect-ratio: 1/1;
+}
+
+.profile-picture {
+	width: 12vw;
+	aspect-ratio: 1/1;
 }
 
 .username-color {
-    font-size: clamp(1rem, 1.5vw, 2rem);
-    font-weight: bold;
-    color: #b40000;
+	font-size: clamp(1rem, 1.5vw, 2rem);
+	font-weight: bold;
+	color: #b40000;
 }
 
 .info-size-spacing {
-    padding-left: 12%;
-    font-size: clamp(1rem, 1.2vw, 1.5rem);
+	padding-left: 12%;
+	font-size: clamp(1rem, 1.2vw, 1.5rem);
 }
 
 .mail-logo {
-    width: clamp(2.5rem, 3.5vw, 4.5rem); 
+	width: clamp(2.5rem, 3.5vw, 4.5rem);
 }
 
 .buttons-container {
-    padding-top: 2%;
-    width: 30vw;
-    height: 10%;
+	padding-top: 2%;
+	width: 30vw;
+	height: 10%;
 }
 
 @media (max-width: 768px) {
-     .userinfocard-container {
-        flex-direction: column; 
-        align-items: center; 
-    }
+	.userinfocard-container {
+		flex-direction: column;
+		align-items: center;
+	}
 
-    .pic-container{
-        border: white solid 3.5vw;
-    }
+	.pic-container {
+		border: white solid 3.5vw;
+	}
 
-    .big-userlogo{
-        width: 20vw;
-    }
+	.big-userlogo {
+		width: 20vw;
+	}
 
-    .userinfocard-container > .profile-info-container {
-        justify-content: center; 
-        gap: 2rem;
-    }
+	.userinfocard-container > .profile-info-container {
+		justify-content: center;
+		gap: 2rem;
+	}
 
-    .info-size-spacing{
-        padding: 0;
-    }
+	.info-size-spacing {
+		padding: 0;
+	}
 
-    .buttons-container {
-        margin-left: 10%;
-        padding: 0;
-        width: 100%; 
-    }
+	.buttons-container {
+		margin-left: 10%;
+		padding: 0;
+		width: 100%;
+	}
 
-    .buttons-container .btn {
-        border-radius: 10px;
-    }
+	.buttons-container .btn {
+		border-radius: 10px;
+	}
 }
