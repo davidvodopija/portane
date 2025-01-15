@@ -10,6 +10,8 @@ import EditWardrobe from "./routes/app/editWardrobe";
 import AddItem from "./routes/app/addItem";
 import PrivateUserRoute from "./routes/auth/privateUserRoute";
 import PublicAuthRoute from "./routes/auth/publicAuthRoute";
+import SellerProfile from "./routes/app/sellerProfile";
+import AddListing from "./routes/app/addListing";
 
 function Router() {
 	return (
@@ -89,6 +91,12 @@ function Router() {
 							</PrivateUserRoute>
 						}
 					/>
+					<Route
+						path="/wardrobes/:wardrobeId/add-item"
+						element={<AddItem />}
+					/>
+					<Route path="/seller-profile" element={<SellerProfile />} />
+					<Route path="/add-listing" element={<AddListing />} />
 					<Route path="*" element={<Navigate to="/" replace />} />
 				</Routes>
 			</AppProvider>
