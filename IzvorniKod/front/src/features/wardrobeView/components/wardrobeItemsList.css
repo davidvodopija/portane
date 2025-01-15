@@ -1,0 +1,20 @@
+.wardrobe-items-container {
+	width: 75%;
+	gap: 2vw;
+	row-gap: 3vw;
+}
+
+@media (max-width: 768px) {
+	.wardrobe-items-container {
+		padding-left: 2vw;
+		gap: 5vw;
+		row-gap: 4.5vw;
+	}
+}
+
+@media (max-width: 480px) {
+	.wardrobe-items-container {
+		padding-left: 9vw;
+		gap: 7vw;
+	}
+}
