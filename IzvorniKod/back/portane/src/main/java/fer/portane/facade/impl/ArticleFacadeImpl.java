@@ -66,7 +66,9 @@ public class ArticleFacadeImpl implements ArticleFacade {
 
         article.setCondition(conditionService.findById(form.getConditionId()));
         article.setCategory(categoryService.findById(form.getCategoryId()));
-        article.setFootwearType(footwearTypeService.findById(form.getFootwearTypeId()));
+        if (form.getFootwearTypeId() != null) {
+            article.setFootwearType(footwearTypeService.findById(form.getFootwearTypeId()));
+        }
         article.setPrimaryColor(colorService.findById(form.getPrimaryColorId()));
         article.setSecondaryColor(colorService.findById(form.getSecondaryColorId()));
 
