@@ -8,6 +8,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 
 	const navigate = useNavigate();
 
@@ -18,6 +19,7 @@ export const AuthProvider = ({ children }) => {
 			setUser(storedUser);
 			setIsLoggedIn(true);
 		}
+		setIsLoading(false);
 	}, []);
 
 	// Save user to local storage when user state changes
@@ -68,6 +70,7 @@ export const AuthProvider = ({ children }) => {
 	const value = {
 		user,
 		isLoggedIn,
+		isLoading,
 		registerUser,
 		loginUser,
 		logoutUser,

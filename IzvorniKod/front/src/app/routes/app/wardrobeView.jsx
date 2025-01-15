@@ -4,14 +4,14 @@ import WardrobeItemsList from "../../../features/wardrobeView/components/wardrob
 import WardrobeControls from "../../../features/wardrobeView/components/wardrobeControls";
 import "./wardrobeView.css";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { useWardrobes } from "../../../features/wardrobeList/hooks/useWardrobes";
+import { useContext, useEffect, useState } from "react";
+import { wardrobesContext } from "../../../features/wardrobeList/context/wardrobesContext";
 
 function WardrobeView() {
 	const { wardrobeId } = useParams();
 	const [title, setTitle] = useState("");
 
-	const { wardrobes } = useWardrobes();
+	const { wardrobes } = useContext(wardrobesContext);
 
 	useEffect(() => {
 		if (wardrobes) {

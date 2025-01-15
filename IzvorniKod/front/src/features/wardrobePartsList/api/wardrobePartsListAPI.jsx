@@ -16,8 +16,8 @@ export const getAllWardrobeParts = async (id) => {
 export const renameWardrobePart = async (id, newName) => {
 	try {
 		const response = await axios.put(
-			`/api/closet-custom-component/save/${id}`,
-			{ title: newName }
+			`/api/closet-custom-components/save/${id}`,
+			{ title: newName, componentId: id }
 		);
 	} catch (error) {
 		alert(error.response.data.errors[0]);
@@ -28,7 +28,7 @@ export const renameWardrobePart = async (id, newName) => {
 export const removeWardrobePart = async (id) => {
 	try {
 		const response = await axios.delete(
-			`/api/closet-custom-component/delete/${id}`
+			`/api/closet-custom-components/delete/${id}`
 		);
 	} catch (error) {
 		alert(error.response.data.errors[0]);
@@ -36,11 +36,11 @@ export const removeWardrobePart = async (id) => {
 	}
 };
 
-export const createWardrobePart = async (data) => {
+export const createWardrobePart = async (id, data) => {
 	try {
 		const response = await axios.post(
-			"/api/closet-custom-component/create",
-			data
+			"/api/closet-custom-components/add/" + id,
+			{ title: data.title, componentId: data.id }
 		);
 	} catch (error) {
 		alert(error.response.data.errors[0]);

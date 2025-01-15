@@ -4,8 +4,9 @@ import { getCodebook } from "../api/codebooksAPI";
 export const CodebooksContext = createContext();
 
 export const CodebooksProvider = ({ children }) => {
-	const [codebooks, setCodebooks] = useState([]);
+	const [codebooks, setCodebooks] = useState(null);
 	let codebookNames = [
+		"closet-components",
 		"styles",
 		"seasons",
 		"footwear-types",

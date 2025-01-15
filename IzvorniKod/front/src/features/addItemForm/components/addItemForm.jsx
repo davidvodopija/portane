@@ -8,27 +8,30 @@ import "./addItemForm.css";
 import UploadImage from "./uploadImage.jsx";
 import { useState, useEffect, useContext, useRef } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Select from "react-select";
 
 function AddItemForm() {
 	const { codebooks } = useContext(CodebooksContext);
 	const [wardrobeParts, setWardrobeParts] = useState([]);
-	const { wardrobes, getWardrobes } = useContext(wardrobesContext);
+	const { wardrobes } = useContext(wardrobesContext);
 	const { wardrobeId } = useParams();
 	const formRef = useRef(null);
-	const [title, setTitle] = useState("");
+	const navigate = useNavigate();
 	const [formData, setFormData] = useState({
 		label: "",
-		picture: "saf",
+		picture: "tmp",
 		categoryId: 0,
 		conditionId: 0,
 		footwearTypeId: 0,
 		primaryColorId: 0,
 		secondaryColorId: 0,
 		styleIds: [],
-		seasonIds: [],
+		seasonId: 0,
 		closetCustomComponentId: 0,
 		public: false,
 	});
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		getAllWardrobeParts(wardrobeId).then((response) => {
@@ -36,34 +39,22 @@ function AddItemForm() {
 		});
 	}, []);
 
-	if (
-		!codebooks ||
-		Object.keys(codebooks).length === 0 ||
-		!wardrobeParts ||
-		wardrobeParts.length == 0
-	) {
+	useEffect(() => {
+		if (codebooks && wardrobeParts && wardrobes) {
+			setIsLoading(false);
+		}
+	}, [codebooks, wardrobeParts, wardrobes]);
+
+	if (isLoading) {
 		return <div>Loading...</div>;
 	}
-	if (!wardrobes) {
-		getWardrobes();
-	}
-	if (!wardrobes) {
-		return <div>Loading...</div>;
-	}
+
 	const handleChange = (e) => {
 		const { id, value, type, checked } = e.target;
 		if (type === "checkbox") {
 			setFormData((prevData) => ({
 				...prevData,
 				[id]: checked,
-			}));
-		} else if (id.endsWith("Ids")) {
-			const options = Array.from(e.target.selectedOptions, (option) =>
-				parseInt(option.value)
-			);
-			setFormData((prevData) => ({
-				...prevData,
-				[id]: options,
 			}));
 		} else {
 			setFormData((prevData) => ({
@@ -73,8 +64,23 @@ function AddItemForm() {
 		}
 	};
 
+	const handleSelectChange = (selectedOptions, actionMeta) => {
+		const { name } = actionMeta;
+		const values = selectedOptions
+			? selectedOptions.map((option) => option.value)
+			: [];
+		setFormData((prevData) => ({
+			...prevData,
+			[name]: values,
+		}));
+	};
+
 	const handleSubmit = () => {
-		addItemFormAPI(formData);
+		addItemFormAPI(formData).then((response) => {
+			if (response) {
+				navigate(`/wardrobes/${wardrobeId}`);
+			}
+		});
 	};
 
 	return (
@@ -109,15 +115,18 @@ function AddItemForm() {
 					</div>
 					<div className="col-6 col-md-6 mt-3">
 						<div className="mb-3">
-							<label htmlFor="seasonIds" className="form-label">
+							<label htmlFor="seasonId" className="form-label">
 								GODIŠNJE DOBA
 							</label>
 							<select
-								id="seasonIds"
+								id="seasonId"
 								className="form-select"
 								required
+								defaultValue=""
 								onChange={handleChange}>
-								<option value="">Izaberi</option>
+								<option value="" disabled>
+									Izaberi
+								</option>
 								{codebooks.seasons.map((season) => (
 									<option key={season.id} value={season.id}>
 										{season.name}
@@ -130,18 +139,17 @@ function AddItemForm() {
 							<label htmlFor="styleIds" className="form-label">
 								STIL/LEŽERNOST
 							</label>
-							<select
+							<Select
 								id="styleIds"
-								className="form-select"
+								name="styleIds"
+								isMulti
 								required
-								onChange={handleChange}>
-								<option defaultValue="">Izaberi</option>
-								{codebooks.styles.map((style) => (
-									<option key={style.id} value={style.id}>
-										{style.name}
-									</option>
-								))}
-							</select>
+								options={codebooks.styles.map((style) => ({
+									value: style.id,
+									label: style.name,
+								}))}
+								onChange={handleSelectChange}
+							/>
 						</div>
 
 						<div className="mb-3">
@@ -152,8 +160,11 @@ function AddItemForm() {
 								id="secondaryColorId"
 								className="form-select"
 								onChange={handleChange}
+								defaultValue=""
 								required>
-								<option defaultValue="">Izaberi</option>
+								<option value="" disabled>
+									Izaberi
+								</option>
 								{codebooks.colors.map((color) => (
 									<option key={color.id} value={color.id}>
 										{color.name}
@@ -170,8 +181,11 @@ function AddItemForm() {
 								id="closetCustomComponentId"
 								className="form-select"
 								required
-								onChange={handleChange}>
-								<option defaultValue="">Izaberi</option>
+								onChange={handleChange}
+								defaultValue="">
+								<option value="" disabled>
+									Izaberi
+								</option>
 								{wardrobeParts.map((part) => (
 									<option key={part.id} value={part.id}>
 										{part.title}
@@ -190,8 +204,11 @@ function AddItemForm() {
 								id="categoryId"
 								className="form-select"
 								required
-								onChange={handleChange}>
-								<option defaultValue="">Izaberi</option>
+								onChange={handleChange}
+								defaultValue="">
+								<option value="" disabled>
+									Izaberi
+								</option>
 								{codebooks.categories.map((category) => (
 									<option key={category.id} value={category.id}>
 										{category.name}
@@ -208,8 +225,11 @@ function AddItemForm() {
 								id="primaryColorId"
 								className="form-select"
 								required
-								onChange={handleChange}>
-								<option defaultValue="">Izaberi</option>
+								onChange={handleChange}
+								defaultValue="">
+								<option value="" disabled>
+									Izaberi
+								</option>
 								{codebooks.colors.map((color) => (
 									<option key={color.id} value={color.id}>
 										{color.name}
@@ -226,8 +246,11 @@ function AddItemForm() {
 								id="conditionId"
 								className="form-select"
 								required
+								defaultValue=""
 								onChange={handleChange}>
-								<option defaultValue="">Izaberi</option>
+								<option value="" disabled>
+									Izaberi
+								</option>
 								{codebooks.conditions.map((condition) => (
 									<option key={condition.id} value={condition.id}>
 										{condition.name}
@@ -236,23 +259,28 @@ function AddItemForm() {
 							</select>
 						</div>
 
-						<div className="mb-3">
-							<label htmlFor="footwearTypeId" className="form-label">
-								OTVORENOST
-							</label>
-							<select
-								id="footwearTypeId"
-								className="form-select"
-								required
-								onChange={handleChange}>
-								<option defaultValue="">Izaberi</option>
-								{codebooks["footwear-types"].map((type) => (
-									<option key={type.id} value={type.id}>
-										{type.name}
+						{formData.categoryId == 6 && (
+							<div className="mb-3">
+								<label htmlFor="footwearTypeId" className="form-label">
+									OTVORENOST
+								</label>
+								<select
+									id="footwearTypeId"
+									className="form-select"
+									required
+									onChange={handleChange}
+									defaultValue="">
+									<option value="" disabled>
+										Izaberi
 									</option>
-								))}
-							</select>
-						</div>
+									{codebooks["footwear-types"].map((type) => (
+										<option key={type.id} value={type.id}>
+											{type.name}
+										</option>
+									))}
+								</select>
+							</div>
+						)}
 					</div>
 				</div>
 

@@ -3,9 +3,9 @@ import "./wardrobeCard.css";
 import wardrobeLogo from "../../../assets/wardrobeLogo.png";
 import CloseButton from "../../../components/closeButton/closeButton";
 import ConfirmationModal from "../../../components/conformatioAlert/conformationModal.jsx";
-import { useState } from "react";
-import { useWardrobes } from "../hooks/useWardrobes.jsx";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { wardrobesContext } from "../context/wardrobesContext.jsx";
 
 function WardrobeCard({
 	wardrobeName,
@@ -15,7 +15,7 @@ function WardrobeCard({
 	wardrobeID,
 }) {
 	const [showModal, setShowModal] = useState(false); // Control modal visibility
-	const { deleteWardrobe } = useWardrobes();
+	const { deleteWardrobe } = useContext(wardrobesContext);
 	const navigate = useNavigate();
 
 	const handleRemoveWardrobe = () => {

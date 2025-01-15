@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.css";
-import { useEffect, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {
 	createWardrobePart,
@@ -9,7 +9,7 @@ import {
 } from "../api/wardrobePartsListAPI";
 import { handleFormSubmit } from "../../auth/utils/formUtils";
 import { useRef } from "react";
-import { useWardrobeComponents } from "../../createWardrobe/hooks/useWardrobeComponents";
+import { CodebooksContext } from "../../codebooks/context/codebooksContext";
 
 function WardrobePartsList() {
 	const { wardrobeId } = useParams();
@@ -17,21 +17,21 @@ function WardrobePartsList() {
 	const [editingPartId, setEditingPartId] = useState(null);
 	const [editedPart, setEditedPart] = useState("");
 	const formRef = useRef(null);
-	const { getComponents, wardrobeComponents } = useWardrobeComponents();
+	const { codebooks } = useContext(CodebooksContext);
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
-		getAllWardrobeParts(wardrobeId)
-			.then((response) => {
-				setWardrobePartsList(response);
-			})
-			.catch((error) => {
-				console.error("Error getting wardrobe parts:", error);
-			});
-
-		if (!wardrobeComponents) {
-			getComponents();
+		if (codebooks && codebooks["closet-components"]) {
+			getAllWardrobeParts(wardrobeId)
+				.then((response) => {
+					setWardrobePartsList(response);
+				})
+				.catch((error) => {
+					console.error("Error getting wardrobe parts:", error);
+				});
+			setIsLoading(false);
 		}
-	}, [wardrobeId]);
+	}, [codebooks]);
 
 	const handleDelete = (id) => {
 		removeWardrobePart(id)
@@ -67,14 +67,17 @@ function WardrobePartsList() {
 	};
 
 	const handleAdd = () => {
-		handleFormSubmit(formRef, createWardrobePart);
-		getAllWardrobeParts(wardrobeId)
-			.then((response) => {
-				setWardrobePartsList(response);
-			})
-			.catch((error) => {
-				console.error("Error getting wardrobe parts:", error);
+		handleFormSubmit(formRef, (data) => {
+			createWardrobePart(wardrobeId, data).then(() => {
+				getAllWardrobeParts(wardrobeId)
+					.then((response) => {
+						setWardrobePartsList(response);
+					})
+					.catch((error) => {
+						console.error("Error getting wardrobe parts:", error);
+					});
 			});
+		});
 	};
 
 	const handleEditClick = (part) => {
@@ -95,7 +98,7 @@ function WardrobePartsList() {
 		setEditingPartId(null);
 	};
 
-	if (!wardrobePartsList) {
+	if (isLoading) {
 		return <div>Loading...</div>;
 	}
 
@@ -129,7 +132,7 @@ function WardrobePartsList() {
 									{editingPartId === part.id ? (
 										<>
 											<button
-												className="btn btn-link border-0 text-primary p-0 me-2"
+												className="btn btn-link border-0 text-danger p-0 me-2"
 												onClick={handleSaveClick}>
 												Save
 											</button>
@@ -142,7 +145,7 @@ function WardrobePartsList() {
 									) : (
 										<>
 											<button
-												className="btn btn-link border-0 text-primary p-0 me-2"
+												className="btn btn-link border-0 text-danger p-0 me-2"
 												onClick={() => handleEditClick(part)}>
 												Edit
 											</button>
@@ -175,10 +178,10 @@ function WardrobePartsList() {
 						<option disabled value="DEFAULT">
 							Odaberi vrstu komponente
 						</option>
-						{wardrobeComponents.map((category) => {
+						{codebooks["closet-components"].map((category) => {
 							return (
 								<option key={category.id} value={category.id}>
-									{category.label}
+									{category.name}
 								</option>
 							);
 						})}
