@@ -4,6 +4,7 @@ import fer.portane.model.lut.*;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -45,7 +46,7 @@ public class Article extends BaseEntity {
             joinColumns = @JoinColumn(name = "articles_id"),
             inverseJoinColumns = @JoinColumn(name = "styles_id")
     )
-    private List<Style> styles;
+    private List<Style> styles = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "closet_custom_component_id")

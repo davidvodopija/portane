@@ -19,6 +19,10 @@ public class ClosetServiceImpl implements ClosetService {
 
     @Override
     public void deleteById(Long id) {
+        Closet closet = findById(id);
+        if (closet.getComponents().stream().map(component -> component.getArticles().size()).anyMatch(size -> size > 0)) {
+            throw new RuntimeException("Cannot delete closet with articles");
+        }
         closetRepository.deleteById(id);
     }
 

@@ -5,6 +5,8 @@ import fer.portane.facade.ArticleFacade;
 import fer.portane.form.ArticleForm;
 import fer.portane.mapper.ArticleArticleDtoMapper;
 import fer.portane.model.Article;
+import fer.portane.model.ClosetCustomComponent;
+import fer.portane.model.lut.Style;
 import fer.portane.service.*;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,13 +43,24 @@ public class ArticleFacadeImpl implements ArticleFacade {
     @Override
     @Transactional
     public ArticleDto save(ArticleForm form) {
-        Article article = articleService.findById(form.getId());
+        Article article;
+        if (form.getId() != null) {
+            article = articleService.findById(form.getId());
+            if (article == null) {
+                throw new RuntimeException("Article with id = " + form.getId() + " not found");
+            }
+        } else {
+            article = new Article();
+        }
 
         article.setLabel(form.getLabel());
         article.setPicture(form.getPicture());
         article.setPublic(form.isPublic());
 
+
         if (form.getClosetCustomComponentId() != null) {
+            ClosetCustomComponent closetCustomComponent = closetCustomComponentService.findById(form.getClosetCustomComponentId());
+            closetCustomComponent.getArticles().add(article);
             article.setClosetCustomComponent(closetCustomComponentService.findById(form.getClosetCustomComponentId()));
         }
 
@@ -58,7 +71,12 @@ public class ArticleFacadeImpl implements ArticleFacade {
         article.setSecondaryColor(colorService.findById(form.getSecondaryColorId()));
 
         article.setSeason(seasonService.findById(form.getSeasonId()));
-        article.setStyles(form.getStyleIds().stream().map(styleService::findById).filter(Objects::nonNull).toList());
+
+        List<Style> toRemove = article.getStyles().stream().filter(style -> !form.getStyleIds().contains(style.getId())).toList();
+        toRemove.forEach(style -> article.getStyles().remove(style));
+
+        List<Style> toAdd = form.getStyleIds().stream().filter(styleId -> article.getStyles().stream().noneMatch(style -> style.getId().equals(styleId))).map(styleService::findById).toList();
+        toAdd.forEach(style -> article.getStyles().add(style));
 
         return articleDtoMapper.toDto(articleService.save(article));
     }
@@ -67,13 +85,13 @@ public class ArticleFacadeImpl implements ArticleFacade {
     public void deleteById(Long id) {
         Article article = articleService.findById(id);
 
+        if (article == null) {
+        }
+
         if (!Objects.equals(article.getClosetCustomComponent().getCloset().getId(), authService.getAuthenticatedUser().getId())){
             throw new RuntimeException("You are not allowed to delete this article");
         }
 
-        if (article == null) {
-            throw new RuntimeException("Article with id = " + id + " not found");
-        }
         articleService.deleteById(id);
     }
 

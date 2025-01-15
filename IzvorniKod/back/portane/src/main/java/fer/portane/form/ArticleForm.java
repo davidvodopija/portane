@@ -22,7 +22,6 @@ public class ArticleForm {
     @NotNull
     private Long conditionId;
 
-    @NotNull
     private Long footwearTypeId;
 
     @NotNull

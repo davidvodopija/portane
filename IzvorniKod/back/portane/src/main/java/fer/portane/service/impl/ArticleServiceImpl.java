@@ -3,7 +3,9 @@ package fer.portane.service.impl;
 import fer.portane.model.Article;
 import fer.portane.repository.ArticleRepository;
 import fer.portane.service.ArticleService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,23 +15,23 @@ public class ArticleServiceImpl implements ArticleService {
     @Autowired
     private ArticleRepository articleRepository;
     @Override
+    @Transactional
+    @Modifying
     public Article save(Article article) {
         return articleRepository.save(article);
     }
 
     @Override
     public void deleteById(Long id) {
-        Article article = articleRepository.findById(id).orElse(null);
-        if (article == null) {
-            throw new RuntimeException("Article with id = " + id + " not found");
-        }
+        Article article = findById(id);
         article.getClosetCustomComponent().getArticles().remove(article);
         articleRepository.deleteById(id);
     }
 
     @Override
     public Article findById(Long id) {
-        return articleRepository.findById(id).orElse(null);
+        return articleRepository.findById(id).orElseThrow(() ->
+                new RuntimeException("Article with id = " + id + " not found"));
     }
 
     @Override
