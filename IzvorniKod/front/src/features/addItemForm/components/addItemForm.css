@@ -12,12 +12,9 @@
 	width: 40vw;
 }
 
-.new-item-form .form-label {
+.new-item-form .form-label,
+.form-check-label {
 	font-size: clamp(0.8rem, 1.2vw, 1rem);
-}
-
-.new-item-form .form-check-label {
-	font-size: clamp(0.9rem, 1.2vw, 1rem);
 }
 
 @media (max-width: 768px) {

@@ -149,6 +149,16 @@ function Router() {
 							</PrivateSellerRoute>
 						}
 					/>
+
+					<Route
+						path="/outfit-generator"
+						element={<OutfitGenerator />}
+					/>
+					<Route
+						path="/outfit-suggestion"
+						element={<OutfitSuggestion />}
+					/>
+
 					<Route path="*" element={<Navigate to="/" replace />} />
 				</Routes>
 			</AppProvider>
