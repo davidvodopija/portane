@@ -19,7 +19,7 @@ function WardrobeItemsList() {
 			{items.map((item) => (
 				<WardrobeItem
 					key={item.id}
-					src={placeholder}
+					src={item.picture || placeholder}
 					location={item.closetCustomComponent.title}
 					itemName={item.label}
 				/>
