@@ -51,4 +51,8 @@ public class Article extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "closet_custom_component_id")
     private ClosetCustomComponent closetCustomComponent;
+
+    @ManyToOne
+    @JoinColumn(name = "seller_id")
+    private Seller seller;
 }

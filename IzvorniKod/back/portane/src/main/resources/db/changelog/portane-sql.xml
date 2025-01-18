@@ -49,6 +49,7 @@
             secondary_color_id integer,
             footwear_type_id integer,
             season_id integer,
+            seller_id integer,
             active bool DEFAULT true,
             created_at datetime DEFAULT (now()),
             last_updated datetime DEFAULT (now())
@@ -138,10 +139,44 @@
             id integer generated always as identity PRIMARY KEY,
             name varchar,
             logo varchar,
+            user_id integer,
             active bool DEFAULT true,
             created_at datetime DEFAULT (now()),
-            last_updated datetime DEFAULT (now())
+            last_updated datetime DEFAULT (now()),
+            constraint seller_user
+                foreign key (user_id)
+                    references users(id)
         );
+
+        CREATE TABLE galleries (
+            id integer generated always as identity PRIMARY KEY,
+            name varchar,
+            seller_id integer,
+            active bool DEFAULT true,
+            created_at datetime DEFAULT (now()),
+            last_updated datetime DEFAULT (now()),
+            constraint gallery_seller
+                foreign key (seller_id)
+                    references sellers(id)
+        );
+
+        CREATE TABLE ads (
+            id integer generated always as identity PRIMARY KEY,
+            article_id integer,
+            gallery_id integer,
+            price decimal default 0.0,
+            active bool DEFAULT true,
+            created_at datetime DEFAULT (now()),
+            last_updated datetime DEFAULT (now()),
+            constraint ad_article
+                foreign key (article_id)
+                    references articles(id),
+            constraint ad_gallery
+                foreign key (gallery_id)
+                    references galleries(id)
+        );
+
+        ALTER TABLE articles ADD FOREIGN KEY (seller_id) REFERENCES sellers (id);
         </sql>
     </changeSet>
 
