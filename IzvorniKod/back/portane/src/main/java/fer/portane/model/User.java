@@ -1,9 +1,6 @@
 package fer.portane.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,6 +19,9 @@ public class User extends BaseEntity implements UserDetails {
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<UserToken> tokens;
+
+    @OneToOne(mappedBy = "user")
+    private Seller seller;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

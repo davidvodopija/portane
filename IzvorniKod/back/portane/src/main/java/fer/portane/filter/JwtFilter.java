@@ -34,11 +34,6 @@ public class JwtFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         final String uri = request.getRequestURI();
 
-        /*if (uri.equals("/api/auth/login") || uri.equals("/api/users/create") || uri.startsWith("/h2-console") || uri.startsWith("/api/docs") || uri.startsWith("/api/swagger-ui")) {
-            filterChain.doFilter(request, response);
-            return;
-        }*/
-
         String token = null;
 
         if(request.getCookies() != null){

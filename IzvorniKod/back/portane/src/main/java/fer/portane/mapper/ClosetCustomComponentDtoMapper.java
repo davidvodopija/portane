@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class ClosetCustomComponentDtoMapper {
     public static ClosetCustomComponentDto toDto(ClosetCustomComponent closetCustomComponent) {
+        if (closetCustomComponent == null)
+            return null;
         ClosetCustomComponentDto closetCustomComponentDto = new ClosetCustomComponentDto();
         closetCustomComponentDto.setId(closetCustomComponent.getId());
         closetCustomComponentDto.setTitle(closetCustomComponent.getTitle());
