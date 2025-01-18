@@ -4,12 +4,17 @@ import fer.portane.dto.AdDto;
 import fer.portane.dto.GeneralResponse;
 import fer.portane.facade.AdFacade;
 import fer.portane.form.AdForm;
+import fer.portane.form.AdSearchForm;
 import io.swagger.v3.oas.annotations.Operation;
 import jdk.jfr.Description;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.*;
 import java.util.List;
 
 @RestController
@@ -38,5 +43,17 @@ public class AdController {
     @GetMapping("/get-in-gallery/{id}")
     public ResponseEntity<GeneralResponse<List<AdDto>>> getInGallery(@PathVariable Long id) {
         return ResponseEntity.ok(new GeneralResponse<>(adFacade.findAllByGalleryId(id)));
+    }
+
+    @PostMapping("/search")
+    public ResponseEntity<GeneralResponse<Page<AdDto>>> search(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "price") String sortBy,
+            @RequestParam(defaultValue = "asc") String sortOrder,
+            @RequestBody AdSearchForm adSearchForm) {
+        Sort sort = Sort.by(Sort.Direction.fromString(sortOrder), sortBy);
+        PageRequest pageRequest = PageRequest.of(page, size, sort);
+        return ResponseEntity.ok(new GeneralResponse<>(adFacade.search(pageRequest, adSearchForm)));
     }
 }

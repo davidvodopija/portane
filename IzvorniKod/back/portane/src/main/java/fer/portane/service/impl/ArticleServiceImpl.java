@@ -5,6 +5,9 @@ import fer.portane.repository.ArticleRepository;
 import fer.portane.service.ArticleService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
@@ -37,5 +40,10 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public List<Article> findAllByClosetId(Long closetId) {
         return articleRepository.findByClosetId(closetId);
+    }
+
+    @Override
+    public Page<Article> search(PageRequest pageRequest, Specification<Article> specification) {
+        return articleRepository.findAll(specification, pageRequest);
     }
 }

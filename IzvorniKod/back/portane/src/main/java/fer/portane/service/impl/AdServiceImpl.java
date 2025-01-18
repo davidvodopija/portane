@@ -1,9 +1,13 @@
 package fer.portane.service.impl;
 
+import fer.portane.form.AdSearchForm;
 import fer.portane.model.Ad;
 import fer.portane.repository.AdRepository;
 import fer.portane.service.AdService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,5 +34,10 @@ public class AdServiceImpl implements AdService {
     @Override
     public List<Ad> findAllByGalleryId(Long galleryId) {
         return adRepository.findAllByGalleryId(galleryId);
+    }
+
+    @Override
+    public Page<Ad> search(PageRequest pageRequest, Specification<Ad> specification) {
+        return adRepository.findAll(specification, pageRequest);
     }
 }
