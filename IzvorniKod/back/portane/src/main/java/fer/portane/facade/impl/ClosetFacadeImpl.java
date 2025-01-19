@@ -1,14 +1,12 @@
 package fer.portane.facade.impl;
 
-import fer.portane.dto.ClosetComponentDto;
 import fer.portane.dto.ClosetDto;
 import fer.portane.exception.NotFound;
 import fer.portane.facade.ClosetFacade;
 import fer.portane.form.ClosetForm;
 import fer.portane.mapper.ClosetClosetDtoMapper;
 import fer.portane.model.Closet;
-import fer.portane.model.ClosetClosetComponent;
-import fer.portane.model.ClosetComponent;
+import fer.portane.model.ClosetCustomComponent;
 import fer.portane.model.User;
 import fer.portane.service.AuthService;
 import fer.portane.service.ClosetComponentService;
@@ -43,15 +41,16 @@ public class ClosetFacadeImpl implements ClosetFacade {
         closet.setComponents(new ArrayList<>());
 
         closetForm.getComponentsList().forEach(componentForm -> {
-            ClosetClosetComponent closetClosetComponent = new ClosetClosetComponent();
-            closetClosetComponent.setCloset(closet);
-            closetClosetComponent.setClosetComponent(
-                    closetComponentService
-                            .findById(componentForm.getId())
-                            .orElseThrow(() -> new NotFound("Closet component not found"))
-            );
-            closetClosetComponent.setQuantity(componentForm.getQuantity());
-            closet.getComponents().add(closetClosetComponent);
+            for (int index = 1; index <= componentForm.getQuantity(); index++) {
+                ClosetCustomComponent closetCustomComponent = new ClosetCustomComponent();
+                closetCustomComponent.setCloset(closet);
+                closetCustomComponent.setClosetComponent(
+                        closetComponentService
+                                .findById(componentForm.getId())
+                );
+                closetCustomComponent.setTitle(closetCustomComponent.getClosetComponent().getName() + " " + index);
+                closet.getComponents().add(closetCustomComponent);
+            }
         });
 
         return ClosetClosetDtoMapper.toClosetDto(closetService.save(closet));

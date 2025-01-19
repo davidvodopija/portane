@@ -1,5 +1,5 @@
 .secondary-heading-text {
-	font-size: 1.7rem;
+	font-size: clamp(1.1rem, 1.42vw, 1.7rem);
 	font-weight: 500;
 	color: #af0000;
 }

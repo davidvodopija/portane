@@ -1,6 +1,6 @@
 import Header from "../../../components/header/header";
-import CarouselAuto from "../../../components/carousel/carouselAuto";
-import Categories from "../../../components/categories/categories";
+import CarouselAuto from "../../../features/carouselAuto/components/carouselAuto";
+import Categories from "../../../features/categoriesList/components/categoriesList";
 import Items from "../../../components/items/items";
 import Footer from "../../../components/footer/footer";
 

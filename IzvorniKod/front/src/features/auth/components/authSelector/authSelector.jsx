@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import SwitchLabel from "../switchLabel/switchLabel";
 import LoginForm from "../loginForm/loginForm";
-import RegisterForm from "../registerForm/registerForm";
 import useAuthNavigation from "../../hooks/useAuthNavigation";
+import SellerRegisterForm from "../registerForm/sellerRegisterForm";
+import UserRegisterForm from "../registerForm/userRegisterForm";
 
 const AuthSelector = ({ mode = "login" }) => {
 	const [isLogin, setIsLogin] = useState(mode === "login");
+	const [isUser, setIsUser] = useState(true);
 
 	useAuthNavigation(isLogin);
 
@@ -27,7 +29,13 @@ const AuthSelector = ({ mode = "login" }) => {
 					PRIJAVI SE
 				</SwitchLabel>
 			</div>
-			{isLogin ? <LoginForm /> : <RegisterForm />}
+			{isLogin ? (
+				<LoginForm />
+			) : isUser ? (
+				<UserRegisterForm isUser={isUser} setIsUser={setIsUser} />
+			) : (
+				<SellerRegisterForm isUser={isUser} setIsUser={setIsUser} />
+			)}
 		</>
 	);
 };

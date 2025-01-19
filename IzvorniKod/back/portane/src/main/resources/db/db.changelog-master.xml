@@ -5,4 +5,5 @@
         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.8.xsd">
     <include file="db/changelog/portane-sql.xml"/>
     <include file="db/changelog/closet-components-insertion.xml"/>
+    <include file="db/changelog/articles.xml"/>
 </databaseChangeLog>

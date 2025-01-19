@@ -1,3 +1,13 @@
 .wardrobes-container {
-	gap: 65px;
+	width: 75%;
+	gap: 6vw;
+	row-gap: 3vw;
+}
+
+@media (max-width: 768px) {
+	.wardrobes-container {
+		width: 100%;
+		gap: 7vw;
+		row-gap: 4.5vw;
+	}
 }

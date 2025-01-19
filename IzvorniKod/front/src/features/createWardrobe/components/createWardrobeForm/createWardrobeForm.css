@@ -1,17 +1,36 @@
 .title-style {
     color: #b40000;
-    font-size: large;
+    font-size: clamp(1.2rem, 1.6vw, 1.5rem);
     font-weight: 500;
 }
 
 .create-closet-form {
-    margin: 1%;
-    color: black;
-    font-size: medium;
-    font-weight: normal;
+    width: 60vw;
     background-color: #f0f0f0;
 }
 
 .map {
     height: 400px;
+}
+
+.create-closet-form .form-label {
+    font-size: clamp(0.8rem, 1.6vw, 1rem);
+}
+
+
+@media (max-width:768px) {
+      .create-closet-form .form-control {
+        height: 6vw;
+        font-size: 0.9rem;
+    }   
+}
+
+@media(max-width:480px){
+    .title-style{
+        font-size: 1rem;
+    }
+
+    .create-closet-form .form-control{
+        font-size: 0.8rem;
+    }
 }

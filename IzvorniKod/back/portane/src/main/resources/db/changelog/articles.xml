@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="0" author="admin">
+        <sql dbms="h2,postgresql">
+            alter table closet_closet_components
+            add column title varchar;
+
+            alter table lut.colors
+            add column hex varchar;
+        </sql>
+    </changeSet>
+    <changeSet id="popunjavanje-sifrarnika" author="bspanic">
+        <sql dbms="h2, postgresql">
+            insert into lut.categories(name) values ('Majice');
+            insert into lut.categories(name) values ('Hlače');
+            insert into lut.categories(name) values ('Jakne i kaputi');
+            insert into lut.categories(name) values ('Džemperi i veste');
+            insert into lut.categories(name) values ('Haljine');
+            insert into lut.categories(name) values ('Obuća');
+            insert into lut.categories(name) values ('Traperice');
+            insert into lut.categories(name) values ('Suknje');
+            insert into lut.categories(name) values ('Gornji dijelovi trenirke');
+            insert into lut.categories(name) values ('Košulje');
+            insert into lut.categories(name) values ('Modni dodatci');
+            insert into lut.categories(name) values ('Donje rublje');
+
+
+            insert into lut.seasons(name) values ('Proljeće');
+            insert into lut.seasons(name) values ('Ljeto');
+            insert into lut.seasons(name) values ('Jesen');
+            insert into lut.seasons(name) values ('Zima');
+            insert into lut.seasons(name) values ('Prijelazno razdoblje');
+            insert into lut.seasons(name) values ('Univerzalno');
+
+            insert into lut.footwear_types(name) values ('Otvoreno');
+            insert into lut.footwear_types(name) values ('Poluotvoreno');
+            insert into lut.footwear_types(name) values ('Zatvoreno');
+            insert into lut.footwear_types(name) values ('Za kišu');
+            insert into lut.footwear_types(name) values ('Za snijeg');
+
+
+            insert into lut.styles(name) values ('Ležerno');
+            insert into lut.styles(name) values ('Klasično');
+            insert into lut.styles(name) values ('Sportski');
+            insert into lut.styles(name) values ('Formalno');
+            insert into lut.styles(name) values ('Elegantno');
+            insert into lut.styles(name) values ('Poslovno');
+            insert into lut.styles(name) values ('Za svaki dan');
+            insert into lut.styles(name) values ('Za posebne prigode');
+            insert into lut.styles(name) values ('Za po doma');
+            insert into lut.styles(name) values ('Moderno');
+            insert into lut.styles(name) values ('Retro');
+
+            insert into lut.conditions(name) values ('Novo s etiketom');
+            insert into lut.conditions(name) values ('Novo bez etikete');
+            insert into lut.conditions(name) values ('Odlično');
+            insert into lut.conditions(name) values ('Vrlo dobro');
+            insert into lut.conditions(name) values ('Dobro');
+            insert into lut.conditions(name) values ('Zadovoljavajuće');
+
+
+            insert into lut.colors(name, hex) values ('Crna', '#000000');
+            insert into lut.colors(name, hex) values ('Bijela', '#FFFFFF');
+            insert into lut.colors(name, hex) values ('Siva', '#808080');
+            insert into lut.colors(name, hex) values ('Bež', '#F5F5DC');
+            insert into lut.colors(name, hex) values ('Smeđa', '#5C4033');
+            insert into lut.colors(name, hex) values ('Crvena', '#FF0000');
+            insert into lut.colors(name, hex) values ('Ružičasta', '#FFC0CB');
+            insert into lut.colors(name, hex) values ('Narančasta', '#FFA500');
+            insert into lut.colors(name, hex) values ('Žuta', '#FFFF00');
+            insert into lut.colors(name, hex) values ('Ljubičasta', '#800080');
+            insert into lut.colors(name, hex) values ('Zelena', '#008000');
+            insert into lut.colors(name, hex) values ('Plava', '#0000FF');
+            insert into lut.colors(name, hex) values ('Zlatna', '#FFD700');
+            insert into lut.colors(name, hex) values ('Srebrna', '#C0C0C0');
+        </sql>
+    </changeSet>
+</databaseChangeLog>

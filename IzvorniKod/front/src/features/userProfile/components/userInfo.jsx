@@ -5,48 +5,51 @@ import mailLogo from "../../../assets/mailLogo.png";
 import Button from "../../../components/button/button";
 import { useAuth } from "../../auth/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import { useWardrobes } from "../../wardrobeList/hooks/useWardrobes.jsx";
+import { useContext } from "react";
+import { wardrobesContext } from "../../wardrobeList/context/wardrobesContext.jsx";
 
 function UserInfo() {
-	const { user, isLoggedIn, registerUser, loginUser, logoutUser } = useAuth();
+	const { user, isLoggedIn } = useAuth();
 	const navigate = useNavigate();
-	const { wardrobes } = useWardrobes();
+	const { wardrobes } = useContext(wardrobesContext);
 
 	if (!isLoggedIn) return <>Nemate pristup!</>;
 
 	return (
-		<div className="d-flex userinfocard-container">
-			<div className="firstcolumn-container">
-				<div className="pic-container">
-					<img src={userLogo} alt="User logo icon" className="big-userlogo" />
-				</div>
-				<div className="fs-4 pt-4 text-center username-color">MOJ PROFIL</div>
-			</div>
-
-			<div className="d-flex flex-column justify-content-center left-padding-secondcolumn info-size-spacing pb-5">
-				<div>
-					{user.firstname} {user.lastname}
-				</div>
-				<div className="d-flex">
-					<div>
-						<img src={mailLogo} alt="Mail logo" className="mail-logo" />
+		<div className="d-flex userinfocard-container mx-3">
+			<div className="profile-info-container d-flex w-100">
+				<div className="pe-4">
+					<div className="pic-container">
+						<img src={userLogo} alt="User logo icon" className="big-userlogo" />
 					</div>
-					<div> {user.email} </div>
+					<div className=" pt-4 text-center username-color">MOJ PROFIL</div>
 				</div>
 
-				<div> UKUPNO ORMARA: {wardrobes ? wardrobes.length : 0}</div>
-				<div> UKUPNO ARTIKALA: 0</div>
+				<div className="info-size-spacing d-flex flex-column justify-content-center gap-4 pb-4">
+					<div>
+						{user.firstname} {user.lastname}
+					</div>
+					<div className="d-flex">
+						<div>
+							<img src={mailLogo} alt="Mail logo" className="mail-logo pe-3" />
+						</div>
+						<div> {user.email} </div>
+					</div>
+
+					<div> UKUPNO ORMARA: {wardrobes ? wardrobes.length : 0}</div>
+					<div> UKUPNO ARTIKALA: 0</div>
+				</div>
 			</div>
 
-			<div className="d-grid gap-3 col-6 buttons-container">
+			<div className="buttons-container d-grid gap-4 col-6 my-4 pe-5">
 				<Button
 					size="medium"
 					color="orange"
-					radius="rounded"
+					radius="mediumround"
 					onClick={() => navigate("/create-wardrobe")}>
 					DODAJ NOVI ORMAR
 				</Button>
-				<Button size="medium" color="orange" radius="rounded">
+				<Button size="medium" color="orange" radius="mediumround">
 					IZGRADI ODJEVNU KOMBINACIJU
 				</Button>
 			</div>

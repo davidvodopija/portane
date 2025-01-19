@@ -41,13 +41,15 @@
             id integer generated always as identity PRIMARY KEY,
             label varchar,
             picture varchar,
-            public bool,
-            closet_component_id integer,
+            is_public bool,
+            closet_custom_component_id integer,
             category_id integer,
             condition_id integer,
             primary_color_id integer,
             secondary_color_id integer,
             footwear_type_id integer,
+            season_id integer,
+            seller_id integer,
             active bool DEFAULT true,
             created_at datetime DEFAULT (now()),
             last_updated datetime DEFAULT (now())
@@ -55,7 +57,7 @@
 
         CREATE TABLE lut.closet_components (
             id integer generated always as identity PRIMARY KEY,
-            label varchar
+            name varchar
         );
 
         CREATE TABLE lut.categories (
@@ -97,7 +99,7 @@
 
         ALTER TABLE closet_closet_components ADD FOREIGN KEY (closet_component_id) REFERENCES lut.closet_components (id);
 
-        ALTER TABLE articles ADD FOREIGN KEY (closet_component_id) REFERENCES closet_closet_components (id);
+        ALTER TABLE articles ADD FOREIGN KEY (closet_custom_component_id) REFERENCES closet_closet_components (id);
 
         ALTER TABLE articles ADD FOREIGN KEY (category_id) REFERENCES lut.categories (id);
 
@@ -109,16 +111,7 @@
 
         ALTER TABLE articles ADD FOREIGN KEY (footwear_type_id) REFERENCES lut.footwear_types (id);
 
-        CREATE TABLE articles_seasons (
-            articles_id integer,
-            seasons_id integer,
-            PRIMARY KEY (articles_id, seasons_id)
-        );
-
-        ALTER TABLE articles_seasons ADD FOREIGN KEY (articles_id) REFERENCES articles (id);
-
-        ALTER TABLE articles_seasons ADD FOREIGN KEY (seasons_id) REFERENCES lut.seasons (id);
-
+        ALTER TABLE articles ADD FOREIGN KEY (season_id) REFERENCES lut.seasons (id);
 
         CREATE TABLE articles_styles (
             articles_id integer,
@@ -142,6 +135,48 @@
 
         ALTER TABLE user_tokens ADD FOREIGN KEY (user_id) REFERENCES users (id);
 
+        CREATE TABLE sellers (
+            id integer generated always as identity PRIMARY KEY,
+            name varchar,
+            logo varchar,
+            user_id integer,
+            active bool DEFAULT true,
+            created_at datetime DEFAULT (now()),
+            last_updated datetime DEFAULT (now()),
+            constraint seller_user
+                foreign key (user_id)
+                    references users(id)
+        );
+
+        CREATE TABLE galleries (
+            id integer generated always as identity PRIMARY KEY,
+            name varchar,
+            seller_id integer,
+            active bool DEFAULT true,
+            created_at datetime DEFAULT (now()),
+            last_updated datetime DEFAULT (now()),
+            constraint gallery_seller
+                foreign key (seller_id)
+                    references sellers(id)
+        );
+
+        CREATE TABLE ads (
+            id integer generated always as identity PRIMARY KEY,
+            article_id integer,
+            gallery_id integer,
+            price decimal default 0.0,
+            active bool DEFAULT true,
+            created_at datetime DEFAULT (now()),
+            last_updated datetime DEFAULT (now()),
+            constraint ad_article
+                foreign key (article_id)
+                    references articles(id),
+            constraint ad_gallery
+                foreign key (gallery_id)
+                    references galleries(id)
+        );
+
+        ALTER TABLE articles ADD FOREIGN KEY (seller_id) REFERENCES sellers (id);
         </sql>
     </changeSet>
 

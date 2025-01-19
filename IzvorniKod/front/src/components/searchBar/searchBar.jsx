@@ -3,18 +3,15 @@ import "./searchBar.css";
 
 function SearchBar({size = "big", text = "Pretraži"}) {
     return (
-        <div className={`search-container-${size} d-flex`}>
-            <form role="search" className="w-100">
+        <div className={`search-container-${size}`}>
                 <input
-                    className="form-control ps-3 pe-5"
+                    className="form-control ps-3"
                     type="search"
                     placeholder={text}
                     aria-label="Search"
+                    
                 />
-            </form>
-            <div className="image-container" type="submit">
-                <i className="bi bi-search"></i>
-            </div>
+                <i className="bi bi-search image-container"></i>
         </div>
     );
 }

@@ -1,0 +1,12 @@
+.pic-container {
+	width: fit-content;
+	background-color: white;
+	border: white solid 2vw;
+}
+
+.big-userlogo {
+	border-radius: 100%;
+	opacity: 0.8;
+	width: 12vw;
+	aspect-ratio: 1/1;
+}
