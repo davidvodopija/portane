@@ -15,4 +15,5 @@ public interface ArticleService {
     List<Article> findAllByClosetId(Long closetId);
 
     Page<Article> search(PageRequest pageRequest, Specification<Article> specification);
+    List<Article> findAll(Specification<Article> specification);
 }
