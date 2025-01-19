@@ -21,6 +21,7 @@
 .profile-picture {
 	width: 12vw;
 	aspect-ratio: 1/1;
+	border-radius: 100%;
 }
 
 .username-color {

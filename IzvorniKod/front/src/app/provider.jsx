@@ -5,6 +5,7 @@ import {
 } from "../features/auth/context/authProvider";
 import { WardrobesProvider } from "../features/wardrobeList/context/wardrobesContext.jsx";
 import { CodebooksProvider } from "../features/codebooks/context/codebooksContext.jsx";
+import { GalleriesProvider } from "../features/galleriesList/context/galleriesContext.jsx";
 
 function AppProvider({ children }) {
 	return (
@@ -28,7 +29,7 @@ function UserProviders({ children }) {
 	}
 
 	return user.seller ? (
-		children
+		<GalleriesProvider>{children}</GalleriesProvider>
 	) : (
 		<WardrobesProvider>{children}</WardrobesProvider>
 	);

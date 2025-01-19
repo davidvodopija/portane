@@ -27,6 +27,22 @@
 	font-size: clamp(0.8rem, 1vw, 1rem);
 }
 
+.new-gallery Button {
+	width: 10vw;
+	margin-bottom: 2vw;
+	margin-top: 0.5vw;
+}
+
+.new-gallery {
+	z-index: 1;
+	position: relative;
+}
+
+.new-gallery input {
+	width: 15vw;
+	height: 2vw;
+}
+
 .close-button-wrapper {
 	position: absolute;
 	top: 0;
@@ -53,5 +69,13 @@
 		width: 30vw;
 		height: fit-content;
 		aspect-ratio: 4.5/4;
+	}
+
+	.new-gallery Button {
+		width: 20vw;
+	}
+
+	.new-gallery input {
+		width: 25vw;
 	}
 }

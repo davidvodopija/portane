@@ -9,6 +9,7 @@ import WardrobeView from "./routes/app/wardrobeView";
 import EditWardrobe from "./routes/app/editWardrobe";
 import AddItem from "./routes/app/addItem";
 import PrivateUserRoute from "./routes/auth/privateUserRoute";
+import PrivateSellerRoute from "./routes/auth/privateSellerRoute";
 import PublicAuthRoute from "./routes/auth/publicAuthRoute";
 import SellerProfile from "./routes/app/sellerProfile";
 import AddListing from "./routes/app/addListing";
@@ -93,10 +94,28 @@ function Router() {
 					/>
 					<Route
 						path="/wardrobes/:wardrobeId/add-item"
-						element={<AddItem />}
+						element={
+							<PrivateUserRoute>
+								<AddItem />
+							</PrivateUserRoute>
+						}
 					/>
-					<Route path="/seller-profile" element={<SellerProfile />} />
-					<Route path="/add-listing" element={<AddListing />} />
+					<Route
+						path="/seller-profile"
+						element={
+							<PrivateSellerRoute>
+								<SellerProfile />
+							</PrivateSellerRoute>
+						}
+					/>
+					<Route
+						path="/add-listing"
+						element={
+							<PrivateSellerRoute>
+								<AddListing />
+							</PrivateSellerRoute>
+						}
+					/>
 					<Route path="*" element={<Navigate to="/" replace />} />
 				</Routes>
 			</AppProvider>
