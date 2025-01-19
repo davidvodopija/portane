@@ -14,21 +14,21 @@ function WardrobeCard({
 	numOfRods,
 	wardrobeID,
 }) {
-	const [showModal, setShowModal] = useState(false); // Control modal visibility
+	const [showModal, setShowModal] = useState(false);
 	const { deleteWardrobe } = useContext(wardrobesContext);
 	const navigate = useNavigate();
 
 	const handleRemoveWardrobe = () => {
-		setShowModal(true); // Show modal for confirmation
+		setShowModal(true);
 	};
 
 	const confirmRemoval = () => {
-		deleteWardrobe(wardrobeID); // Call removeWardrobe with ID
-		setShowModal(false); // Close modal after confirming
+		deleteWardrobe(wardrobeID);
+		setShowModal(false);
 	};
 
 	const cancelRemoval = () => {
-		setShowModal(false); // Close modal without action if cancelled
+		setShowModal(false);
 	};
 
 	return (
@@ -45,7 +45,8 @@ function WardrobeCard({
 				/>
 				<div
 					className="card-body p-0 d-flex flex-column align-items-center"
-					onClick={() => navigate(`/wardrobes/${wardrobeID}`)}>
+					onClick={() => navigate(`/wardrobes/${wardrobeID}`)}
+				>
 					<p className="card-txt m-0">{wardrobeName}</p>
 					<div className="m-3 text-secondary">
 						<div>Polica: {numOfShelves.quantity}</div>

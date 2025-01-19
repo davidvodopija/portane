@@ -103,7 +103,7 @@ function WardrobePartsList() {
 	}
 
 	return (
-		<div className="container p-3">
+		<div className="container p-3 pt-0">
 			<table className="table table-striped text-center align-middle">
 				<thead>
 					<tr>
@@ -133,12 +133,14 @@ function WardrobePartsList() {
 										<>
 											<button
 												className="btn btn-link border-0 text-danger p-0 me-2"
-												onClick={handleSaveClick}>
+												onClick={handleSaveClick}
+											>
 												Save
 											</button>
 											<button
 												className="btn btn-link border-0 text-danger p-0 ms-2"
-												onClick={handleCancelClick}>
+												onClick={handleCancelClick}
+											>
 												Cancel
 											</button>
 										</>
@@ -146,12 +148,18 @@ function WardrobePartsList() {
 										<>
 											<button
 												className="btn btn-link border-0 text-danger p-0 me-2"
-												onClick={() => handleEditClick(part)}>
+												onClick={() =>
+													handleEditClick(part)
+												}
+											>
 												Edit
 											</button>
 											<button
 												className="btn btn-link border-0 text-danger p-0 ms-2"
-												onClick={() => handleDelete(part.id)}>
+												onClick={() =>
+													handleDelete(part.id)
+												}
+											>
 												Delete
 											</button>
 										</>
@@ -164,7 +172,8 @@ function WardrobePartsList() {
 			</table>
 			<form
 				className="d-flex align-items-center justify-content-around mt-3"
-				ref={formRef}>
+				ref={formRef}
+			>
 				<div className="d-flex gap-3 w-75">
 					<h4 className="bi bi-plus pt-1"></h4>
 					<input
@@ -174,7 +183,11 @@ function WardrobePartsList() {
 						name="title"
 						required
 					/>
-					<select className="form-select text-secondary" name="id" required>
+					<select
+						className="form-select text-secondary"
+						name="id"
+						required
+					>
 						<option disabled value="DEFAULT">
 							Odaberi vrstu komponente
 						</option>
@@ -187,7 +200,11 @@ function WardrobePartsList() {
 						})}
 					</select>
 				</div>
-				<a className="text-danger" onClick={() => handleAdd()}>
+				<a
+					className="text-danger cursor"
+					role="button"
+					onClick={() => handleAdd()}
+				>
 					Add new
 				</a>
 			</form>

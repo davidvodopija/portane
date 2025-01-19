@@ -11,12 +11,14 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 import { uploadImage } from "../../../utils/imageAPI.jsx";
+import { findWardrobeItem } from "../../wardrobeView/api/wardrobeItemsAPI.jsx";
 
 function AddItemForm() {
 	const { codebooks } = useContext(CodebooksContext);
 	const [wardrobeParts, setWardrobeParts] = useState([]);
 	const { wardrobes } = useContext(wardrobesContext);
 	const { wardrobeId } = useParams();
+	const { itemId } = useParams();
 	const formRef = useRef(null);
 	const navigate = useNavigate();
 	const [formData, setFormData] = useState({
@@ -32,12 +34,32 @@ function AddItemForm() {
 		closetCustomComponentId: 0,
 		public: false,
 	});
+
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		getAllWardrobeParts(wardrobeId).then((response) => {
 			setWardrobeParts(response);
 		});
+		if (itemId) {
+			findWardrobeItem(itemId).then((item) => {
+				setFormData({
+					label: item.label || "",
+					picture: item.picture || "",
+					categoryId: item.category.id || 0,
+					conditionId: item.condition.id || 0,
+					footwearTypeId: item.footwearType
+						? item.footwearType.id
+						: 0,
+					primaryColorId: item.primaryColor.id || 0,
+					secondaryColorId: item.secondaryColor.id || 0,
+					styleIds: item.styles.map((s) => s.id) || [],
+					seasonId: item.season.id || 0,
+					closetCustomComponentId: item.closetCustomComponent.id || 0,
+					public: item.public || false,
+				});
+			});
+		}
 	}, []);
 
 	useEffect(() => {
@@ -78,12 +100,36 @@ function AddItemForm() {
 
 	const handleSubmit = async () => {
 		try {
-			const image = await uploadImage(formData.picture);
-			const updatedFormData = {
-				...formData,
-				picture: image.result.link,
-			};
-			const response = await addItemFormAPI(updatedFormData);
+			let response;
+			if (!itemId) {
+				if (formData.picture == "") {
+					const pictureField =
+						formRef.current.querySelectorAll("[type=file]");
+
+					pictureField.forEach((field) => {
+						field.setCustomValidity("Upload an image");
+						field.reportValidity();
+					});
+					return;
+				}
+				const image = await uploadImage(formData.picture);
+				const updatedFormData = {
+					...formData,
+					picture: image.result.link,
+				};
+				response = await addItemFormAPI(updatedFormData);
+			} else {
+				console.log(formData);
+				const updatedFormData = {
+					...formData,
+					id: itemId,
+				};
+				if (updatedFormData.picture.name) {
+					const image = await uploadImage(formData.picture);
+					updatedFormData.picture = image.result.link;
+				}
+				response = await addItemFormAPI(updatedFormData);
+			}
 			if (response) {
 				navigate(`/wardrobes/${wardrobeId}`);
 			}
@@ -98,6 +144,12 @@ function AddItemForm() {
 				...prevData,
 				picture: file,
 			}));
+			const pictureField =
+				formRef.current.querySelectorAll("[type=file]");
+
+			pictureField.forEach((field) => {
+				field.setCustomValidity("");
+			});
 			return;
 		} else {
 			setFormData((prevData) => ({
@@ -110,9 +162,14 @@ function AddItemForm() {
 	return (
 		<div className="container my-5">
 			<div className="d-flex justify-content-between mx-4 mb-2 top-text">
-				<h1 className="title-style mb-3">DODAJ NOVI KOMAD ODJEĆE</h1>
 				<h1 className="title-style mb-3">
-					{wardrobes.find((wardrobe) => wardrobe.id == wardrobeId).title}
+					{itemId ? "AŽURIRAJ ARTIKL" : "DODAJ NOVI KOMAD ODJEĆE"}
+				</h1>
+				<h1 className="title-style mb-3">
+					{
+						wardrobes.find((wardrobe) => wardrobe.id == wardrobeId)
+							.title
+					}
 				</h1>
 			</div>
 
@@ -129,9 +186,11 @@ function AddItemForm() {
 						<input
 							type="text"
 							id="label"
+							maxLength="30"
 							className="form-control form-control-sm"
 							placeholder="Ime artikla"
 							required
+							value={formData.label || ""}
 							onChange={handleChange}
 						/>
 					</div>
@@ -144,8 +203,9 @@ function AddItemForm() {
 								id="seasonId"
 								className="form-select"
 								required
-								defaultValue=""
-								onChange={handleChange}>
+								value={formData.seasonId || ""}
+								onChange={handleChange}
+							>
 								<option value="" disabled>
 									Izaberi
 								</option>
@@ -170,20 +230,30 @@ function AddItemForm() {
 									value: style.id,
 									label: style.name,
 								}))}
+								value={formData.styleIds.map((id) => ({
+									value: id,
+									label: codebooks.styles.find(
+										(style) => style.id === id
+									)?.name,
+								}))}
 								onChange={handleSelectChange}
 							/>
 						</div>
 
 						<div className="mb-3">
-							<label htmlFor="secondaryColorId" className="form-label">
+							<label
+								htmlFor="secondaryColorId"
+								className="form-label"
+							>
 								SPOREDNA BOJA
 							</label>
 							<select
 								id="secondaryColorId"
 								className="form-select"
 								onChange={handleChange}
-								defaultValue=""
-								required>
+								value={formData.secondaryColorId || ""}
+								required
+							>
 								<option value="" disabled>
 									Izaberi
 								</option>
@@ -196,7 +266,10 @@ function AddItemForm() {
 						</div>
 
 						<div>
-							<label htmlFor="closetCustomComponentId" className="form-label">
+							<label
+								htmlFor="closetCustomComponentId"
+								className="form-label"
+							>
 								LOKACIJA U ORMARU
 							</label>
 							<select
@@ -204,7 +277,8 @@ function AddItemForm() {
 								className="form-select"
 								required
 								onChange={handleChange}
-								defaultValue="">
+								value={formData.closetCustomComponentId || ""}
+							>
 								<option value="" disabled>
 									Izaberi
 								</option>
@@ -227,12 +301,16 @@ function AddItemForm() {
 								className="form-select"
 								required
 								onChange={handleChange}
-								defaultValue="">
+								value={formData.categoryId || ""}
+							>
 								<option value="" disabled>
 									Izaberi
 								</option>
 								{codebooks.categories.map((category) => (
-									<option key={category.id} value={category.id}>
+									<option
+										key={category.id}
+										value={category.id}
+									>
 										{category.name}
 									</option>
 								))}
@@ -240,7 +318,10 @@ function AddItemForm() {
 						</div>
 
 						<div className="mb-3">
-							<label htmlFor="primaryColorId" className="form-label">
+							<label
+								htmlFor="primaryColorId"
+								className="form-label"
+							>
 								GLAVNA BOJA
 							</label>
 							<select
@@ -248,7 +329,8 @@ function AddItemForm() {
 								className="form-select"
 								required
 								onChange={handleChange}
-								defaultValue="">
+								value={formData.primaryColorId || ""}
+							>
 								<option value="" disabled>
 									Izaberi
 								</option>
@@ -268,13 +350,17 @@ function AddItemForm() {
 								id="conditionId"
 								className="form-select"
 								required
-								defaultValue=""
-								onChange={handleChange}>
+								value={formData.conditionId || ""}
+								onChange={handleChange}
+							>
 								<option value="" disabled>
 									Izaberi
 								</option>
 								{codebooks.conditions.map((condition) => (
-									<option key={condition.id} value={condition.id}>
+									<option
+										key={condition.id}
+										value={condition.id}
+									>
 										{condition.name}
 									</option>
 								))}
@@ -283,7 +369,10 @@ function AddItemForm() {
 
 						{formData.categoryId == 6 && (
 							<div className="mb-3">
-								<label htmlFor="footwearTypeId" className="form-label">
+								<label
+									htmlFor="footwearTypeId"
+									className="form-label"
+								>
 									OTVORENOST
 								</label>
 								<select
@@ -291,7 +380,8 @@ function AddItemForm() {
 									className="form-select"
 									required
 									onChange={handleChange}
-									defaultValue="">
+									value={formData.footwearTypeId || ""}
+								>
 									<option value="" disabled>
 										Izaberi
 									</option>
@@ -311,19 +401,29 @@ function AddItemForm() {
 						className="custom-control-input me-1"
 						type="checkbox"
 						id="public"
+						checked={formData.public || false}
 						onChange={handleChange}
 					/>
 					<label className="form-check-label mb-4" htmlFor="public">
 						Podijeli ovaj artikl s ostalim korisnicima
 					</label>
 				</div>
-				<div className="button-container">
+				<div className="button-container d-flex justify-content-center">
 					<Button
 						size="long"
 						color="red"
 						radius="rounded"
-						onClick={() => handleFormSubmit(formRef, handleSubmit)}>
-						DODAJ ARTIKL U ORMAR
+						onClick={() => handleFormSubmit(formRef, handleSubmit)}
+					>
+						{itemId ? "AŽURIRAJ ARTIKL" : "DODAJ ARTIKL U ORMAR"}
+					</Button>
+				</div>
+				<div className="d-flex justify-content-end mt-3">
+					<Button
+						color="red-clear"
+						onClick={() => navigate(`/wardrobes/${wardrobeId}`)}
+					>
+						Odustani
 					</Button>
 				</div>
 			</form>

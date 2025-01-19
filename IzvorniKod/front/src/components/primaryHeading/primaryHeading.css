@@ -1,5 +1,5 @@
 .primary-heading-container {
-	margin: 2.5vw 0 4vw 0;
+	margin: 2.5vw 0 3vw 0;
 }
 
 .primary-heading-text {
@@ -13,4 +13,8 @@
 	color: #ffc8c8;
 	background-color: #ffc8c8;
 	opacity: 100%;
+}
+
+.primary-heading-container:hover {
+	cursor: pointer;
 }
