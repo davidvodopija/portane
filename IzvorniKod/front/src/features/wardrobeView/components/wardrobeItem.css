@@ -1,7 +1,7 @@
 .wardrobe-item-card {
 	width: 15vw;
 	border-radius: 0;
-	border: 1.2px solid #e6e6e6;
+	border: 1.5px solid #e6e6e6;
 	background-color: #fff;
 }
 
@@ -9,11 +9,12 @@
 	height: 14vw;
 	object-fit: cover;
 	border: 10px solid white;
+	border-bottom: none;
 	border-radius: 0;
 }
 
 .card-location {
-	font-size: 0.8rem;
+	font-size: 0.85rem;
 	color: #333;
 }
 
@@ -23,9 +24,20 @@
 	font-weight: 500;
 }
 
+.actions-on-hover {
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.wardrobe-item-card:hover .actions-on-hover {
+	visibility: visible;
+	opacity: 1;
+}
+
 @media (max-width: 768px) {
 	.wardrobe-item-card {
-		min-width: 20vw;
+		min-width: 22vw;
 	}
 
 	.wardrobe-item-card .card-img-top {
@@ -44,7 +56,7 @@
 
 @media (max-width: 480px) {
 	.wardrobe-item-card {
-		min-width: 26vw;
+		min-width: 29vw;
 	}
 
 	.wardrobe-item-card .card-img-top {

@@ -44,6 +44,11 @@ button.btn-red {
 	border: 2px solid #b40000;
 }
 
+button.btn-red-clear {
+	background-color: none;
+	border: 1.5px solid #b4000065;
+}
+
 /*radius variants*/
 button.btn-standard {
 	border-radius: 4px;

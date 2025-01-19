@@ -1,7 +1,7 @@
 import PrimaryHeading from "../../../components/primaryHeading/primaryHeading";
 import Header from "../../../components/header/header";
 import WardrobePartsList from "../../../features/wardrobePartsList/components/wardrobePartsList";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { wardrobesContext } from "../../../features/wardrobeList/context/wardrobesContext";
 
@@ -10,10 +10,13 @@ function EditWardrobe() {
 	const [title, setTitle] = useState("");
 	const [isLoading, setIsLoading] = useState(true);
 	const { wardrobes } = useContext(wardrobesContext);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		if (wardrobes) {
-			const wardrobe = wardrobes.find((wardrobe) => wardrobe.id == wardrobeId);
+			const wardrobe = wardrobes.find(
+				(wardrobe) => wardrobe.id == wardrobeId
+			);
 			setTitle(wardrobe.title);
 			setIsLoading(false);
 		}
@@ -27,7 +30,10 @@ function EditWardrobe() {
 	return (
 		<>
 			<Header />
-			<PrimaryHeading text={title} />
+			<PrimaryHeading
+				text={title}
+				onClick={() => navigate(`/wardrobes/${wardrobeId}`)}
+			/>
 			<WardrobePartsList />
 		</>
 	);

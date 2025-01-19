@@ -1,0 +1,24 @@
+.btn-pink {
+	color: #ff8989;
+}
+
+.hover-buttons .btn {
+	font-size: clamp(0.9rem, 1vw, 1.2rem);
+	width: 2vw;
+}
+
+.hover-buttons .btn:hover {
+	border: none;
+}
+
+.hover-buttons {
+	display: flex;
+	margin-right: 1.2vw;
+}
+
+@media (max-width: 768px) {
+	.hover-buttons .btn {
+		font-size: 0.9rem;
+		width: 1vw;
+	}
+}

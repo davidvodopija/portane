@@ -15,7 +15,9 @@ function WardrobeView() {
 
 	useEffect(() => {
 		if (wardrobes) {
-			const wardrobe = wardrobes.find((wardrobe) => wardrobe.id == wardrobeId);
+			const wardrobe = wardrobes.find(
+				(wardrobe) => wardrobe.id == wardrobeId
+			);
 			setTitle(wardrobe.title);
 		}
 	}),
