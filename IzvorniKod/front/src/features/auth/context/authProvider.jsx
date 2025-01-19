@@ -43,10 +43,10 @@ export const AuthProvider = ({ children }) => {
 				: await registerRegularUser(user);
 			if (user.name) {
 				tmpUser.seller = {
-					id: user.id,
-					name: user.name,
-					logo: user.logo,
-					email: user.email,
+					id: tmpUser.id,
+					name: tmpUser.name,
+					logo: tmpUser.logo,
+					email: tmpUser.email,
 				};
 			} else {
 				tmpUser.seller = null;
