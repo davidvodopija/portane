@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import {
 	AuthContext,
 	AuthProvider,
@@ -9,7 +9,9 @@ import { CodebooksProvider } from "../features/codebooks/context/codebooksContex
 function AppProvider({ children }) {
 	return (
 		<AuthProvider>
-			<UserProviders>{children}</UserProviders>
+			<CodebooksProvider>
+				<UserProviders>{children}</UserProviders>
+			</CodebooksProvider>
 		</AuthProvider>
 	);
 }
@@ -25,10 +27,10 @@ function UserProviders({ children }) {
 		return children;
 	}
 
-	return (
-		<CodebooksProvider>
-			<WardrobesProvider>{children}</WardrobesProvider>
-		</CodebooksProvider>
+	return user.seller ? (
+		children
+	) : (
+		<WardrobesProvider>{children}</WardrobesProvider>
 	);
 }
 

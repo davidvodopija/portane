@@ -1,62 +1,67 @@
 .navbar {
-    height: fit-content;
-    background-color: #f8c8c8;
+	height: fit-content;
+	background-color: #f8c8c8;
 }
 
 .navbar-brand {
-    position: relative;
+	position: relative;
 }
 
 .brand-text {
-    font-size: clamp(1.2rem, 2.5vw, 1.4rem);
-    color: #af0000;
+	font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+	color: #af0000;
 }
 
 .smalltext {
-    color: rgb(93, 93, 93);
-    font-size: clamp(0.7rem, 1.5vw, 0.75rem);
-    font-style: italic;
-    position: absolute;
-    left: 20%; 
-    top: 100%; 
-    transform: translateY(-40%);
+	color: rgb(93, 93, 93);
+	font-size: clamp(0.7rem, 1.5vw, 0.75rem);
+	font-style: italic;
+	position: absolute;
+	left: 20%;
+	top: 100%;
+	transform: translateY(-40%);
 }
 
 .authentication-container {
-    gap: 1.2vw;
-    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
-    padding-right: 1%;
+	gap: 1.2vw;
+	font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+	padding-right: 1%;
 }
 
 .bi-person-circle,
 .bi-box-arrow-right {
-    font-size: clamp(1.5rem, 3vw, 1.8rem);
-    cursor: pointer;
+	font-size: clamp(1.5rem, 3vw, 1.8rem);
+	cursor: pointer;
 }
 
 .bi-box-arrow-right {
-    color: #af000090;
+	color: #af000090;
 }
 
 .bi-person-circle {
-    opacity: 85%;
+	opacity: 85%;
 }
 
-.username{
-    text-decoration: none;
-    font-size: clamp(0.8rem, 1vw, 1.15rem);
+.user-logo {
+	width: clamp(1.5rem, 3vw, 1.8rem);
+	height: clamp(1.5rem, 3vw, 1.8rem);
+	border-radius: 50%;
+	opacity: 85%;
 }
 
+.username {
+	text-decoration: none;
+	font-size: clamp(0.8rem, 1vw, 1.15rem);
+}
 
 @media (max-width: 768px) {
-    .authentication-container {
-        margin-bottom: 0.7vh;
-    }
+	.authentication-container {
+		margin-bottom: 0.7vh;
+	}
 }
 
 @media (max-width: 480px) {
-    .brand-text {
-        font-size: clamp(1rem, 1vw, 1.2rem);
-    }   
+	.brand-text {
+		font-size: clamp(1rem, 1vw, 1.2rem);
+	}
 }
-

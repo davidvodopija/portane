@@ -175,7 +175,11 @@ function AddItemForm() {
 
 			<form className="new-item-form border rounded p-4" ref={formRef}>
 				<div className="d-flex justify-content-center">
-					<UploadImage setFile={setFile} />
+					<UploadImage
+						setFile={setFile}
+						text={"Učitaj fotografiju artikla"}
+						isRound={false}
+					/>
 				</div>
 
 				<div className="row mx-3">

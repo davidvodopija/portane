@@ -1,5 +1,10 @@
 import React, { createContext, useState, useEffect } from "react";
-import { login, logout, register } from "../api/authAPI";
+import {
+	login,
+	logout,
+	registerSeller,
+	registerRegularUser,
+} from "../api/authAPI";
 import { useNavigate } from "react-router-dom";
 
 // Create AuthContext
@@ -14,7 +19,7 @@ export const AuthProvider = ({ children }) => {
 
 	// Fetch user data from local storage on initial render to restore session
 	useEffect(() => {
-		const storedUser = JSON.parse(localStorage.getItem("authUser"));
+		const storedUser = JSON.parse(sessionStorage.getItem("authUser"));
 		if (storedUser) {
 			setUser(storedUser);
 			setIsLoggedIn(true);
@@ -25,18 +30,26 @@ export const AuthProvider = ({ children }) => {
 	// Save user to local storage when user state changes
 	useEffect(() => {
 		if (user) {
-			localStorage.setItem("authUser", JSON.stringify(user));
+			sessionStorage.setItem("authUser", JSON.stringify(user));
 		} else {
-			localStorage.removeItem("authUser");
+			sessionStorage.removeItem("authUser");
 		}
 	}, [user]);
 
 	const registerUser = async (user) => {
 		try {
-			const tmpUser = await register(user);
+			const tmpUser = user.name
+				? await registerSeller(user)
+				: await registerRegularUser(user);
+			if (user.name) {
+				tmpUser.seller = true;
+				tmpUser.firstname = user.name;
+			} else {
+				tmpUser.seller = false;
+			}
 			setUser(tmpUser);
 			setIsLoggedIn(true);
-			navigate("/user-profile");
+			tmpUser.seller ? navigate("/seller-profile") : navigate("/user-profile");
 		} catch (error) {
 			setUser(null);
 			setIsLoggedIn(false);
@@ -48,7 +61,7 @@ export const AuthProvider = ({ children }) => {
 			const tmpUser = await login(user);
 			setUser(tmpUser);
 			setIsLoggedIn(true);
-			navigate("/user-profile");
+			tmpUser.seller ? navigate("/seller-profile") : navigate("/user-profile");
 		} catch (error) {
 			setUser(null);
 			setIsLoggedIn(false);
@@ -60,7 +73,7 @@ export const AuthProvider = ({ children }) => {
 			await logout();
 			setUser(null);
 			setIsLoggedIn(false);
-			localStorage.removeItem("authUser");
+			sessionStorage.removeItem("authUser");
 			navigate("/");
 		} catch (error) {
 			alert("Failed logout");
