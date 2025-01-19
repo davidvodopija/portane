@@ -13,6 +13,7 @@ public class ClosetCustomComponentDtoMapper {
         closetCustomComponentDto.setId(closetCustomComponent.getId());
         closetCustomComponentDto.setTitle(closetCustomComponent.getTitle());
         closetCustomComponentDto.setComponentType(closetCustomComponent.getClosetComponent().getName());
+        closetCustomComponentDto.setClosetId(closetCustomComponent.getCloset().getId());
         return closetCustomComponentDto;
     }
 }

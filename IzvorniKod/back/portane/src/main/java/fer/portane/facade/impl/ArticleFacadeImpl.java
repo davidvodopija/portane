@@ -4,25 +4,31 @@ import fer.portane.dto.ArticleDto;
 import fer.portane.facade.ArticleFacade;
 import fer.portane.form.ArticleForm;
 import fer.portane.form.ArticleSearchForm;
+import fer.portane.form.OutfitForm;
 import fer.portane.mapper.ArticleArticleDtoMapper;
 import fer.portane.model.Ad;
 import fer.portane.model.Article;
 import fer.portane.model.ClosetCustomComponent;
+import fer.portane.model.lut.Category;
 import fer.portane.model.lut.Style;
 import fer.portane.service.*;
 import fer.portane.specification.ArticleSpecification;
 import fer.portane.specification.ArticleSpecification;
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 @Component
+@Slf4j
 public class ArticleFacadeImpl implements ArticleFacade {
     @Autowired
     private ArticleService articleService;
@@ -97,7 +103,7 @@ public class ArticleFacadeImpl implements ArticleFacade {
         if (article == null) {
         }
 
-        if (!Objects.equals(article.getClosetCustomComponent().getCloset().getId(), authService.getAuthenticatedUser().getId())){
+        if (!Objects.equals(article.getClosetCustomComponent().getCloset().getUser().getId(), authService.getAuthenticatedUser().getId())){
             throw new RuntimeException("You are not allowed to delete this article");
         }
 
@@ -213,5 +219,48 @@ public class ArticleFacadeImpl implements ArticleFacade {
 
 
         return articleService.search(pageRequest, specification).map(articleDtoMapper::toDto);
+    }
+
+    @Override
+    public List<ArticleDto> generateOutfit(OutfitForm outfitForm) {
+        List<Long> categories = outfitForm.getCategoryIds();
+
+        Long userId = authService.getAuthenticatedUser().getId();
+
+        double matchFactor = (Math.random() % 50) / 100.0 + 0.5;
+        int articleMathCount = (int) (categories.size() * matchFactor);
+        List<Integer> bitmask = new ArrayList<>();
+        for (int i = 0; i < articleMathCount; i++) {
+            bitmask.add(1);
+        }
+        for (int i = 0; i < categories.size() - articleMathCount; i++) {
+            bitmask.add(0);
+        }
+        Collections.shuffle(bitmask);
+
+        List<Article> outfit = new ArrayList<>();
+        for (int i = 0; i < categories.size(); i++) {
+            Specification<Article> specification;
+            if (bitmask.get(i) == 1) {
+                specification = Specification.where(ArticleSpecification.fromUser(userId))
+                        .and(ArticleSpecification.hasCategories(List.of(categories.get(i))))
+                        .and(ArticleSpecification.hasStyles(Collections.singletonList(outfitForm.getStyleId())))
+                        .and(ArticleSpecification.hasPrimaryColors(Collections.singletonList(outfitForm.getColorId())))
+                        .and(ArticleSpecification.randomOrder());
+
+            } else {
+                specification = Specification.where(ArticleSpecification.fromUser(userId))
+                        .and(ArticleSpecification.hasCategories(List.of(categories.get(i))))
+                        .and(ArticleSpecification.hasStyles(Collections.singletonList(outfitForm.getStyleId())))
+                        .and(ArticleSpecification.randomOrder());
+            }
+            try {
+                outfit.add(articleService.findAll(specification).getFirst());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return outfit.stream().map(articleDtoMapper::toDto).toList();
     }
 }

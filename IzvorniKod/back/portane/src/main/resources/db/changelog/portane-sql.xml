@@ -25,6 +25,8 @@
             id integer generated always as identity PRIMARY KEY,
             title varchar,
             user_id integer,
+            latitude decimal,
+            longitude decimal,
             active bool DEFAULT true,
             created_at datetime DEFAULT (now()),
             last_updated datetime DEFAULT (now())

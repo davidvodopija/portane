@@ -4,6 +4,7 @@ import fer.portane.model.Article;
 import fer.portane.model.lut.Style;
 import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.JoinType;
+import jakarta.persistence.criteria.Order;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.util.List;
@@ -64,5 +65,12 @@ public class ArticleSpecification {
 
     public static Specification<Article> inClosetComponent(List<Long> closetComponentIds) {
         return (root, query, criteriaBuilder) -> root.get("closetCustomComponent").get("closetComponent").get("id").in(closetComponentIds);
+    }
+
+    public static Specification<Article> randomOrder() {
+        return (root, query, criteriaBuilder) -> {
+            query.orderBy(criteriaBuilder.asc(criteriaBuilder.function("RANDOM", Double.class)));
+            return criteriaBuilder.and();
+        };
     }
 }

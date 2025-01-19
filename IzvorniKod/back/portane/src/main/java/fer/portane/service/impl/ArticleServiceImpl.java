@@ -46,4 +46,9 @@ public class ArticleServiceImpl implements ArticleService {
     public Page<Article> search(PageRequest pageRequest, Specification<Article> specification) {
         return articleRepository.findAll(specification, pageRequest);
     }
+
+    @Override
+    public List<Article> findAll(Specification<Article> specification) {
+        return articleRepository.findAll(specification);
+    }
 }
