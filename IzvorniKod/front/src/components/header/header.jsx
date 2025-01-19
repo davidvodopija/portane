@@ -23,12 +23,12 @@ function Header() {
 				<div className="authentication-container d-flex align-items-center justify-content-end">
 					<a className="m-0 text-black username">
 						{user.seller
-							? user.firstname
+							? user.seller.name
 							: user.firstname + " " + user.lastname}
 					</a>
 					{user.seller ? (
 						<img
-							src={user.logo}
+							src={user.seller.logo}
 							className="d-flex align-items-center user-logo"
 							onClick={() =>
 								user.seller

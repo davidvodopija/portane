@@ -42,10 +42,14 @@ export const AuthProvider = ({ children }) => {
 				? await registerSeller(user)
 				: await registerRegularUser(user);
 			if (user.name) {
-				tmpUser.seller = true;
-				tmpUser.firstname = user.name;
+				tmpUser.seller = {
+					id: user.id,
+					name: user.name,
+					logo: user.logo,
+					email: user.email,
+				};
 			} else {
-				tmpUser.seller = false;
+				tmpUser.seller = null;
 			}
 			setUser(tmpUser);
 			setIsLoggedIn(true);
