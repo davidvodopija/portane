@@ -1,12 +1,11 @@
 package fer.portane.controller;
 
-import fer.portane.dto.AdDto;
 import fer.portane.dto.ArticleDto;
 import fer.portane.dto.GeneralResponse;
 import fer.portane.facade.ArticleFacade;
-import fer.portane.form.AdSearchForm;
 import fer.portane.form.ArticleForm;
 import fer.portane.form.ArticleSearchForm;
+import fer.portane.form.OutfitForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -53,5 +52,10 @@ public class ArticleController {
         Sort sort = Sort.by(Sort.Direction.fromString(sortOrder), sortBy);
         PageRequest pageRequest = PageRequest.of(page, size, sort);
         return ResponseEntity.ok(new GeneralResponse<>(articleFacade.search(pageRequest, articleSearchForm)));
+    }
+
+    @PostMapping("/generate-outfit")
+    public ResponseEntity<GeneralResponse<List<ArticleDto>>> generateOutfit(@RequestBody OutfitForm outfitForm) {
+        return ResponseEntity.ok(new GeneralResponse<>(articleFacade.generateOutfit(outfitForm)));
     }
 }
