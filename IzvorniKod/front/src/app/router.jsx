@@ -8,39 +8,86 @@ import AppProvider from "./provider";
 import WardrobeView from "./routes/app/wardrobeView";
 import EditWardrobe from "./routes/app/editWardrobe";
 import AddItem from "./routes/app/addItem";
+import PrivateUserRoute from "./routes/auth/privateUserRoute";
+import PublicAuthRoute from "./routes/auth/publicAuthRoute";
 
 function Router() {
 	return (
 		<BrowserRouter>
 			<AppProvider>
 				<Routes>
-					<Route path="/user-profile" element={<UserProfile />} />
+					<Route
+						path="/user-profile"
+						element={
+							<PrivateUserRoute>
+								<UserProfile />
+							</PrivateUserRoute>
+						}
+					/>
 					<Route
 						path="/create-wardrobe"
-						element={<CreateWardrobe />}
+						element={
+							<PrivateUserRoute>
+								<CreateWardrobe />
+							</PrivateUserRoute>
+						}
 					/>
 					<Route path="/" element={<Home />} />
-					<Route path="/auth/:mode" element={<Auth />} />
-					<Route path="/auth" element={<Auth />} />
+					<Route
+						path="/auth/:mode"
+						element={
+							<PublicAuthRoute>
+								<Auth />
+							</PublicAuthRoute>
+						}
+					/>
+					<Route
+						path="/auth"
+						element={
+							<PublicAuthRoute>
+								<Auth />
+							</PublicAuthRoute>
+						}
+					/>
 					<Route
 						path="/wardrobes/:wardrobeId/item-details/:id"
-						element={<ItemDetails />}
+						element={
+							<PrivateUserRoute>
+								<ItemDetails />
+							</PrivateUserRoute>
+						}
 					/>
 					<Route
 						path="/wardrobes/:wardrobeId"
-						element={<WardrobeView />}
+						element={
+							<PrivateUserRoute>
+								<WardrobeView />
+							</PrivateUserRoute>
+						}
 					/>
 					<Route
 						path="/wardrobes/:wardrobeId/edit"
-						element={<EditWardrobe />}
+						element={
+							<PrivateUserRoute>
+								<EditWardrobe />
+							</PrivateUserRoute>
+						}
 					/>
 					<Route
 						path="/wardrobes/:wardrobeId/add-item"
-						element={<AddItem />}
+						element={
+							<PrivateUserRoute>
+								<AddItem />
+							</PrivateUserRoute>
+						}
 					/>
 					<Route
 						path="/wardrobes/:wardrobeId/edit-item/:itemId"
-						element={<AddItem />}
+						element={
+							<PrivateUserRoute>
+								<AddItem />
+							</PrivateUserRoute>
+						}
 					/>
 					<Route path="*" element={<Navigate to="/" replace />} />
 				</Routes>
