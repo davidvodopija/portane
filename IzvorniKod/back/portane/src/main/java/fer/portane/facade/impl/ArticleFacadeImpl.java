@@ -199,7 +199,18 @@ public class ArticleFacadeImpl implements ArticleFacade {
             );
         }
 
-        specification.and(ArticleSpecification.isPublic());
+        if (articleSearchForm.isPublic()) {
+            specification = specification.and(ArticleSpecification.isPublic());
+        }
+
+        if (articleSearchForm.getClosetComponentIds() != null) {
+            specification = specification.and(ArticleSpecification.
+                    inClosetComponent(
+                            articleSearchForm
+                                    .getClosetComponentIds())
+            );
+        }
+
 
         return articleService.search(pageRequest, specification).map(articleDtoMapper::toDto);
     }

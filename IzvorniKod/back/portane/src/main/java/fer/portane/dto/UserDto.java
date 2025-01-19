@@ -8,4 +8,5 @@ public class UserDto {
     private String firstname;
     private String lastname;
     private boolean isSeller;
+    private String logo;
 }

@@ -16,4 +16,6 @@ public class ArticleSearchForm {
     private List<Long> footwearTypeIds;
     private Long userId;
     private Long closetId;
+    private List<Long> closetComponentIds;
+    private boolean isPublic;
 }

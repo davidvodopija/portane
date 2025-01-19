@@ -61,4 +61,8 @@ public class ArticleSpecification {
                         .get("closet")
                         .get("id"), closetId);
     }
+
+    public static Specification<Article> inClosetComponent(List<Long> closetComponentIds) {
+        return (root, query, criteriaBuilder) -> root.get("closetCustomComponent").get("closetComponent").get("id").in(closetComponentIds);
+    }
 }

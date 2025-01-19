@@ -13,7 +13,7 @@ import java.util.List;
 public class Article extends BaseEntity {
     private String label;
     private String picture;
-    @Column(name = "public")
+    @Column(name = "is_public")
     private boolean isPublic;
 
     @ManyToOne

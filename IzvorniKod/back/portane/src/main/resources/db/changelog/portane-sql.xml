@@ -41,7 +41,7 @@
             id integer generated always as identity PRIMARY KEY,
             label varchar,
             picture varchar,
-            public bool,
+            is_public bool,
             closet_custom_component_id integer,
             category_id integer,
             condition_id integer,

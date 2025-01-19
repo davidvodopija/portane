@@ -39,7 +39,8 @@ public class SecurityConfig {
                                     "/api/lut/**",
                                     "/api/sellers/create",
                                     "/api/articles/search",
-                                    "/api/ads/search"
+                                    "/api/ads/search",
+                                    "/api/storage/upload"
                             )
                             .permitAll()
                             .anyRequest()
