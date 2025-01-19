@@ -7,6 +7,10 @@
 	color: #6c757d;
 }
 
+.ratio-1 {
+	aspect-ratio: 1;
+}
+
 .upload-area i {
 	font-size: 2rem;
 }

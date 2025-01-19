@@ -7,7 +7,6 @@
 	border-radius: clamp(16px, 2vw, 24px);
 }
 
-
 .wardrobe-card .card:hover {
 	border: 2px solid #b43600c0;
 }
@@ -21,10 +20,19 @@
 	font-size: clamp(1rem, 1.4vw, 1.4rem);
 	color: #af0000;
 	font-weight: bold;
+	text-decoration: none;
+}
+
+.wardrobe-card .card-body:hover {
+	cursor: pointer;
+}
+
+.wardrobe-card .card-body:hover > :first-child {
+	text-decoration: underline;
 }
 
 .wardrobe-card .card-body .text-secondary {
-    font-size: clamp(0.8rem, 1vw, 1rem); 
+	font-size: clamp(0.8rem, 1vw, 1rem);
 }
 
 .close-button-wrapper {

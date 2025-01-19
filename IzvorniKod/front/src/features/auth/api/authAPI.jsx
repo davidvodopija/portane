@@ -11,9 +11,20 @@ export const login = async (data) => {
 	}
 };
 
-export const register = async (data) => {
+export const registerRegularUser = async (data) => {
 	try {
 		const response = await axios.post("/api/users/create", data);
+
+		return response.data.result;
+	} catch (error) {
+		alert(error.response.data.errors[0]);
+		throw new Error(error);
+	}
+};
+
+export const registerSeller = async (data) => {
+	try {
+		const response = await axios.post("/api/sellers/create", data);
 
 		return response.data.result;
 	} catch (error) {
