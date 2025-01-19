@@ -22,7 +22,10 @@ function Router() {
 					<Route path="/" element={<Home />} />
 					<Route path="/auth/:mode" element={<Auth />} />
 					<Route path="/auth" element={<Auth />} />
-					<Route path="/item-details" element={<ItemDetails />} />
+					<Route
+						path="/wardrobes/:wardrobeId/item-details/:id"
+						element={<ItemDetails />}
+					/>
 					<Route
 						path="/wardrobes/:wardrobeId"
 						element={<WardrobeView />}

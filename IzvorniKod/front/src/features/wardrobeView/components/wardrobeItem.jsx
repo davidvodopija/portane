@@ -1,5 +1,6 @@
 import "./wardrobeItem.css";
 import HoverItemActions from "./hoverItemActions";
+import { useNavigate } from "react-router-dom";
 
 function WardrobeItem({
 	id,
@@ -9,9 +10,17 @@ function WardrobeItem({
 	onItemDeleted,
 	wardrobeId,
 }) {
+	const navigate = useNavigate();
 	return (
 		<div className="card wardrobe-item-card">
-			<img src={src} className="card-img-top" alt={itemName} />
+			<img
+				src={src}
+				className="card-img-top"
+				alt={itemName}
+				onClick={() =>
+					navigate(`/wardrobes/${wardrobeId}/item-details/${id}`)
+				}
+			/>
 
 			<div className="card-body p-0 pb-2">
 				<div className="actions-on-hover d-flex justify-content-end">
@@ -22,7 +31,14 @@ function WardrobeItem({
 					/>
 				</div>
 				<p className="card-location ms-3 mb-0">{location}</p>
-				<p className="card-text ms-3">{itemName}</p>
+				<a
+					className="card-text ms-3"
+					onClick={() =>
+						navigate(`/wardrobes/${wardrobeId}/item-details/${id}`)
+					}
+				>
+					{itemName}{" "}
+				</a>
 			</div>
 		</div>
 	);

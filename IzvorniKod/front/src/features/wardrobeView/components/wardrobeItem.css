@@ -13,15 +13,25 @@
 	border-radius: 0;
 }
 
+.wardrobe-item-card .card-img-top:hover {
+	cursor: pointer;
+}
+
 .card-location {
 	font-size: 0.85rem;
 	color: #333;
 }
 
 .card-text {
+	text-decoration: none;
 	color: #333;
 	font-size: clamp(1rem, 1.2vw, 1.2rem);
 	font-weight: 500;
+}
+
+.wardrobe-item-card .card-text:hover {
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 .actions-on-hover {
