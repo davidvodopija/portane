@@ -9,6 +9,7 @@ import { useContext } from "react";
 
 function ItemInfo() {
 	const { id, wardrobeId } = useParams();
+	const { galleryId } = useParams();
 	const { wardrobes } = useContext(wardrobesContext);
 	const [item, setItem] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
@@ -59,16 +60,18 @@ function ItemInfo() {
 					<li>
 						<strong>Stanje:</strong> {item.condition.name}
 					</li>
-					<li>
-						<strong>Lokacija:</strong>
-						{item.closetCustomComponent.title}
-						{", "}
-						{
-							wardrobes.find(
-								(wardrobe) => wardrobe.id == wardrobeId
-							).title
-						}
-					</li>
+					{wardrobeId ? (
+						<li>
+							<strong>Lokacija:</strong>
+							{item.closetCustomComponent.title}
+							{", "}
+							{
+								wardrobes.find(
+									(wardrobe) => wardrobe.id == wardrobeId
+								).title
+							}
+						</li>
+					) : null}
 					<li>
 						<strong>Stil/ležernost:</strong>
 						{item.styles.map((style) => style.name).join(", ")}
@@ -84,6 +87,11 @@ function ItemInfo() {
 						<li>
 							<strong>Otvorenost:</strong>
 							{item.footwearType?.id || "none"}
+						</li>
+					) : null}
+					{galleryId ? (
+						<li>
+							<strong>Cijena:</strong>
 						</li>
 					) : null}
 				</ul>

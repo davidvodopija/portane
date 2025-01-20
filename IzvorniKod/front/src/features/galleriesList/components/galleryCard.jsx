@@ -82,7 +82,10 @@ function GalleryCard({ galleryName, adsCount, galleryId }) {
 							</Button>
 						</div>
 					) : (
-						<div className="d-flex flex-column align-items-center">
+						<div
+							className="click-to-gallery d-flex flex-column align-items-center"
+							onClick={() => navigate(`/galleries/${galleryId}`)}
+						>
 							<p className="card-txt m-0">{galleryName}</p>
 							<div className="m-3 text-secondary">
 								Ukupno oglasa: {adsCount}

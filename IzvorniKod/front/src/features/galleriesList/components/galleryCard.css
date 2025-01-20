@@ -64,6 +64,14 @@
 	display: block;
 }
 
+.click-to-gallery:hover {
+	cursor: pointer;
+}
+
+.click-to-gallery:hover > :first-child {
+	text-decoration: underline;
+}
+
 @media (max-width: 768px) {
 	.gallery-card .card {
 		width: 30vw;

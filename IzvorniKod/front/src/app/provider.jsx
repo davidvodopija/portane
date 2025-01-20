@@ -28,10 +28,10 @@ function UserProviders({ children }) {
 		return children;
 	}
 
-	return user.seller ? (
-		<GalleriesProvider>{children}</GalleriesProvider>
-	) : (
-		<WardrobesProvider>{children}</WardrobesProvider>
+	return (
+		<GalleriesProvider>
+			<WardrobesProvider>{children} </WardrobesProvider>
+		</GalleriesProvider>
 	);
 }
 

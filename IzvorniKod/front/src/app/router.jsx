@@ -13,6 +13,7 @@ import PrivateSellerRoute from "./routes/auth/privateSellerRoute";
 import PublicAuthRoute from "./routes/auth/publicAuthRoute";
 import SellerProfile from "./routes/app/sellerProfile";
 import AddListing from "./routes/app/addListing";
+import GalleryView from "./routes/app/galleryView";
 
 function Router() {
 	return (
@@ -113,6 +114,23 @@ function Router() {
 						element={
 							<PrivateSellerRoute>
 								<AddListing />
+							</PrivateSellerRoute>
+						}
+					/>
+					<Route
+						path="galleries/:galleryId"
+						element={
+							<PrivateSellerRoute>
+								<GalleryView />
+							</PrivateSellerRoute>
+						}
+					/>
+
+					<Route
+						path="galleries/:galleryId/listing/:id"
+						element={
+							<PrivateSellerRoute>
+								<ItemDetails />
 							</PrivateSellerRoute>
 						}
 					/>
