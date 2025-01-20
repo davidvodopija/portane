@@ -5,7 +5,7 @@
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <changeSet id="0" author="admin">
-        <sql dbms="h2,postgresql">
+        <sql dbms="postgresql">
             alter table closet_closet_components
             add column title varchar;
 
