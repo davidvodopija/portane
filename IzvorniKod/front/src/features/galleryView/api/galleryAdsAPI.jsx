@@ -10,3 +10,22 @@ export const getAllGalleryItems = async (id) => {
 		throw new Error(error);
 	}
 };
+
+export const findGalleryItem = async (id) => {
+	try {
+		const response = await axios.get(`/api/ads/get/${id}`);
+		return response.data.result;
+	} catch (error) {
+		alert(error.response.data.errors[0]);
+		throw new Error(error);
+	}
+};
+
+export const deleteGalleryItem = async (id) => {
+	try {
+		await axios.delete(`/api/ads/delete/${id}`);
+	} catch (error) {
+		alert(error.response.data.errors[0]);
+		throw new Error(error);
+	}
+};

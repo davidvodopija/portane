@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 import { uploadImage } from "../../../utils/imageAPI.jsx";
 import Select from "react-select";
 import { addListingFormAPI } from "../api/addListingFormAPI.jsx";
+import { getAllGalleries } from "../../galleriesList/api/galleriesAPI.jsx";
 
 function AddListingForm() {
 	const { codebooks } = useContext(CodebooksContext);
@@ -139,7 +140,9 @@ function AddListingForm() {
 				response = await addListingFormAPI(updatedFormData);
 			}
 			if (response) {
-				navigate(`/seller-profile`);
+				getGalleries().then(() => {
+					navigate(`/seller-profile`);
+				});
 			}
 		} catch (error) {
 			console.error("Error while submitting the form:", error);
@@ -405,13 +408,13 @@ function AddListingForm() {
 					</div>
 					<div className="col-6 mb-4">
 						<label htmlFor="style" className="form-label">
-							CIJENA
+							CIJENA (€)
 						</label>
 						<input
 							type="number"
 							id="price"
 							className="form-control"
-							placeholder="Value"
+							placeholder="Unesi cijenu"
 							onChange={handleChange}
 						></input>
 					</div>

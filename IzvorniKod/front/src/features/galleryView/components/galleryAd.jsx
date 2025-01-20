@@ -23,7 +23,7 @@ function GalleryAd({ id, src, listingName, galleryId, price }) {
 						galleryId={galleryId}
 					/> */}
 				</div>
-				<p className="card-location ms-3 mb-0">{price}</p>
+				<p className="card-location ms-3 mb-0">{price}€</p>
 				<a
 					className="card-text ms-3"
 					onClick={() =>
