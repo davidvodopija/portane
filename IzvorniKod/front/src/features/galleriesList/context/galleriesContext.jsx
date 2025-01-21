@@ -6,13 +6,20 @@ export const galleriesContext = createContext();
 
 export const GalleriesProvider = ({ children }) => {
 	const [galleries, setGalleries] = useState(null);
+	const [galleriesInfo, setGalleriesInfo] = useState(null);
 	const { user, isLoggedIn } = useAuth();
 	const [isLoading, setIsLoading] = useState(true);
 
 	const getGalleries = async () => {
 		try {
-			const updatedGalleries = await getAllGalleries(user.seller.id);
-			setGalleries(updatedGalleries);
+			if (user.seller) {
+				const updatedGalleries = await getAllGalleries(user.seller.id);
+				setGalleries(updatedGalleries.content);
+				setGalleriesInfo(updatedGalleries);
+			} else {
+				setGalleries([]);
+				setGalleriesInfo([]);
+			}
 		} catch (error) {
 			console.error("Error getting galleries: ", error);
 		}

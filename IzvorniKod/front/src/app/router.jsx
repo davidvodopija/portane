@@ -14,6 +14,7 @@ import PublicAuthRoute from "./routes/auth/publicAuthRoute";
 import SellerProfile from "./routes/app/sellerProfile";
 import AddListing from "./routes/app/addListing";
 import GalleryView from "./routes/app/galleryView";
+import AddListingForm from "../features/addListingForm/components/addListingForm";
 
 function Router() {
 	return (
@@ -131,6 +132,15 @@ function Router() {
 						element={
 							<PrivateSellerRoute>
 								<ItemDetails />
+							</PrivateSellerRoute>
+						}
+					/>
+
+					<Route
+						path="/galleries/:galleryId/edit-ad/:adId"
+						element={
+							<PrivateSellerRoute>
+								<AddListingForm />
 							</PrivateSellerRoute>
 						}
 					/>

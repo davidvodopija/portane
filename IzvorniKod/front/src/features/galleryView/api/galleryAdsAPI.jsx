@@ -11,7 +11,7 @@ export const getAllGalleryItems = async (id) => {
 	}
 };
 
-export const findGalleryItem = async (id) => {
+export const getAdById = async (id) => {
 	try {
 		const response = await axios.get(`/api/ads/get/${id}`);
 		return response.data.result;
@@ -21,7 +21,7 @@ export const findGalleryItem = async (id) => {
 	}
 };
 
-export const deleteGalleryItem = async (id) => {
+export const deleteAd = async (id) => {
 	try {
 		await axios.delete(`/api/ads/delete/${id}`);
 	} catch (error) {

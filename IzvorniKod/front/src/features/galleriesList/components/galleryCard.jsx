@@ -7,11 +7,9 @@ import { useContext, useState } from "react";
 import { galleriesContext } from "../context/galleriesContext";
 import { useNavigate } from "react-router-dom";
 import Button from "../../../components/button/button";
-import { useAuth } from "../../auth/hooks/useAuth";
 import { createGallery } from "../api/galleriesAPI";
 
 function GalleryCard({ galleryName, adsCount, galleryId }) {
-	const { user } = useAuth();
 	const [showModal, setShowModal] = useState(false);
 	const { deleteGallery, setGalleries, galleries, getGalleries } =
 		useContext(galleriesContext);
@@ -76,16 +74,14 @@ function GalleryCard({ galleryName, adsCount, galleryId }) {
 								size="xs"
 								color="orange"
 								radius="standard"
-								onClick={finalizeGallery}
-							>
+								onClick={finalizeGallery}>
 								Spremi
 							</Button>
 						</div>
 					) : (
 						<div
 							className="click-to-gallery d-flex flex-column align-items-center"
-							onClick={() => navigate(`/galleries/${galleryId}`)}
-						>
+							onClick={() => navigate(`/galleries/${galleryId}`)}>
 							<p className="card-txt m-0">{galleryName}</p>
 							<div className="m-3 text-secondary">
 								Ukupno oglasa: {adsCount}

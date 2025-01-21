@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { findWardrobeItem } from "../../wardrobeView/api/wardrobeItemsAPI";
 import { wardrobesContext } from "../../wardrobeList/context/wardrobesContext";
 import { useContext } from "react";
-import { findGalleryItem } from "../../galleryView/api/galleryAdsAPI";
+import { getAdById } from "../../galleryView/api/galleryAdsAPI";
 import { galleriesContext } from "../../galleriesList/context/galleriesContext";
 
 function ItemInfo() {
@@ -31,7 +31,7 @@ function ItemInfo() {
 					setIsLoading(false);
 				});
 		} else if (galleryId) {
-			findGalleryItem(id).then((ad) => {
+			getAdById(id).then((ad) => {
 				setAd(ad);
 				setItem(ad.article);
 				setIsLoading(false);
@@ -50,9 +50,7 @@ function ItemInfo() {
 	return (
 		<div className="d-flex item-details-container align-items-center mt-5 m-3 ">
 			<div className="image-col d-flex flex-column">
-				<div className="large-black-text text-uppercase">
-					{item.label}
-				</div>
+				<div className="large-black-text text-uppercase">{item.label}</div>
 				<img
 					src={item.picture || PlaceholderImg}
 					className="item-image"
@@ -60,9 +58,7 @@ function ItemInfo() {
 				/>
 			</div>
 			<div className="container details-container bg-white p-4 my-5 me-4 rounded-3 shadow-sm">
-				<div className="mb-3 large-red-text">
-					INFORMACIJE O PROIZVODU
-				</div>
+				<div className="mb-3 large-red-text">INFORMACIJE O PROIZVODU</div>
 				<ul className="list-unstyled mb-0">
 					<li>
 						<strong>Kategorija:</strong> {item.category.name}
@@ -78,11 +74,7 @@ function ItemInfo() {
 							<strong>Lokacija:</strong>
 							{item.closetCustomComponent.title}
 							{", "}
-							{
-								galleries.find(
-									(wardrobe) => wardrobe.id == wardrobeId
-								).title
-							}
+							{wardrobes.find((wardrobe) => wardrobe.id == wardrobeId).title}
 						</li>
 					) : null}
 					{galleryId ? (
@@ -91,15 +83,8 @@ function ItemInfo() {
 							<a
 								className="text-decoration-underline text-secondary"
 								role="button"
-								onClick={() =>
-									navigate(`/galleries/${galleryId}`)
-								}
-							>
-								{
-									galleries.find(
-										(gallery) => gallery.id == galleryId
-									).name
-								}
+								onClick={() => navigate(`/galleries/${galleryId}`)}>
+								{galleries.find((gallery) => gallery.id == galleryId).name}
 							</a>
 						</li>
 					) : null}
