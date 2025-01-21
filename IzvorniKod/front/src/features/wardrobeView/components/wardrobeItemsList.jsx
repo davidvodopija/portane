@@ -1,13 +1,14 @@
 import WardrobeItem from "./wardrobeItem";
 import "./wardrobeItemsList.css";
-import placeholder from "../../../assets/placeholderImg.png";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { getAllWardrobeItems } from "../api/wardrobeItemsAPI";
 import { useParams } from "react-router-dom";
+import { wardrobesContext } from "../../wardrobeList/context/wardrobesContext";
 
 function WardrobeItemsList() {
 	const [items, setItems] = useState([]);
 	const { wardrobeId } = useParams();
+	const { getWardrobes } = useContext(wardrobesContext);
 
 	useEffect(() => {
 		getAllWardrobeItems(wardrobeId)
@@ -16,9 +17,10 @@ function WardrobeItemsList() {
 	}, []);
 
 	const handleItemDeleted = (deletedItemId) => {
-		setItems((prevItems) =>
-			prevItems.filter((item) => item.id !== deletedItemId)
-		);
+		getAllWardrobeItems(wardrobeId)
+			.then((data) => setItems(data))
+			.catch((error) => console.error(error));
+		getWardrobes();
 	};
 
 	return (
@@ -27,9 +29,6 @@ function WardrobeItemsList() {
 				<WardrobeItem
 					key={item.id}
 					id={item.id}
-					src={item.picture || placeholder}
-					location={item.closetCustomComponent.title}
-					itemName={item.label}
 					onItemDeleted={handleItemDeleted}
 					wardrobeId={wardrobeId}
 				/>

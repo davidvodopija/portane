@@ -49,9 +49,17 @@
 	opacity: 85%;
 }
 
+.user-logo:hover {
+	cursor: pointer;
+}
+
 .username {
 	text-decoration: none;
 	font-size: clamp(0.8rem, 1vw, 1.15rem);
+}
+
+.username:hover {
+	cursor: pointer;
 }
 
 @media (max-width: 768px) {

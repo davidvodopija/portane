@@ -1,0 +1,44 @@
+.listing-title-style {
+	color: #b40000;
+	font-size: clamp(1.2rem, 1.6vw, 1.5rem);
+	font-weight: 500;
+}
+
+.new-listing-form {
+	background-color: #fffdf8;
+}
+
+.button-container-s {
+	display: flex;
+	justify-content: center;
+	margin-top: 1vw;
+}
+
+.button-container-s Button {
+	width: 40vw;
+}
+
+.new-listing-form .form-label,
+.form-check-label {
+	font-size: clamp(0.8rem, 1.2vw, 1rem);
+}
+
+.new-listing-form .form-control {
+	height: 2.3rem;
+}
+
+.line {
+	border: solid 1px #b40000;
+}
+
+@media (max-width: 768px) {
+	.button-container-s Button {
+		width: 60vw;
+	}
+}
+
+@media (max-width: 480px) {
+	.top-text {
+		flex-direction: column;
+	}
+}
