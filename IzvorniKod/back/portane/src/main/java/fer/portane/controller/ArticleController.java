@@ -58,4 +58,9 @@ public class ArticleController {
     public ResponseEntity<GeneralResponse<List<ArticleDto>>> generateOutfit(@RequestBody OutfitForm outfitForm) {
         return ResponseEntity.ok(new GeneralResponse<>(articleFacade.generateOutfit(outfitForm)));
     }
+
+    @GetMapping("/find-closest")
+    public ResponseEntity<GeneralResponse<List<ArticleDto>>> findClosestArticles(@RequestParam(defaultValue = "16") int count) {
+        return ResponseEntity.ok(new GeneralResponse<>(articleFacade.findClosestArticles(count)));
+    }
 }

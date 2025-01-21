@@ -14,6 +14,10 @@ public class Closet extends BaseEntity {
     @ManyToOne
     private User user;
 
+    private Double latitude;
+
+    private Double longitude;
+
     @OneToMany(mappedBy = "closet", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ClosetCustomComponent> components;
 }

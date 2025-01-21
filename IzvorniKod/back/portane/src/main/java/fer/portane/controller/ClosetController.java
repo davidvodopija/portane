@@ -45,4 +45,11 @@ public class ClosetController {
         closetFacade.delete(id);
         return ResponseEntity.ok(generalResponse);
     }
+
+    @PutMapping("/save")
+    public ResponseEntity<GeneralResponse<ClosetDto>> save(@RequestBody ClosetForm closetForm) {
+        GeneralResponse<ClosetDto> generalResponse = new GeneralResponse<>();
+        generalResponse.setResult(closetFacade.save(closetForm));
+        return ResponseEntity.ok(generalResponse);
+    }
 }

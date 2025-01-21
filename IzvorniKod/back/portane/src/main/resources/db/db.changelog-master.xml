@@ -6,4 +6,5 @@
     <include file="db/changelog/portane-sql.xml"/>
     <include file="db/changelog/closet-components-insertion.xml"/>
     <include file="db/changelog/articles.xml"/>
+    <include file="db/changelog/geolocation.xml"/>
 </databaseChangeLog>

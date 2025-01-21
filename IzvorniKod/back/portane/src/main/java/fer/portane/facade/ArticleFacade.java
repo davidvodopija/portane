@@ -17,4 +17,5 @@ public interface ArticleFacade {
     List<ArticleDto> findAllByClosetId(Long closetId);
     Page<ArticleDto> search(PageRequest pageRequest, ArticleSearchForm articleSearchForm);
     List<ArticleDto> generateOutfit(OutfitForm outfitForm);
+    List<ArticleDto> findClosestArticles(int count);
 }

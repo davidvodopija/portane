@@ -29,6 +29,16 @@ public class ClosetFacadeImpl implements ClosetFacade {
     @Autowired
     private ClosetComponentService closetComponentService;
 
+    @Override
+    public ClosetDto save(ClosetForm closetForm) {
+        Closet closet = closetService.findById(closetForm.getId());
+        closet.setTitle(closetForm.getTitle());
+        closet.setLatitude(closetForm.getLatitude());
+        closet.setLongitude(closetForm.getLongitude());
+        closetService.save(closet);
+        return ClosetClosetDtoMapper.toClosetDto(closet);
+    }
+
     @Transactional
     @Override
     public ClosetDto create(ClosetForm closetForm) {
@@ -52,6 +62,9 @@ public class ClosetFacadeImpl implements ClosetFacade {
                 closet.getComponents().add(closetCustomComponent);
             }
         });
+
+        closet.setLatitude(closetForm.getLatitude());
+        closet.setLongitude(closetForm.getLongitude());
 
         return ClosetClosetDtoMapper.toClosetDto(closetService.save(closet));
     }

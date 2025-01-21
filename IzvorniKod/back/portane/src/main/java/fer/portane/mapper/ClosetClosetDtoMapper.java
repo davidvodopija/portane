@@ -24,6 +24,8 @@ public class ClosetClosetDtoMapper {
                 })
                 .collect(Collectors.toList())
         );
+        closetDto.setLatitude(closet.getLatitude());
+        closetDto.setLongitude(closet.getLongitude());
         return closetDto;
     }
 }
