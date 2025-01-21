@@ -5,6 +5,9 @@ import fer.portane.dto.GeneralResponse;
 import fer.portane.facade.GalleryFacade;
 import fer.portane.form.GalleryForm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,8 +25,14 @@ public class GalleryController {
     }
 
     @GetMapping("/get-by-seller/{id}")
-    public ResponseEntity<GeneralResponse<List<GalleryDto>>> getBySeller(@PathVariable Long id) {
-        return ResponseEntity.ok(new GeneralResponse<>(galleryFacade.getBySeller(id)));
+    public ResponseEntity<GeneralResponse<Page<GalleryDto>>> getBySeller(@PathVariable Long id,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "asc") String sortOrder) {
+        Sort sort = Sort.by(Sort.Direction.fromString(sortOrder), sortBy);
+        PageRequest pageRequest = PageRequest.of(page, size, sort);
+        return ResponseEntity.ok(new GeneralResponse<>(galleryFacade.getBySeller(id, pageRequest)));
     }
 
     @GetMapping("/get/{id}")

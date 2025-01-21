@@ -5,6 +5,9 @@ import fer.portane.dto.GeneralResponse;
 import fer.portane.facade.ClosetFacade;
 import fer.portane.form.ClosetForm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,9 +27,15 @@ public class ClosetController {
     }
 
     @GetMapping("/my-closets")
-    public ResponseEntity<GeneralResponse<List<ClosetDto>>> findAllForAuthenticatedUser() {
-        GeneralResponse<List<ClosetDto>> generalResponse = new GeneralResponse<>();
-        generalResponse.setResult(closetFacade.findAllForAuthenticatedUser());
+    public ResponseEntity<GeneralResponse<Page<ClosetDto>>> findAllForAuthenticatedUser(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "asc") String sortOrder) {
+        Sort sort = Sort.by(Sort.Direction.fromString(sortOrder), sortBy);
+        PageRequest pageRequest = PageRequest.of(page, size, sort);
+        GeneralResponse<Page<ClosetDto>> generalResponse = new GeneralResponse<>();
+        generalResponse.setResult(closetFacade.findAllForAuthenticatedUser(pageRequest));
         return ResponseEntity.ok(generalResponse);
     }
 

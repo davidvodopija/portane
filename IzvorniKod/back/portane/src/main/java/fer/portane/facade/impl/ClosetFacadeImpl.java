@@ -1,7 +1,6 @@
 package fer.portane.facade.impl;
 
 import fer.portane.dto.ClosetDto;
-import fer.portane.exception.NotFound;
 import fer.portane.facade.ClosetFacade;
 import fer.portane.form.ClosetForm;
 import fer.portane.mapper.ClosetClosetDtoMapper;
@@ -13,10 +12,11 @@ import fer.portane.service.ClosetComponentService;
 import fer.portane.service.ClosetService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class ClosetFacadeImpl implements ClosetFacade {
@@ -57,11 +57,9 @@ public class ClosetFacadeImpl implements ClosetFacade {
     }
 
     @Override
-    public List<ClosetDto> findAllForAuthenticatedUser() {
+    public Page<ClosetDto> findAllForAuthenticatedUser(PageRequest pageRequest) {
         User user = authService.getAuthenticatedUser();
-        return closetService.findAllByUserId(user.getId()).stream()
-                .map(ClosetClosetDtoMapper::toClosetDto)
-                .toList();
+        return closetService.findAllByUserId(user.getId(), pageRequest).map(ClosetClosetDtoMapper::toClosetDto);
     }
 
     @Override

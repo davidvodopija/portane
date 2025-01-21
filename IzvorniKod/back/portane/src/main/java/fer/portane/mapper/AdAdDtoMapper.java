@@ -11,6 +11,7 @@ public class AdAdDtoMapper {
     private ArticleArticleDtoMapper articleDtoMapper;
     public AdDto toDto(Ad ad) {
         AdDto adDto = new AdDto();
+        adDto.setId(ad.getId());
         adDto.setArticle(articleDtoMapper.toDto(ad.getArticle()));
         adDto.setPrice(ad.getPrice());
         adDto.setGallery(GalleryGalleryDtoMapper.toDto(ad.getGallery()));
