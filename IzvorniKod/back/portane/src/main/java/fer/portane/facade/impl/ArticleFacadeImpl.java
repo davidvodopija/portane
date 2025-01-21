@@ -8,6 +8,7 @@ import fer.portane.form.OutfitForm;
 import fer.portane.mapper.ArticleArticleDtoMapper;
 import fer.portane.model.Ad;
 import fer.portane.model.Article;
+import fer.portane.model.Closet;
 import fer.portane.model.ClosetCustomComponent;
 import fer.portane.model.lut.Category;
 import fer.portane.model.lut.Style;
@@ -22,10 +23,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Component
 @Slf4j
@@ -262,5 +260,21 @@ public class ArticleFacadeImpl implements ArticleFacade {
         }
 
         return outfit.stream().map(articleDtoMapper::toDto).toList();
+    }
+
+    @Override
+    public List<ArticleDto> findClosestArticles(int count) {
+        Long userId = authService.getAuthenticatedUser().getId();
+
+        Optional<Closet> closet = closetService.findFirstByUserId(userId);
+
+        return closet.map(value -> articleService.findClosestArticles(value.getLatitude(), value.getLongitude(), count, userId)
+                .stream()
+                .map(articleDtoMapper::toDto)
+                .toList())
+                .orElseGet(() -> articleService.findClosestArticles(null, null, count, userId)
+                .stream()
+                .map(articleDtoMapper::toDto)
+                .toList());
     }
 }

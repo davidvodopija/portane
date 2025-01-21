@@ -51,4 +51,9 @@ public class ArticleServiceImpl implements ArticleService {
     public List<Article> findAll(Specification<Article> specification) {
         return articleRepository.findAll(specification);
     }
+
+    @Override
+    public List<Article> findClosestArticles(Double latitude, Double longitude, int count, Long userId) {
+        return articleRepository.findClosestArticles(latitude, longitude, count, Math.toIntExact(userId));
+    }
 }
