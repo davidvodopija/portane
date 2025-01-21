@@ -19,5 +19,8 @@
             alter table closet_closet_components
             add column last_updated timestamp with time zone DEFAULT (now());
         </sql>
+
+        <rollback>
+        </rollback>
     </changeSet>
 </databaseChangeLog>

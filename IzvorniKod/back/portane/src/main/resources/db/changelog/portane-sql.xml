@@ -42,7 +42,7 @@
         CREATE TABLE articles (
             id integer generated always as identity PRIMARY KEY,
             label varchar,
-            picture varchar,
+            picture text,
             is_public bool,
             closet_custom_component_id integer,
             category_id integer,
@@ -140,7 +140,7 @@
         CREATE TABLE sellers (
             id integer generated always as identity PRIMARY KEY,
             name varchar,
-            logo varchar,
+            logo text,
             user_id integer,
             active bool DEFAULT true,
             created_at timestamp with time zone DEFAULT (now()),
@@ -152,7 +152,7 @@
 
         CREATE TABLE galleries (
             id integer generated always as identity PRIMARY KEY,
-            name varchar,
+            name varchar(5000),
             seller_id integer,
             active bool DEFAULT true,
             created_at timestamp with time zone DEFAULT (now()),
@@ -180,6 +180,28 @@
 
         ALTER TABLE articles ADD FOREIGN KEY (seller_id) REFERENCES sellers (id);
         </sql>
+
+        <rollback>
+            <sql>
+                DROP TABLE ads CASCADE;
+                DROP TABLE galleries CASCADE;
+                DROP TABLE sellers CASCADE;
+                DROP TABLE articles CASCADE;
+                DROP TABLE user_tokens CASCADE;
+                DROP TABLE articles_styles CASCADE;
+                DROP TABLE closet_closet_components CASCADE;
+                DROP TABLE closets CASCADE;
+                DROP TABLE users CASCADE;
+                DROP TABLE lut.conditions CASCADE;
+                DROP TABLE lut.colors CASCADE;
+                DROP TABLE lut.styles CASCADE;
+                DROP TABLE lut.footwear_types CASCADE;
+                DROP TABLE lut.seasons CASCADE;
+                DROP TABLE lut.categories CASCADE;
+                DROP TABLE lut.closet_components CASCADE;
+                DROP SCHEMA lut;
+            </sql>
+        </rollback>
     </changeSet>
 
 </databaseChangeLog>
