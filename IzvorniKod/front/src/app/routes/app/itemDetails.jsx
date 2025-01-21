@@ -7,13 +7,14 @@ import { useLocation } from "react-router-dom";
 function itemDetailView() {
 	const location = useLocation();
 	const fromWardrobe = location.pathname.includes("/wardrobes");
+	const fromGallery = location.pathname.includes("/galleries");
 
 	return (
 		<>
 			<Header />
 			<ItemInfo />
 			{fromWardrobe && <div className="my-5 pt-5"></div>}
-			{!fromWardrobe && <ContactInfo />}
+			{!fromWardrobe && !fromGallery && <ContactInfo />}
 		</>
 	);
 }

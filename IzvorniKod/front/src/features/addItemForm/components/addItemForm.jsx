@@ -119,7 +119,6 @@ function AddItemForm() {
 				};
 				response = await addItemFormAPI(updatedFormData);
 			} else {
-				console.log(formData);
 				const updatedFormData = {
 					...formData,
 					id: itemId,

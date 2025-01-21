@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
 public interface ClosetFacade {
+    ClosetDto save(ClosetForm closetForm);
     ClosetDto create(ClosetForm closetForm);
     Page<ClosetDto> findAllForAuthenticatedUser(PageRequest pageRequest);
 

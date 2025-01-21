@@ -13,7 +13,7 @@ public interface ArticleService {
     void deleteById(Long id);
     Article findById(Long id);
     List<Article> findAllByClosetId(Long closetId);
-
     Page<Article> search(PageRequest pageRequest, Specification<Article> specification);
     List<Article> findAll(Specification<Article> specification);
+    List<Article> findClosestArticles(Double latitude, Double longitude, int count, Long userId);
 }

@@ -6,13 +6,20 @@ export const wardrobesContext = createContext();
 
 export const WardrobesProvider = ({ children }) => {
 	const [wardrobes, setWardrobes] = useState(null);
-	const { isLoggedIn } = useAuth();
+	const [wardrobesInfo, setWardrobesInfo] = useState(null);
+	const { user, isLoggedIn } = useAuth();
 	const [isLoading, setIsLoading] = useState(true);
 
 	const getWardrobes = async () => {
 		try {
-			const updatedWardrobes = await getAllWardrobes();
-			setWardrobes(updatedWardrobes);
+			if (!user.seller) {
+				const updatedWardrobes = await getAllWardrobes();
+				setWardrobes(updatedWardrobes.content);
+				setWardrobesInfo(updatedWardrobes);
+			} else {
+				setWardrobes([]);
+				setWardrobesInfo([]);
+			}
 		} catch (error) {
 			console.error("Error getting wardrobes:", error);
 		}
@@ -41,6 +48,7 @@ export const WardrobesProvider = ({ children }) => {
 
 	const value = {
 		wardrobes,
+		wardrobesInfo,
 		getWardrobes,
 		deleteWardrobe,
 	};
