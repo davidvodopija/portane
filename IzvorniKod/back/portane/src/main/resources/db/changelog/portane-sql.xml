@@ -7,7 +7,7 @@
     <changeSet id="1" author="bspanic">
 
 
-        <sql dbms="h2,postgresql">
+        <sql dbms="postgresql">
         CREATE SCHEMA lut;
 
         CREATE TABLE users (
@@ -17,8 +17,8 @@
             email varchar,
             password varchar,
             active bool DEFAULT true,
-            created_at datetime DEFAULT (now()),
-            last_updated datetime DEFAULT (now())
+            created_at timestamp with time zone DEFAULT (now()),
+            last_updated timestamp with time zone DEFAULT (now())
         );
 
         CREATE TABLE closets (
@@ -28,8 +28,8 @@
             latitude decimal,
             longitude decimal,
             active bool DEFAULT true,
-            created_at datetime DEFAULT (now()),
-            last_updated datetime DEFAULT (now())
+            created_at timestamp with time zone DEFAULT (now()),
+            last_updated timestamp with time zone DEFAULT (now())
         );
 
         CREATE TABLE closet_closet_components (
@@ -53,8 +53,8 @@
             season_id integer,
             seller_id integer,
             active bool DEFAULT true,
-            created_at datetime DEFAULT (now()),
-            last_updated datetime DEFAULT (now())
+            created_at timestamp with time zone DEFAULT (now()),
+            last_updated timestamp with time zone DEFAULT (now())
         );
 
         CREATE TABLE lut.closet_components (
@@ -131,8 +131,8 @@
             access_token varchar,
             refresh_token varchar,
             active bool DEFAULT true,
-            created_at datetime DEFAULT (now()),
-            last_updated datetime DEFAULT (now())
+            created_at timestamp with time zone DEFAULT (now()),
+            last_updated timestamp with time zone DEFAULT (now())
         );
 
         ALTER TABLE user_tokens ADD FOREIGN KEY (user_id) REFERENCES users (id);
@@ -143,8 +143,8 @@
             logo varchar,
             user_id integer,
             active bool DEFAULT true,
-            created_at datetime DEFAULT (now()),
-            last_updated datetime DEFAULT (now()),
+            created_at timestamp with time zone DEFAULT (now()),
+            last_updated timestamp with time zone DEFAULT (now()),
             constraint seller_user
                 foreign key (user_id)
                     references users(id)
@@ -155,8 +155,8 @@
             name varchar,
             seller_id integer,
             active bool DEFAULT true,
-            created_at datetime DEFAULT (now()),
-            last_updated datetime DEFAULT (now()),
+            created_at timestamp with time zone DEFAULT (now()),
+            last_updated timestamp with time zone DEFAULT (now()),
             constraint gallery_seller
                 foreign key (seller_id)
                     references sellers(id)
@@ -168,8 +168,8 @@
             gallery_id integer,
             price decimal default 0.0,
             active bool DEFAULT true,
-            created_at datetime DEFAULT (now()),
-            last_updated datetime DEFAULT (now()),
+            created_at timestamp with time zone DEFAULT (now()),
+            last_updated timestamp with time zone DEFAULT (now()),
             constraint ad_article
                 foreign key (article_id)
                     references articles(id),

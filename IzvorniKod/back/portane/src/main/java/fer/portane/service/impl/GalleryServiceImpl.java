@@ -4,9 +4,9 @@ import fer.portane.model.Gallery;
 import fer.portane.repository.GalleryRepository;
 import fer.portane.service.GalleryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class GalleryServiceImpl implements GalleryService {
@@ -24,8 +24,8 @@ public class GalleryServiceImpl implements GalleryService {
     }
 
     @Override
-    public List<Gallery> findAllBySellerId(Long sellerId) {
-        return galleryRepository.findAllBySellerId(sellerId);
+    public Page<Gallery> findAllBySellerId(Long sellerId, PageRequest pageRequest) {
+        return galleryRepository.findAllBySellerId(sellerId, pageRequest);
     }
 
     @Override

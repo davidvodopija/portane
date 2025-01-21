@@ -4,9 +4,9 @@ import fer.portane.model.Closet;
 import fer.portane.repository.ClosetRepository;
 import fer.portane.service.ClosetService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class ClosetServiceImpl implements ClosetService {
@@ -32,7 +32,7 @@ public class ClosetServiceImpl implements ClosetService {
     }
 
     @Override
-    public List<Closet> findAllByUserId(Long userId) {
-        return closetRepository.findAllByUserId(userId);
+    public Page<Closet> findAllByUserId(Long userId, PageRequest pageRequest) {
+        return closetRepository.findAllByUserId(userId, pageRequest);
     }
 }

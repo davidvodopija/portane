@@ -6,14 +6,12 @@ import fer.portane.form.GalleryForm;
 import fer.portane.mapper.GalleryGalleryDtoMapper;
 import fer.portane.model.Gallery;
 import fer.portane.model.Seller;
-import fer.portane.repository.GalleryRepository;
 import fer.portane.service.AuthService;
 import fer.portane.service.GalleryService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class GalleryFacadeImpl implements GalleryFacade {
@@ -22,11 +20,8 @@ public class GalleryFacadeImpl implements GalleryFacade {
     @Autowired
     private AuthService authService;
     @Override
-    public List<GalleryDto> getBySeller(Long sellerId) {
-        return galleryService.findAllBySellerId(sellerId)
-                .stream()
-                .map(GalleryGalleryDtoMapper::toDto)
-                .toList();
+    public Page<GalleryDto> getBySeller(Long sellerId, PageRequest pageRequest) {
+        return galleryService.findAllBySellerId(sellerId, pageRequest).map(GalleryGalleryDtoMapper::toDto);
     }
 
     @Override

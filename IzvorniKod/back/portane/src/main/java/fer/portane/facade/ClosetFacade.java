@@ -2,12 +2,12 @@ package fer.portane.facade;
 
 import fer.portane.dto.ClosetDto;
 import fer.portane.form.ClosetForm;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 public interface ClosetFacade {
     ClosetDto create(ClosetForm closetForm);
-    List<ClosetDto> findAllForAuthenticatedUser();
+    Page<ClosetDto> findAllForAuthenticatedUser(PageRequest pageRequest);
 
     void delete(Long id);
 }

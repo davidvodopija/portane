@@ -2,11 +2,11 @@ package fer.portane.facade;
 
 import fer.portane.dto.GalleryDto;
 import fer.portane.form.GalleryForm;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 public interface GalleryFacade {
-    List<GalleryDto> getBySeller(Long sellerId);
+    Page<GalleryDto> getBySeller(Long sellerId, PageRequest pageRequest);
     GalleryDto findById(Long id);
     GalleryDto save(GalleryForm galleryForm);
     void deleteById(Long id);

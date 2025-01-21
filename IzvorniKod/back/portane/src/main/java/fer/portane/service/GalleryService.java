@@ -1,12 +1,12 @@
 package fer.portane.service;
 
 import fer.portane.model.Gallery;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 public interface GalleryService {
     Gallery save(Gallery gallery);
     Gallery findById(Long id);
-    List<Gallery> findAllBySellerId(Long sellerId);
+    Page<Gallery> findAllBySellerId(Long sellerId, PageRequest pageRequest);
     void deleteById(Long id);
 }

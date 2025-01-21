@@ -42,7 +42,6 @@ public class StorageService {
                         .bucket(bucketName)
                         .object(objectName)
                         .method(Method.GET)
-                        .expiry(60 * 60) // URL valid for 1 hour
                         .build()
         );
     }

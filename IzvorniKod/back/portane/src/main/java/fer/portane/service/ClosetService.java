@@ -1,12 +1,12 @@
 package fer.portane.service;
 
 import fer.portane.model.Closet;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 public interface ClosetService {
     Closet save(Closet closet);
     void deleteById(Long id);
     Closet findById(Long id);
-    List<Closet> findAllByUserId(Long userId);
+    Page<Closet> findAllByUserId(Long userId, PageRequest pageRequest);
 }
