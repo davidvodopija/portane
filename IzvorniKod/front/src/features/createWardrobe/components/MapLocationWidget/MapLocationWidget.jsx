@@ -32,7 +32,7 @@ function MapLocationWidget({location, setLocation}) {
     return (
         <div className="form-wrapper form-control">
             <div className="map map-scaling">
-                <MapContainer center={[0, 0]} zoom={14} className="map-widget">
+                <MapContainer center={[45.81, 15.97]} zoom={14} className="map-widget">
                     <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
