@@ -12,7 +12,7 @@ function CreateWardrobeForm() {
 	const { codebooks } = useContext(CodebooksContext);
 	const [formData, setFormData] = useState({});
 	const [wardrobeName, setWardrobeName] = useState("");
-	//const [location, setLocation] = useState({latitude: '', longitude: ''});
+	const [location, setLocation] = useState({latitude: '', longitude: ''});
 	const [isLoading, setIsLoading] = useState(true);
 	const { getWardrobes } = useContext(wardrobesContext);
 
@@ -90,12 +90,12 @@ function CreateWardrobeForm() {
 					);
 				})}
 
-				{/*<div className="mb-3">
+				<div className="mb-3">
                     <div className="form-label">LOKACIJA ORMARA</div>
                     <div className="col-8">
                         <MapLocationForm className="mb-3" location={location} setLocation={setLocation}/>
                     </div>
-                </div>*/}
+                </div>
 
 				<div className="mt-4 pt-2">
 					<Button
@@ -103,7 +103,7 @@ function CreateWardrobeForm() {
 						color="red"
 						radius="rounded"
 						type="submit"
-						onClick={() => handleFormSubmit(formRef, addWardrobe)}>
+						onClick={() => handleFormSubmit(formRef, location, addWardrobe)}>
 						Kreiraj ormar
 					</Button>
 				</div>
