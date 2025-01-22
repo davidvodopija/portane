@@ -10,5 +10,5 @@ public class OutfitForm {
     private List<Long> categoryIds;
     private Long colorId;
     private LocalDate date;
-    private Long styleId;
+    private List<Long> styleIds;
 }

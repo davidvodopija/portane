@@ -242,14 +242,14 @@ public class ArticleFacadeImpl implements ArticleFacade {
             if (bitmask.get(i) == 1) {
                 specification = Specification.where(ArticleSpecification.fromUser(userId))
                         .and(ArticleSpecification.hasCategories(List.of(categories.get(i))))
-                        .and(ArticleSpecification.hasStyles(Collections.singletonList(outfitForm.getStyleId())))
+                        .and(ArticleSpecification.hasStyles(outfitForm.getStyleIds()))
                         .and(ArticleSpecification.hasPrimaryColors(Collections.singletonList(outfitForm.getColorId())))
                         .and(ArticleSpecification.randomOrder());
 
             } else {
                 specification = Specification.where(ArticleSpecification.fromUser(userId))
                         .and(ArticleSpecification.hasCategories(List.of(categories.get(i))))
-                        .and(ArticleSpecification.hasStyles(Collections.singletonList(outfitForm.getStyleId())))
+                        .and(ArticleSpecification.hasStyles(outfitForm.getStyleIds()))
                         .and(ArticleSpecification.randomOrder());
             }
             try {
