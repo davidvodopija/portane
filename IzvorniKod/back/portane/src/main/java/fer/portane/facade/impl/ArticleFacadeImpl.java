@@ -246,12 +246,19 @@ public class ArticleFacadeImpl implements ArticleFacade {
                         .and(ArticleSpecification.hasPrimaryColors(Collections.singletonList(outfitForm.getColorId())))
                         .and(ArticleSpecification.randomOrder());
 
-            } else {
-                specification = Specification.where(ArticleSpecification.fromUser(userId))
-                        .and(ArticleSpecification.hasCategories(List.of(categories.get(i))))
-                        .and(ArticleSpecification.hasStyles(outfitForm.getStyleIds()))
-                        .and(ArticleSpecification.randomOrder());
+                try {
+                    outfit.add(articleService.findAll(specification).getFirst());
+                    continue;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
+
+            specification = Specification.where(ArticleSpecification.fromUser(userId))
+                    .and(ArticleSpecification.hasCategories(List.of(categories.get(i))))
+                    .and(ArticleSpecification.hasStyles(outfitForm.getStyleIds()))
+                    .and(ArticleSpecification.randomOrder());
+
             try {
                 outfit.add(articleService.findAll(specification).getFirst());
             } catch (Exception e) {
