@@ -43,7 +43,11 @@ public class SecurityConfig {
                                     "/api/storage/upload",
                                     "/api/articles/find/**",
                                     "/api/ads/find/**",
-                                    "/api/weather/**"
+                                    "/api/weather/**",
+                                    "/oauth2/**",
+                                    "/api/users/oauth2/**",
+                                    "/api/sellers/oauth2/**",
+                                    "/api/oauth2/**"
                             )
                             .permitAll()
                             .anyRequest()

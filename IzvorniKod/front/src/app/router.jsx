@@ -15,12 +15,17 @@ import SellerProfile from "./routes/app/sellerProfile";
 import AddListing from "./routes/app/addListing";
 import GalleryView from "./routes/app/galleryView";
 import AddListingForm from "../features/addListingForm/components/addListingForm";
+import OAuthCallback from "./routes/auth/OAuthCallback";
 
 function Router() {
 	return (
 		<BrowserRouter>
 			<AppProvider>
 				<Routes>
+					<Route
+						path="/oauth/google/:mode"
+						element={<OAuthCallback></OAuthCallback>}
+					/>
 					<Route
 						path="/user-profile"
 						element={

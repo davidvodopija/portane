@@ -7,7 +7,6 @@ import {
 } from "../api/authAPI";
 import { useNavigate } from "react-router-dom";
 
-// Create AuthContext
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -17,7 +16,6 @@ export const AuthProvider = ({ children }) => {
 
 	const navigate = useNavigate();
 
-	// Fetch user data from local storage on initial render to restore session
 	useEffect(() => {
 		const storedUser = JSON.parse(sessionStorage.getItem("authUser"));
 		if (storedUser) {
@@ -27,7 +25,6 @@ export const AuthProvider = ({ children }) => {
 		setIsLoading(false);
 	}, []);
 
-	// Save user to local storage when user state changes
 	useEffect(() => {
 		if (user) {
 			sessionStorage.setItem("authUser", JSON.stringify(user));
@@ -91,6 +88,7 @@ export const AuthProvider = ({ children }) => {
 		registerUser,
 		loginUser,
 		logoutUser,
+		setUser,
 	};
 
 	return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

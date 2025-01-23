@@ -14,11 +14,12 @@ import fer.portane.service.AuthService;
 import fer.portane.service.JwtService;
 import fer.portane.service.UserService;
 import fer.portane.service.UserTokenService;
-import org.antlr.v4.runtime.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Component;
+
+import java.util.Optional;
 
 @Component
 public class UserFacadeImpl implements UserFacade {
@@ -53,6 +54,22 @@ public class UserFacadeImpl implements UserFacade {
     }
 
     @Override
+    public UserDto createOrLoginFromOAuth(UserForm userForm, TokenDto token) {
+        User user = userService.getUserByEmail(userForm.getEmail())
+                .orElse(null);
+        if (user != null) {
+            TokenDto t = createTokens(user);
+            token.setAccessToken(t.getAccessToken());
+            return UserUserDtoMapper.toUserDto(user);
+        }
+
+        user = userService.save(userFormMapper.toUser(userForm));
+        TokenDto t = createTokens(user);
+        token.setAccessToken(t.getAccessToken());
+        return UserUserDtoMapper.toUserDto(user);
+    }
+
+    @Override
     public UserDto authenticate(LoginForm loginForm, TokenDto token) {
         User user = userService.getUserByEmail(loginForm.getEmail())
                 .orElse(null);
@@ -71,8 +88,9 @@ public class UserFacadeImpl implements UserFacade {
         token.setRefreshToken(t.getRefreshToken());
         return UserUserDtoMapper.toUserDto(user);
     }
-
-    private TokenDto createTokens(User user) {
+    
+    @Override
+    public TokenDto createTokens(User user) {
         TokenDto tokenDto = jwtService.generateTokens(user.getEmail());
         UserToken userToken = new UserToken();
         userToken.setAccessToken(tokenDto.getAccessToken());

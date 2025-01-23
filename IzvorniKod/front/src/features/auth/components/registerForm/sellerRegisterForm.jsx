@@ -6,6 +6,7 @@ import { useAuth } from "../../hooks/useAuth.jsx";
 import StepOne from "./stepOne.jsx";
 import UploadImage from "../../../../components/uploadImage/uploadImage.jsx";
 import { uploadImage } from "../../../../utils/imageAPI.jsx";
+import { redirectToGoogleOAuth } from "../../utils/oauthUtil.jsx";
 
 function SellerRegisterForm({ isUser, setIsUser }) {
 	const formRef = useRef(null);
@@ -113,7 +114,7 @@ function SellerRegisterForm({ isUser, setIsUser }) {
 						</label>
 					</div>
 				)}
-				<div className="d-grid w-100">
+				<div className="d-grid w-100 mb-3">
 					<Button
 						size="small"
 						color="red"
@@ -126,6 +127,12 @@ function SellerRegisterForm({ isUser, setIsUser }) {
 						{firstPage ? "Dalje" : "Registriraj se"}
 					</Button>
 				</div>
+				Prijavi se putem:{" "}
+				<i
+					className="bi bi-google me-2 text-danger fs-5 ms-1"
+					onClick={() => {
+						redirectToGoogleOAuth(isUser);
+					}}></i>
 			</form>
 			<h1
 				className={`bi bi-arrow-right-short ${!firstPage ? "invisible" : ""}`}

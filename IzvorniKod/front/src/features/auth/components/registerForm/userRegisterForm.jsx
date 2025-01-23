@@ -3,11 +3,12 @@ import Button from "../../../../components/button/button.jsx";
 import "../form.css";
 import { handleFormSubmit } from "../../utils/formUtils.jsx";
 import { useAuth } from "../../hooks/useAuth.jsx";
+import { redirectToGoogleOAuth } from "../../utils/oauthUtil.jsx";
 
 function UserRegisterForm({ isUser, setIsUser }) {
 	const formRef = useRef(null);
 
-	const { registerUser } = useAuth();
+	const { registerUser, _registerGoogleUser } = useAuth();
 
 	return (
 		<form className="border p-4 rounded-2" ref={formRef}>
@@ -77,7 +78,7 @@ function UserRegisterForm({ isUser, setIsUser }) {
 					Želim se registrirati kao prodavač
 				</label>
 			</div>
-			<div className="d-grid w-100">
+			<div className="d-grid w-100 mb-3">
 				<Button
 					size="small"
 					color="red"
@@ -86,6 +87,12 @@ function UserRegisterForm({ isUser, setIsUser }) {
 					Registriraj se
 				</Button>
 			</div>
+			Prijavi se putem:{" "}
+			<i
+				className="bi bi-google me-2 text-danger fs-5 ms-1"
+				onClick={() => {
+					redirectToGoogleOAuth(isUser);
+				}}></i>
 		</form>
 	);
 }
