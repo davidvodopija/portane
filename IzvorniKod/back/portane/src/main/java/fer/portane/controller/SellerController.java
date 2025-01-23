@@ -57,7 +57,7 @@ public class SellerController {
 
     @GetMapping("/oauth2/google")
     public ResponseEntity<GeneralResponse<SellerDto>> createGoogleSeller(@RequestParam(value = "code") String code) {
-        String accessToken = oAuth2Service.getOauthAccessTokenGoogle(code, "sellers");
+        String accessToken = oAuth2Service.getOauthAccessTokenGoogle(code, "seller");
         SellerForm sellerForm = oAuth2Service.getSellerFormGoogle(accessToken);
 
         TokenDto token = new TokenDto();
@@ -77,7 +77,7 @@ public class SellerController {
 
     @GetMapping("/oauth2/facebook")
     public ResponseEntity<GeneralResponse<SellerDto>> createFacebookSeller(@RequestParam("code") String code) {
-        String accessToken = oAuth2Service.getOauthAccessTokenFacebook(code, "sellers");
+        String accessToken = oAuth2Service.getOauthAccessTokenFacebook(code, "seller");
         SellerForm sellerForm = oAuth2Service.getSellerFormFacebook(accessToken);
 
         TokenDto token = new TokenDto();

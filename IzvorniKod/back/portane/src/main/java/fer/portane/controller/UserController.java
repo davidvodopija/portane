@@ -55,10 +55,7 @@ public class UserController {
     }
 
     @GetMapping("/oauth2/google")
-    public ResponseEntity<GeneralResponse<UserDto>> createGoogleUser(@RequestParam("code") String code,
-                                                              @RequestParam("scope") String scope,
-                                                              @RequestParam("authuser") String authUser,
-                                                              @RequestParam("prompt") String prompt) {
+    public ResponseEntity<GeneralResponse<UserDto>> createGoogleUser(@RequestParam("code") String code) {
         String accessToken = oAuth2Service.getOauthAccessTokenGoogle(code, "users");
         UserForm userForm = oAuth2Service.getUserFormGoogle(accessToken);
 
