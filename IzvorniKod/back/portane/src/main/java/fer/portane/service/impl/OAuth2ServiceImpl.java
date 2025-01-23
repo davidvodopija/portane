@@ -45,7 +45,7 @@ public class OAuth2ServiceImpl implements OAuth2Service {
 
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("code", code);
-        params.add("redirect_uri", "http://localhost:5173/oauth/google/" + model);
+        params.add("redirect_uri", baseUrl + "/oauth/google/" + model);
         params.add("client_id", googleClientId);
         params.add("client_secret", googleClientSecret);
         params.add("scope", "https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile");
@@ -70,7 +70,7 @@ public class OAuth2ServiceImpl implements OAuth2Service {
 
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("code", code);
-        params.add("redirect_uri", "http://localhost:5173/oauth/facebook/" + model);
+        params.add("redirect_uri", baseUrl + "/oauth/facebook/" + model);
         params.add("client_id", facebookClientId);
         params.add("client_secret", facebookClientSecret);
 
