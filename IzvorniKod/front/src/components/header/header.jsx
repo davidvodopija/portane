@@ -26,8 +26,7 @@ function Header() {
 						user.seller
 							? navigate("/seller-profile")
 							: navigate("/user-profile")
-					}
-				>
+					}>
 					<a className="m-0 text-black username">
 						{user.seller
 							? user.seller.name
@@ -39,16 +38,11 @@ function Header() {
 							className="d-flex align-items-center user-logo"
 						/>
 					) : (
-						<i
-							className={
-								"bi bi-person-circle d-flex align-items-center"
-							}
-						></i>
+						<i className={"bi bi-person-circle d-flex align-items-center"}></i>
 					)}
 					<i
 						className="bi bi-box-arrow-right d-flex align-items-center"
-						onClick={() => logoutUser()}
-					></i>
+						onClick={() => logoutUser()}></i>
 				</div>
 			) : (
 				<div className="authentication-container d-flex align-items-center justify-content-end">
@@ -59,8 +53,7 @@ function Header() {
 						size="small"
 						color="orange"
 						radius="standard"
-						onClick={() => navigate("/auth/login")}
-					>
+						onClick={() => navigate("/auth/login")}>
 						Prijavi se
 					</Button>
 				</div>
