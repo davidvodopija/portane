@@ -22,7 +22,7 @@ public class UserController {
     private UserFacade userFacade;
 
     @PostMapping("/create")
-    private ResponseEntity<GeneralResponse<UserDto>> create(
+    public ResponseEntity<GeneralResponse<UserDto>> create(
             @Valid @RequestBody UserForm userForm,
             BindingResult bindingResult) {
         GeneralResponse<UserDto> generalResponse = new GeneralResponse<>();
