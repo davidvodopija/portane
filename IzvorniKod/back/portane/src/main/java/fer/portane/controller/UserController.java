@@ -5,13 +5,11 @@ import fer.portane.dto.UserDto;
 import fer.portane.dto.GeneralResponse;
 import fer.portane.facade.UserFacade;
 import fer.portane.form.UserForm;
+import fer.portane.service.OAuth2Service;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseCookie;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +18,9 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     @Autowired
     private UserFacade userFacade;
+
+    @Autowired
+    private OAuth2Service oAuth2Service;
 
     @PostMapping("/create")
     private ResponseEntity<GeneralResponse<UserDto>> create(
@@ -53,8 +54,66 @@ public class UserController {
                 .body(generalResponse);
     }
 
-    @GetMapping("/test")
-    private ResponseEntity<String> test() {
-        return new ResponseEntity<>("Radi", HttpStatus.OK);
+    @GetMapping("/oauth2/google")
+    public ResponseEntity<GeneralResponse<UserDto>> createGoogleUser(@RequestParam("code") String code,
+                                                              @RequestParam("scope") String scope,
+                                                              @RequestParam("authuser") String authUser,
+                                                              @RequestParam("prompt") String prompt) {
+        String accessToken = oAuth2Service.getOauthAccessTokenGoogle(code, "users");
+        UserForm userForm = oAuth2Service.getUserFormGoogle(accessToken);
+
+        TokenDto token = new TokenDto();
+        UserDto userDto = userFacade.createOrLoginFromOAuth(userForm, token);
+        ResponseCookie cookie = ResponseCookie.from("accessToken", token.getAccessToken())
+                .httpOnly(true)
+                .secure(true)
+                .path("/")
+                .maxAge(60 * 60 * 24)
+                .build();
+
+        return ResponseEntity
+                .ok()
+                .header(HttpHeaders.SET_COOKIE, cookie.toString())
+                .body(new GeneralResponse<>(userDto));
+    }
+
+    @GetMapping("/oauth2/facebook")
+    public ResponseEntity<GeneralResponse<UserDto>> createFacebookUser(@RequestParam("code") String code) {
+        String accessToken = oAuth2Service.getOauthAccessTokenFacebook(code, "users");
+        UserForm userForm = oAuth2Service.getUserFormFacebook(accessToken);
+
+        TokenDto token = new TokenDto();
+        UserDto userDto = userFacade.createOrLoginFromOAuth(userForm, token);
+        ResponseCookie cookie = ResponseCookie.from("accessToken", token.getAccessToken())
+                .httpOnly(true)
+                .secure(true)
+                .path("/")
+                .maxAge(60 * 60 * 24)
+                .build();
+
+        return ResponseEntity
+                .ok()
+                .header(HttpHeaders.SET_COOKIE, cookie.toString())
+                .body(new GeneralResponse<>(userDto));
+    }
+
+    @GetMapping("/oauth2/github")
+    public ResponseEntity<GeneralResponse<UserDto>> createGithubUser(@RequestParam("code") String code) {
+        String accessToken = oAuth2Service.getOauthAccessTokenGithub(code, "users");
+        UserForm userForm = oAuth2Service.getUserFormGithub(accessToken);
+
+        TokenDto token = new TokenDto();
+        UserDto userDto = userFacade.createOrLoginFromOAuth(userForm, token);
+        ResponseCookie cookie = ResponseCookie.from("accessToken", token.getAccessToken())
+                .httpOnly(true)
+                .secure(true)
+                .path("/")
+                .maxAge(60 * 60 * 24)
+                .build();
+
+        return ResponseEntity
+                .ok()
+                .header(HttpHeaders.SET_COOKIE, cookie.toString())
+                .body(new GeneralResponse<>(userDto));
     }
 }
