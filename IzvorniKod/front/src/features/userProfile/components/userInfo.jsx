@@ -11,7 +11,7 @@ import { wardrobesContext } from "../../wardrobeList/context/wardrobesContext.js
 function UserInfo() {
 	const { user, isLoggedIn } = useAuth();
 	const navigate = useNavigate();
-	const { wardrobes } = useContext(wardrobesContext);
+	const { wardrobes, items } = useContext(wardrobesContext);
 
 	if (!isLoggedIn) return <>Nemate pristup!</>;
 
@@ -20,9 +20,15 @@ function UserInfo() {
 			<div className="profile-info-container d-flex w-100">
 				<div className="pe-4">
 					<div className="pic-container">
-						<img src={userLogo} alt="User logo icon" className="big-userlogo" />
+						<img
+							src={userLogo}
+							alt="User logo icon"
+							className="big-userlogo"
+						/>
 					</div>
-					<div className=" pt-4 text-center username-color">MOJ PROFIL</div>
+					<div className=" pt-4 text-center username-color">
+						MOJ PROFIL
+					</div>
 				</div>
 
 				<div className="info-size-spacing d-flex flex-column justify-content-center gap-4 pb-4">
@@ -31,13 +37,17 @@ function UserInfo() {
 					</div>
 					<div className="d-flex">
 						<div>
-							<img src={mailLogo} alt="Mail logo" className="mail-logo pe-3" />
+							<img
+								src={mailLogo}
+								alt="Mail logo"
+								className="mail-logo pe-3"
+							/>
 						</div>
 						<div> {user.email} </div>
 					</div>
 
-					<div> UKUPNO ORMARA: {wardrobes ? wardrobes.length : 0}</div>
-					<div> UKUPNO ARTIKALA: 0</div>
+					<div>UKUPNO ORMARA: {wardrobes ? wardrobes.length : 0}</div>
+					<div> UKUPNO ARTIKALA: {items ? items.length : 0} </div>
 				</div>
 			</div>
 
@@ -46,10 +56,16 @@ function UserInfo() {
 					size="medium"
 					color="orange"
 					radius="mediumround"
-					onClick={() => navigate("/create-wardrobe")}>
+					onClick={() => navigate("/create-wardrobe")}
+				>
 					DODAJ NOVI ORMAR
 				</Button>
-				<Button size="medium" color="orange" radius="mediumround">
+				<Button
+					size="medium"
+					color="orange"
+					radius="mediumround"
+					onClick={() => navigate("/outfit-generator")}
+				>
 					IZGRADI ODJEVNU KOMBINACIJU
 				</Button>
 			</div>

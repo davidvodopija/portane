@@ -38,7 +38,7 @@ button.btn:hover {
 	border: 2px solid #b4000065;
 }
 
-button.btn-grey:hover {
+button.btn-grey {
 	border: 2px solid gray;
 }
 

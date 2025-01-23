@@ -189,7 +189,7 @@ function AddItemForm() {
 						<input
 							type="text"
 							id="label"
-							maxLength="30"
+							maxLength="40"
 							className="form-control form-control-sm"
 							placeholder="Ime artikla"
 							required

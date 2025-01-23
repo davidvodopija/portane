@@ -1,3 +1,7 @@
+.weather {
+	margin: 6vw 14vw 0 14vw;
+}
+
 .title-style {
 	color: #b40000;
 	font-size: clamp(1.2rem, 1.6vw, 1.5rem);
