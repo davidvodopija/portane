@@ -26,6 +26,7 @@ public class ClosetClosetDtoMapper {
         );
         closetDto.setLatitude(closet.getLatitude());
         closetDto.setLongitude(closet.getLongitude());
+        closetDto.setUser(UserUserDtoMapper.toUserDto(closet.getUser()));
         return closetDto;
     }
 }

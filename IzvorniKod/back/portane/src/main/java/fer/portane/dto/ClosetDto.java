@@ -11,4 +11,5 @@ public class ClosetDto {
     private List<ClosetComponentDto> componentsList;
     private Double latitude;
     private Double longitude;
+    private UserDto user;
 }
