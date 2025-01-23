@@ -13,15 +13,13 @@ Aplikacija podržava prijavu oglašivača koji reklamiraju svoje artikle.
 https://github.com/davidvodopija/portane/wiki/2.-Analiza-zahtjeva
 
 # Tehnologije
-PostgreSQL baza podataka
 
-Docker
-
-React js.
-
-Spring Boot
+https://github.com/davidvodopija/portane/wiki/7.-Tehnologije-za-implementaciju-aplikacije
 
 # Instalcija
+
+https://github.com/davidvodopija/portane/wiki/8.-Upute-za-pu%C5%A1tanje-u-pogon
+
 Link na stranicu: https://portane-front.onrender.com/
 
 Sustavu će vjerojatno trebati malo vremena da odgovori na zahtjeve korisnika jer se server treba pokrenuti.
