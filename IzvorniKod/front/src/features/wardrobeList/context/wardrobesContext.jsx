@@ -59,18 +59,18 @@ export const WardrobesProvider = ({ children }) => {
 		}
 	}, [isLoggedIn]);
 
-	if (isLoading) {
-		return "Loading...";
-	}
+    if (isLoading) {
+        return "Loading...";
+    }
 
-	const deleteWardrobe = async (ID) => {
-		try {
-			const updatedWardrobes = await removeWardrobeByID(ID);
-			getWardrobes();
-		} catch (error) {
-			console.error("Error deleting wardrobe:", error);
-		}
-	};
+    const deleteWardrobe = async (ID) => {
+        try {
+            const updatedWardrobes = await removeWardrobeByID(ID);
+            getWardrobes();
+        } catch (error) {
+            console.error("Error deleting wardrobe:", error);
+        }
+    };
 
 	const value = {
 		wardrobes,
@@ -81,9 +81,9 @@ export const WardrobesProvider = ({ children }) => {
 		deleteWardrobe,
 	};
 
-	return (
-		<wardrobesContext.Provider value={value}>
-			{children}
-		</wardrobesContext.Provider>
-	);
+    return (
+        <wardrobesContext.Provider value={value}>
+            {children}
+        </wardrobesContext.Provider>
+    );
 };
