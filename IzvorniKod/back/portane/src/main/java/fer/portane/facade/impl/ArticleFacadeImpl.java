@@ -6,10 +6,7 @@ import fer.portane.form.ArticleForm;
 import fer.portane.form.ArticleSearchForm;
 import fer.portane.form.OutfitForm;
 import fer.portane.mapper.ArticleArticleDtoMapper;
-import fer.portane.model.Ad;
-import fer.portane.model.Article;
-import fer.portane.model.Closet;
-import fer.portane.model.ClosetCustomComponent;
+import fer.portane.model.*;
 import fer.portane.model.lut.Category;
 import fer.portane.model.lut.Style;
 import fer.portane.service.*;
@@ -271,7 +268,8 @@ public class ArticleFacadeImpl implements ArticleFacade {
 
     @Override
     public List<ArticleDto> findClosestArticles(int count) {
-        Long userId = authService.getAuthenticatedUser().getId();
+        User user = authService.getAuthenticatedUser();
+        Long userId = (user != null ? user.getId() : 0);
 
         Optional<Closet> closet = closetService.findFirstByUserId(userId);
 

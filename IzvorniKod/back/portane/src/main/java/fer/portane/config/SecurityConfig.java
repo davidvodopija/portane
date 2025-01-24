@@ -47,7 +47,8 @@ public class SecurityConfig {
                                     "/oauth2/**",
                                     "/api/users/oauth2/**",
                                     "/api/sellers/oauth2/**",
-                                    "/api/oauth2/**"
+                                    "/api/oauth2/**",
+                                    "/api/articles/find-closest"
                             )
                             .permitAll()
                             .anyRequest()
