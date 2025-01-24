@@ -25,19 +25,29 @@ const OAuthCallback = () => {
 				}
 			)
 			.then((response) => {
-				if (response.data.result.seller) {
-					fetch(response.data.result.seller.logo)
+				const tmpUser = response.data.result;
+				if (tmpUser.name) {
+					tmpUser.seller = {
+						id: tmpUser.id,
+						name: tmpUser.name,
+						logo: tmpUser.logo,
+						email: tmpUser.email,
+					};
+				}
+
+				if (tmpUser.seller) {
+					fetch(tmpUser.seller.logo)
 						.then((res) => res.blob())
 						.then((blob) => {
 							const file = new File([blob], "logo.png", { type: "image/png" });
 							uploadImage(file).then((uploadedLink) => {
-								response.data.result.seller.logo = uploadedLink.result.link;
-								setUser(response.data.result);
+								tmpUser.seller.logo = uploadedLink.result.link;
+								setUser(tmpUser);
 								window.location.href = "/";
 							});
 						});
 				}
-				setUser(response.data.result);
+				setUser(tmpUser);
 				window.location.href = "/";
 			})
 			.catch((error) => {
