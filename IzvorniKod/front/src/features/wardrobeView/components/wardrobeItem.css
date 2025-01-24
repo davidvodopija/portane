@@ -1,84 +1,84 @@
 .wardrobe-item-card {
-    width: 15vw;
-    border-radius: 0;
-    border: 1.5px solid #e6e6e6;
-    background-color: #fff;
+	width: 15vw;
+	border-radius: 0;
+	border: 1.5px solid #e6e6e6;
+	background-color: #fff;
 }
 
 .wardrobe-item-card .card-img-top {
-    height: 14vw;
-    object-fit: cover;
-    border: 10px solid white;
-    border-bottom: none;
-    border-radius: 0;
+	height: 15vw;
+	object-fit: cover;
+	border: 10px solid white;
+	border-bottom: none;
+	border-radius: 0;
 }
 
 .wardrobe-item-card .card-img-top:hover {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .card-location {
-    font-size: 0.85rem;
-    color: #333;
+	font-size: 0.85rem;
+	color: #333;
 }
 
 .card-text {
-    text-decoration: none;
-    color: #333;
-    font-size: clamp(1rem, 1.2vw, 1.2rem);
-    font-weight: 500;
+	text-decoration: none;
+	color: #333;
+	font-size: clamp(1rem, 1.2vw, 1.2rem);
+	font-weight: 500;
 }
 
 .wardrobe-item-card .card-text:hover {
-    text-decoration: underline;
-    cursor: pointer;
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 .actions-on-hover {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .wardrobe-item-card:hover .actions-on-hover {
-    visibility: visible;
-    opacity: 1;
+	visibility: visible;
+	opacity: 1;
 }
 
 @media (max-width: 768px) {
-    .wardrobe-item-card {
-        min-width: 22vw;
-    }
+	.wardrobe-item-card {
+		min-width: 22vw;
+	}
 
-    .wardrobe-item-card .card-img-top {
-        height: 20vw;
-        border: 8px solid white;
-    }
+	.wardrobe-item-card .card-img-top {
+		height: 22vw;
+		border: 8px solid white;
+	}
 
-    .card-location {
-        font-size: 0.7rem;
-    }
+	.card-location {
+		font-size: 0.7rem;
+	}
 
-    .card-text {
-        font-size: clamp(0.8rem, 1vw, 1rem);
-    }
+	.card-text {
+		font-size: clamp(0.8rem, 1vw, 1rem);
+	}
 }
 
 @media (max-width: 480px) {
-    .wardrobe-item-card {
-        min-width: 29vw;
-    }
+	.wardrobe-item-card {
+		min-width: 29vw;
+	}
 
-    .wardrobe-item-card .card-img-top {
-        height: 25vw;
-        border: 8px solid white;
-    }
+	.wardrobe-item-card .card-img-top {
+		height: 29vw;
+		border: 8px solid white;
+	}
 
-    .card-location {
-        font-size: 0.7rem;
-    }
+	.card-location {
+		font-size: 0.7rem;
+	}
 
-    .card-text {
-        font-size: clamp(0.8rem, 1vw, 1rem);
-    }
+	.card-text {
+		font-size: clamp(0.8rem, 1vw, 1rem);
+	}
 }

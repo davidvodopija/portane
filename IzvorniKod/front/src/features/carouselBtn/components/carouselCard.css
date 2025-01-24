@@ -2,6 +2,10 @@
 	width: 14vw;
 }
 
+.carousel-card:hover {
+	cursor: pointer;
+}
+
 .user-posted {
 	font-size: clamp(0.7rem, 0.85vw, 1rem);
 }
