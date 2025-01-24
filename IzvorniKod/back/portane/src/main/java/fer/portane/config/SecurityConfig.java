@@ -42,7 +42,7 @@ public class SecurityConfig {
                                     "/api/ads/search",
                                     "/api/storage/upload",
                                     "/api/articles/find/**",
-                                    "/api/ads/find/**",
+                                    "/api/ads/get/**",
                                     "/api/weather/**",
                                     "/oauth2/**",
                                     "/api/users/oauth2/**",
