@@ -45,6 +45,9 @@ function StepOne({ handleChange }) {
 					data-step="1"
 					required
 					onChange={handleChange}
+					minLength={6}
+					pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{6,}$"
+					title="Password must be at least 6 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character."
 				/>
 			</div>
 		</>

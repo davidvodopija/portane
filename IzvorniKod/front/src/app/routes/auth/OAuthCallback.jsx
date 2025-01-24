@@ -47,7 +47,7 @@ const OAuthCallback = () => {
 			});
 	}, []);
 
-	return <h2>Processing Google Sign-In...</h2>;
+	return <></>;
 };
 
 export default OAuthCallback;

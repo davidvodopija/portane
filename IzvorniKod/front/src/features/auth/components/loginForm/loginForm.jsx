@@ -61,12 +61,18 @@ function LoginForm() {
 					Prijavi se
 				</Button>
 			</div>
-			Prijavi se putem:{" "}
-			<i
-				className="bi bi-google me-2 text-danger fs-5 ms-1"
-				onClick={() => {
-					redirectToGoogleOAuth(isUser);
-				}}></i>
+			<div className="d-grid w-100 mb-3">
+				<Button
+					size="small"
+					color="white"
+					radius="normal"
+					onClick={() => {
+						redirectToGoogleOAuth(isUser);
+					}}>
+					<i className="bi bi-google pull-left fs-6"></i>
+					<span className="ms-4">Prijavi se putem Google-a</span>
+				</Button>
+			</div>
 		</form>
 	);
 }
