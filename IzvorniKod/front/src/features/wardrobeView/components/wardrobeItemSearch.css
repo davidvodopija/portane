@@ -62,7 +62,7 @@
 	}
 
 	.wardrobe-item-card4 .card-img-top4 {
-		height: 20vw;
+		height: 22vw;
 		border: 8px solid white;
 	}
 
@@ -77,11 +77,11 @@
 
 @media (max-width: 480px) {
 	.wardrobe-item-card4 {
-		min-width: 36vw;
+		min-width: 30vw;
 	}
 
 	.wardrobe-item-card4 .card-img-top4 {
-		height: 25vw;
+		height: 30vw;
 		border: 8px solid white;
 	}
 

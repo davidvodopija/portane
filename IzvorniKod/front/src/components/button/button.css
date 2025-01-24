@@ -31,7 +31,9 @@ button.btn-orange {
 button.btn-white {
 	background-color: white;
 	color: #b43600;
-	border: 2px solid #b43600;
+	border: 1px solid #b43600;
+	padding: 3px;
+	padding-bottom: 5px;
 }
 
 button.btn:hover {

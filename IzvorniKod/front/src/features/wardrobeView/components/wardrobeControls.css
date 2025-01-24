@@ -6,14 +6,22 @@
 
 .wardrobe-controls img {
 	width: 10vw;
-	margin-left: 16%;
 }
 
 .control-component {
 	flex-direction: column;
+	align-items: center;
+}
+
+.control-component Button {
+	width: 15vw;
 }
 
 @media (max-width: 768px) {
+	.control-component Button {
+		width: auto;
+	}
+
 	.wardrobe-controls {
 		flex-direction: row;
 		margin-bottom: 3vw;
