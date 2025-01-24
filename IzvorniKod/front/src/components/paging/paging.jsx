@@ -5,8 +5,6 @@ const Pagination = ({totalPages = 0, currentPage = 0, setCurrentPage}) => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        console.log(currentPage)
-        console.log(totalPages)
     }, [currentPage, totalPages]);
 
     useEffect(() => {
