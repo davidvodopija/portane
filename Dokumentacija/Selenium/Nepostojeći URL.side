@@ -1,0 +1,143 @@
+{
+  "id": "74360036-fefe-4872-b3d1-344820a7401f",
+  "version": "2.0",
+  "name": "Nepostojeći URL",
+  "url": "http://localhost:5173",
+  "tests": [{
+    "id": "110cdab9-1b28-4fbc-b81b-3df8692e8634",
+    "name": "Nepostojeći URL",
+    "commands": [{
+      "id": "33cb453b-8016-4357-9738-bc9a002c4480",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "97eb9ff2-70b6-420f-b638-795270a8b0c0",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1280x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c3d02c43-237d-4f9d-a1e8-7d9c72c320a6",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-orange",
+      "targets": [
+        ["css=.btn-orange", "css:finder"],
+        ["xpath=//button[@type='button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Prijavi se')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a4a960da-7e0b-455c-8b4b-611ce8e9bc5d",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3af05a43-8460-4d5e-95c2-b97f688cf790",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "mz@gmail.com"
+    }, {
+      "id": "4f774112-d783-4bcf-bb53-332c65a7f6ed",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/form/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "61074cfc-0542-4a46-b87f-db45c960b0fd",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/form/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Mcz123"
+    }, {
+      "id": "55838b68-48ef-4a3e-abe5-93279c8ebc4a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-small",
+      "targets": [
+        ["css=.btn-small", "css:finder"],
+        ["xpath=//button[@type='button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/form/div[3]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Prijavi se')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "894e2181-c54e-4bd2-8705-8f28757c0009",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-medium:nth-child(1)",
+      "targets": [
+        ["css=.btn-medium:nth-child(1)", "css:finder"],
+        ["xpath=//button[@type='button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div[2]/div[2]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'DODAJ NOVI ORMAR')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fa365a9a-ce3e-4253-ac6c-2eeb7fcde162",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.btn-medium:nth-child(1)",
+      "targets": [
+        ["css=.btn-medium:nth-child(1)", "css:finder"],
+        ["xpath=//button[@type='button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div[2]/div[2]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'DODAJ NOVI ORMAR')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "d451830c-cfb3-4a78-b8e5-f110c0329a56",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["110cdab9-1b28-4fbc-b81b-3df8692e8634"]
+  }],
+  "urls": ["http://localhost:5173/"],
+  "plugins": []
+}

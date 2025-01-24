@@ -1,0 +1,39 @@
+.carousel-card {
+	width: 14vw;
+}
+
+.carousel-card:hover {
+	cursor: pointer;
+}
+
+.user-posted {
+	font-size: clamp(0.7rem, 0.85vw, 1rem);
+}
+
+.carousel-card .card-text {
+	font-weight: 500;
+}
+
+.carousel-card img {
+	object-fit: cover;
+	height: 12vw;
+}
+
+@media (max-width: 768px) {
+	.carousel-card img {
+		height: 24vw;
+	}
+	.carousel-card {
+		width: 25vw;
+	}
+}
+
+@media (max-width: 480px) {
+	.carousel-card .card-text {
+		font-size: 0.8rem;
+	}
+
+	.user-posted {
+		font-size: 0.65rem;
+	}
+}

@@ -1,0 +1,100 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+
+
+/*big search bar*/
+.search-container-big {
+    width: 30vw;
+    position: relative; 
+}
+
+.search-container-big .form-control {
+    border-radius: 100vw; 
+    width: 30vw;
+    padding-right: 2.5rem;
+    height: clamp(1.2rem, 15vw, 2rem); 
+}
+
+.search-container-big .form-control::placeholder {
+    font-size:clamp(0.8rem, 1vw, 0.9rem);
+}
+
+.search-container-big .image-container {
+    position: absolute;
+    top: 45%; 
+    right: clamp(1rem, 1vw, 1.5rem);
+    transform: translateY(-50%); 
+    cursor: pointer; 
+    color: #6c757d; 
+}
+
+/*small search bar*/
+.search-container-small {
+    width: 100%;
+    position: relative; 
+}
+
+.search-container-small .form-control {
+    border-radius: 100vw; 
+    width: 100%;
+    padding-right: 2.5rem;
+    height: clamp(1.2rem, 15vw, 1.8rem); 
+}
+
+.search-container-small .form-control::placeholder {
+    font-size:clamp(0.8rem, 1vw, 0.9rem);
+}
+
+.search-container-small .image-container {
+    position: absolute;
+    top: 45%; 
+    right: clamp(1rem, 1vw, 1.5rem);
+    transform: translateY(-50%); 
+    cursor: pointer; 
+    color: #6c757d; 
+}
+
+@media (max-width: 768px) {
+
+    .search-container-big{
+        padding-bottom: 2%;
+    }
+
+    .search-container-big .form-control {
+        max-height: 4vw; 
+        font-size: 0.8rem; 
+        padding-right: 1rem; 
+    }
+
+    .search-container-big .image-container{
+        top:35%;
+        font-size: 0.8rem;
+        padding-bottom: 0.5vw;
+    }
+
+    .search-container-small{
+        width: 35vw;
+        padding-bottom: 2%;
+    }
+
+    .search-container-small .form-control {
+        max-height: 5vw;
+        width: 35vw;
+        font-size: 0.8rem; 
+        padding-right: 2rem; 
+    }
+
+    .search-container-small .image-container{
+        top:35%;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+     .search-container-big{
+        width: 22vw;
+    }
+
+    .search-container-big .form-control {
+        width: 22vw;
+    }
+}

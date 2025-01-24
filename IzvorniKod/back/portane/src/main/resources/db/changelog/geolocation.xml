@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="0" author="admin">
+        <sql dbms="postgresql" splitStatements="false">
+            CREATE OR REPLACE FUNCTION get_closest_articles(
+                p_latitude DOUBLE PRECISION,
+                p_longitude DOUBLE PRECISION,
+                p_count INT,
+                p_user_id INT
+            ) RETURNS TABLE (
+                id int,
+                label varchar,
+                picture text,
+                is_public bool,
+                category_id int,
+                condition_id int,
+                footwear_type_id int,
+                primary_color_id int,
+                secondary_color_id int,
+                season_id int,
+                closet_custom_component_id int,
+                seller_id int,
+                active bool,
+                created_at timestamp with time zone,
+                last_updated timestamp with time zone
+            ) AS $$
+            BEGIN
+            RETURN QUERY
+                WITH articles_with_distance AS (
+                        SELECT
+                            a.id AS article_id, -- Alias to avoid ambiguity
+                            a.label AS article_label, -- Alias for label
+                            a.picture AS article_picture,
+                            a.is_public AS article_is_public,
+                            a.category_id AS article_category_id,
+                            a.condition_id AS article_condition_id,
+                            a.footwear_type_id AS article_footwear_type_id,
+                            a.primary_color_id AS article_primary_color_id,
+                            a.secondary_color_id AS article_secondary_color_id,
+                            a.season_id AS article_season_id,
+                            a.closet_custom_component_id AS article_closet_custom_component_id,
+                            a.seller_id AS article_seller_id,
+                            a.active AS article_active,
+                            a.created_at AS article_created_at,
+                            a.last_updated AS article_last_updated,
+                            CASE
+                                WHEN c.latitude IS NOT NULL AND c.longitude IS NOT NULL THEN
+                                    -- Haversine formula to calculate distance
+                                    6371 * acos(
+                                        cos(radians(p_latitude)) * cos(radians(c.latitude)) *
+                                        cos(radians(c.longitude) - radians(p_longitude)) +
+                                        sin(radians(p_latitude)) * sin(radians(c.latitude))
+                                    )
+                                ELSE NULL
+                            END AS distance
+                        FROM articles a
+                        LEFT JOIN closet_closet_components ccc ON a.closet_custom_component_id = ccc.id
+                        LEFT JOIN closets c ON ccc.closet_id = c.id
+                        WHERE a.is_public = TRUE and c.user_id != p_user_id
+                    ),
+                    prioritized_articles AS (
+                        SELECT *
+                        FROM articles_with_distance
+                        WHERE distance IS NOT NULL
+                        ORDER BY distance ASC, RANDOM()
+                        LIMIT p_count
+                    ),
+                    random_articles AS (
+                        SELECT *
+                        FROM articles_with_distance
+                        WHERE distance IS NULL
+                        ORDER BY random()
+                        LIMIT GREATEST(0, p_count - (SELECT COUNT(*) FROM prioritized_articles))
+                    )
+            SELECT
+                article_id AS id, -- Explicitly alias columns for the RETURN TABLE
+                article_label AS label,
+                article_picture AS picture,
+                article_is_public AS is_public,
+                article_category_id AS category_id,
+                article_condition_id AS condition_id,
+                article_footwear_type_id AS footwear_type_id,
+                article_primary_color_id AS primary_color_id,
+                article_secondary_color_id AS secondary_color_id,
+                article_season_id AS season_id,
+                article_closet_custom_component_id AS closet_custom_component_id,
+                article_seller_id AS seller_id,
+                article_active AS active,
+                article_created_at AS created_at,
+                article_last_updated AS last_updated
+            FROM prioritized_articles
+            UNION ALL
+            SELECT
+                article_id AS id, -- Explicitly alias columns for the RETURN TABLE
+                article_label AS label,
+                article_picture AS picture,
+                article_is_public AS is_public,
+                article_category_id AS category_id,
+                article_condition_id AS condition_id,
+                article_footwear_type_id AS footwear_type_id,
+                article_primary_color_id AS primary_color_id,
+                article_secondary_color_id AS secondary_color_id,
+                article_season_id AS season_id,
+                article_closet_custom_component_id AS closet_custom_component_id,
+                article_seller_id AS seller_id,
+                article_active AS active,
+                    article_created_at AS created_at,
+                article_last_updated AS last_updated
+            FROM random_articles;
+            END;
+            $$ LANGUAGE plpgsql;
+        </sql>
+        <rollback>
+            DROP FUNCTION get_closest_articles;
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

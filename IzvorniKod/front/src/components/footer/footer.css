@@ -1,0 +1,14 @@
+.footer {
+    background-color: #FFDFDF;
+}
+
+.links-container {
+    gap: 4vw;
+    padding-left: 2rem;
+    font-size: clamp(0.8rem, 1vw, 1.2rem);
+}
+
+.footer h1 {
+    color: #B40000;
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+}

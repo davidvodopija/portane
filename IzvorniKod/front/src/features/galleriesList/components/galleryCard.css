@@ -1,0 +1,89 @@
+.gallery-card .card {
+	width: 19vw;
+	height: fit-content;
+	aspect-ratio: 4.5/4;
+	background-color: #fffdf8;
+	border: 2px solid #e6e6e6;
+	border-radius: clamp(16px, 2vw, 24px);
+}
+
+.gallery-card .card:hover {
+	border: 2px solid #b43600c0;
+}
+
+.gallery-card .card-img-top {
+	max-width: clamp(70px, 8.5vw, 200px);
+	padding: 2%;
+	opacity: 0.7;
+}
+
+.gallery-card .card-txt {
+	font-size: clamp(1rem, 1.4vw, 1.4rem);
+	color: #af0000;
+	font-weight: bold;
+}
+
+.gallery-card .card-body .text-secondary {
+	font-size: clamp(0.8rem, 1vw, 1rem);
+}
+
+.new-gallery Button {
+	width: 10vw;
+	margin-bottom: 2vw;
+	margin-top: 0.5vw;
+}
+
+.new-gallery {
+	z-index: 1;
+	position: relative;
+}
+
+.new-gallery input {
+	width: 15vw;
+	height: 2vw;
+}
+
+.close-button-wrapper {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 120px;
+	height: 120px;
+}
+
+.btn-close {
+	margin-top: 1vw;
+	margin-left: 70%;
+}
+
+.close-button-wrapper .btn-close {
+	display: none;
+}
+
+.close-button-wrapper:hover .btn-close {
+	display: block;
+}
+
+.click-to-gallery:hover {
+	cursor: pointer;
+}
+
+.click-to-gallery:hover > :first-child {
+	text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+	.gallery-card .card {
+		width: 30vw;
+		height: fit-content;
+		aspect-ratio: 4.5/4;
+	}
+
+	.new-gallery Button {
+		width: 20vw;
+	}
+
+	.new-gallery input {
+		width: 25vw;
+	}
+}

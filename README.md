@@ -1,67 +1,55 @@
 # Virtualni Ormar
 
-# Opis projekta
-Ovaj projekt je reultat timskog rada u sklopu projeknog zadatka kolegija [Programsko inženjerstvo](https://www.fer.unizg.hr/predmet/proinz) na Fakultetu elektrotehnike i računarstva Sveučilišta u Zagrebu. 
-
+## Opis projekta
+Ovaj je projekt rezultat timskog rada u sklopu projeknog zadatka kolegija [Programsko inženjerstvo](https://www.fer.unizg.hr/predmet/proinz) na Fakultetu elektrotehnike i računarstva Sveučilišta u Zagrebu. 
 Projekt se sastoji od izrade responzivne web aplikacije u kojoj korisnici definiraju vlastiti virtualni ormar, njegovu strukturu (broj polica, ladica ili šipka za odjeću). 
 Korisnici mogu dodavati artikle odjeće ili obuće te definirati njihove karakteristike (naziv, slika, opća kategorija, kategorija godišnjeg doba, kategorija ležernosti, glavnu i sporednu boju, opis stanja artikla te lokaciju u virtualnom ormaru). 
 Korisnici mogu izraditi odjevnu kombinaciju zadavanjem kriterija, rezultira popisom preporučenih artikala. 
 Aplikacija podržava prijavu oglašivača koji reklamiraju svoje artikle.
 
+## Funkcijski zahtjevi
 
-# Funkcijski zahtjevi
 https://github.com/davidvodopija/portane/wiki/2.-Analiza-zahtjeva
 
-# Tehnologije
-PostgreSQL baza podataka
+## Tehnologije
 
-Docker
+https://github.com/davidvodopija/portane/wiki/7.-Tehnologije-za-implementaciju-aplikacije
 
-React js.
+## Instalcija
 
-Spring Boot
+https://github.com/davidvodopija/portane/wiki/8.-Upute-za-pu%C5%A1tanje-u-pogon
 
-# Instalcija
+Link na stranicu: https://portane-front.onrender.com/
 
-# Članovi tima 
+Sustavu će vjerojatno trebati malo vremena da odgovori na zahtjeve korisnika jer se server treba pokrenuti.
+Servis za dohvat vremenske prognoze ima dnevni limit od 50 request-ova što se može brzo potrošiti.
 
-> Marko Cindrić
+## Članovi tima 
 
-> Roko Domović
+> Marko Cindrić (marko.cindric@fer.hr) - dokumentacija, koordinator dokumentacije
 
-> Borna Lešić
+> Roko Domović (roko.domovic@fer.hr) - frontend
 
-> Boris Španić
+> Borna Lešić (borna.lesic@fer.hr) - frontend
 
-> Lara Topalović
+> Boris Španić (boris.spanic@fer.hr) - backend, vođa tima
 
-> David Vodopija
+> Lara Topalović (lara.topalovic@fer.hr) - frontend, dizajn aplikacije (https://www.figma.com/design/O6rLzCC4h2eB3l4onF1B8P/Untitled?node-id=0-1&p=f&t=f0mrvdHH0cw4R3uT-0)
 
-> Marko Ćiril Zovko
+> David Vodopija (david.vodopija@fer.hr) - frontend, devops, koordinator frontenda
 
-# Kontribucije
+> Marko Ćiril Zovko (marko-ciril.zovko@fer.hr) - dokumentacija, testiranje
+
+## Kontribucije
 https://github.com/davidvodopija/portane/wiki/8.-Prikaz-aktivnosti-grupe
 
-
-
-# 📝 Kodeks ponašanja [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
+## 📝 Kodeks ponašanja [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 Kao studenti sigurno ste upoznati s minimumom prihvatljivog ponašanja definiran u [KODEKS PONAŠANJA STUDENATA FAKULTETA ELEKTROTEHNIKE I RAČUNARSTVA SVEUČILIŠTA U ZAGREBU](https://www.fer.hr/_download/repository/Kodeks_ponasanja_studenata_FER-a_procisceni_tekst_2016%5B1%5D.pdf), te dodatnim naputcima za timski rad na predmetu [Programsko inženjerstvo](https://wwww.fer.hr).
 Očekujemo da ćete poštovati [etički kodeks IEEE-a](https://www.ieee.org/about/corporate/governance/p7-8.html) koji ima važnu obrazovnu funkciju sa svrhom postavljanja najviših standarda integriteta, odgovornog ponašanja i etičkog ponašanja u profesionalnim aktivnosti. Time profesionalna zajednica programskih inženjera definira opća načela koja definiranju  moralni karakter, donošenje važnih poslovnih odluka i uspostavljanje jasnih moralnih očekivanja za sve pripadnike zajenice.
 
 Kodeks ponašanja skup je provedivih pravila koja služe za jasnu komunikaciju očekivanja i zahtjeva za rad zajednice/tima. Njime se jasno definiraju obaveze, prava, neprihvatljiva ponašanja te  odgovarajuće posljedice (za razliku od etičkog kodeksa). U ovom repozitoriju dan je jedan od široko prihvačenih kodeks ponašanja za rad u zajednici otvorenog koda.
->### Poboljšajte funkcioniranje tima:
->* definirajte načina na koji će rad biti podijeljen među članovima grupe
->* dogovorite kako će grupa međusobno komunicirati.
->* ne gubite vrijeme na dogovore na koji će grupa rješavati sporove primjenite standarde!
->* implicitno podrazmijevamo da će svi članovi grupe slijediti kodeks ponašanja.
- 
->###  Prijava problema
->Najgore što se može dogoditi je da netko šuti kad postoje problemi. Postoji nekoliko stvari koje možete učiniti kako biste najbolje riješili sukobe i probleme:
->* Obratite mi se izravno [e-pošta](mailto:vlado.sruk@fer.hr) i  učinit ćemo sve što je u našoj moći da u punom povjerenju saznamo koje korake trebamo poduzeti kako bismo riješili problem.
->* Razgovarajte s vašim asistentom jer ima najbolji uvid u dinamiku tima. Zajedno ćete saznati kako riješiti sukob i kako izbjeći daljnje utjecanje u vašem radu.
->* Ako se osjećate ugodno neposredno razgovarajte o problemu. Manje incidente trebalo bi rješavati izravno. Odvojite vrijeme i privatno razgovarajte s pogođenim članom tima te vjerujte u iskrenost.
 
-# 📝 Licenca
+## 📝 Licenca
 Važeča (1)
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 

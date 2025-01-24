@@ -1,0 +1,30 @@
+.contact-card {
+    min-width: fit-content;
+    background-color: #fffdf8;
+    font-size: clamp(0.8rem, 1.1vw, 1.1rem);
+    width: 25%;
+}
+
+.text-color {
+    color: #af0000;
+    font-weight: 500;
+}
+
+.mail-logo {
+    opacity: 0.85;
+}
+
+
+@media (max-width: 768px) {
+    .contact-card {
+        min-width: fit-content;
+        width: 50vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-card {
+        min-width: fit-content;
+        width: 80vw;
+    }
+}

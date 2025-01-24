@@ -1,0 +1,8 @@
+.page-item {
+    --bs-pagination-bg: #fffdf8;
+    --bs-pagination-color: #af0000;
+}
+
+.current-pagee {
+    --bs-pagination-bg: #f3e1e1;
+}

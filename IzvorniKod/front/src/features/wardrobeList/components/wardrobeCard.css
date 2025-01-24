@@ -1,0 +1,65 @@
+.wardrobe-card .card {
+	width: 19vw;
+	height: fit-content;
+	aspect-ratio: 1/1;
+	background-color: #fffdf8;
+	border: 2px solid #e6e6e6;
+	border-radius: clamp(16px, 2vw, 24px);
+}
+
+.wardrobe-card .card:hover {
+	border: 2px solid #b43600c0;
+}
+
+.wardrobe-card .card-img-top {
+	max-width: clamp(70px, 8.5vw, 200px);
+	padding: 2%;
+}
+
+.wardrobe-card .card-txt {
+	font-size: clamp(1rem, 1.4vw, 1.4rem);
+	color: #af0000;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.wardrobe-card .card-body:hover {
+	cursor: pointer;
+}
+
+.wardrobe-card .card-body:hover > :first-child {
+	text-decoration: underline;
+}
+
+.wardrobe-card .card-body .text-secondary {
+	font-size: clamp(0.8rem, 1vw, 1rem);
+}
+
+.close-button-wrapper {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 120px;
+	height: 120px;
+}
+
+.btn-close {
+	margin-top: 1vw;
+	margin-left: 70%;
+}
+
+.close-button-wrapper .btn-close {
+	display: none;
+}
+
+.close-button-wrapper:hover .btn-close {
+	display: block;
+}
+
+@media (max-width: 768px) {
+	.wardrobe-card .card {
+		width: 30vw;
+		height: fit-content;
+		aspect-ratio: 1/1;
+	}
+}

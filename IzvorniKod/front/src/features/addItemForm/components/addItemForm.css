@@ -1,0 +1,36 @@
+.title-style {
+    color: #b40000;
+    font-size: clamp(1.2rem, 1.6vw, 1.5rem);
+    font-weight: 500;
+    max-height: 30px;
+}
+
+.new-item-form {
+    background-color: #fffdf8;
+}
+
+.button-container Button {
+    width: 40vw;
+}
+
+.new-item-form .form-label,
+.form-check-label {
+	font-size: clamp(0.8rem, 1.2vw, 1rem);
+}
+
+@media (max-width: 768px) {
+    .button-container Button {
+        width: 50vw;
+    }
+
+    .new-item-form .row {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .top-text {
+        flex-direction: column;
+    }
+}

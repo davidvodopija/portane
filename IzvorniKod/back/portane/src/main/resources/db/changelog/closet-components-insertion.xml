@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="2" author="bspanic">
+        <sql dbms="postgresql">
+            insert into lut.closet_components (name) values ('Polica');
+            insert into lut.closet_components (name) values ('Ladica');
+            insert into lut.closet_components (name) values ('Šipka za odjeću');
+        </sql>
+
+        <sql dbms="postgresql">
+            alter table closet_closet_components
+            add column active bool DEFAULT true;
+            alter table closet_closet_components
+            add column created_at timestamp with time zone DEFAULT (now());
+            alter table closet_closet_components
+            add column last_updated timestamp with time zone DEFAULT (now());
+        </sql>
+
+        <rollback>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

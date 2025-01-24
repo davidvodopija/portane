@@ -1,0 +1,35 @@
+.upload-area {
+	position: relative;
+	border: 2px dashed #cdcfd1;
+	background-color: rgba(231, 231, 231, 0.25);
+	padding: 3vw;
+	text-align: center;
+	color: #6c757d;
+}
+
+.ratio-1 {
+	aspect-ratio: 1;
+}
+
+.upload-area i {
+	font-size: 2rem;
+}
+
+.upload-area input[type="file"] {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.upload-indicator i {
+	font-size: 1rem;
+}
+
+.bring-to-front {
+	position: relative;
+	z-index: 1;
+}
