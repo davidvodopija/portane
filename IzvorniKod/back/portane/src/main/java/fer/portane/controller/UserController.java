@@ -23,7 +23,7 @@ public class UserController {
     private OAuth2Service oAuth2Service;
 
     @PostMapping("/create")
-    private ResponseEntity<GeneralResponse<UserDto>> create(
+    public ResponseEntity<GeneralResponse<UserDto>> create(
             @Valid @RequestBody UserForm userForm,
             BindingResult bindingResult) {
         GeneralResponse<UserDto> generalResponse = new GeneralResponse<>();
