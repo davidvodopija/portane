@@ -41,7 +41,22 @@ Servis za dohvat vremenske prognoze ima dnevni limit od 50 request-ova što se m
 > Marko Ćiril Zovko (marko-ciril.zovko@fer.hr) - dokumentacija, testiranje
 
 ## Kontribucije
-https://github.com/davidvodopija/portane/wiki/8.-Prikaz-aktivnosti-grupe
+[https://github.com/davidvodopija/portane/wiki/8.-Prikaz-aktivnosti-grupe](https://github.com/davidvodopija/portane/wiki/C.-Prikaz-aktivnosti-grupe)
+
+Marko Cindrić bio je zadužen za izradu projektne dokumentacije , od izrade svih dijagrama do dokumentiranja funkcionalnih i nefunkcionalnih zahtjeva. Uz to, napisao je popis korištenih tehnologija i upute za puštanje u pogon.
+
+Roko Domović radio je na frontendu. Zaslužan je za izgled i funkcionalnost: dodavanje ormara, lokacija ormara, pretraživanje artikala i oglasa, paginacija, informacije o artiklu…
+
+Borna Lešić radio je na frontendu.  Zaslužan je za izgled i funkcionalnost: početna stranica, header, footer, searchbar… 
+
+Boris španić vođa je našeg tima. Samostalno je izradio cjelokupni backend, od osmišljavanja i dokumentiranja arhitekture do implementacije i unit-testinga.
+
+Lara Topalović radila je na frontendu. Zaslužna je za cjelokupni dizajn stranice te izgled i funkcionalnost:  stranica korisnika i oglašivača, prikaz ormara i galerije, kartice za artikle…
+
+David Vodopija radio je na frontendu. Koordinirao je izradu frontenda, zadavao zadatke i pomagao ostatku tima kada su imali poteškoće. Bio je zadužen za devops, upravljao je verzioniranjem aplikacije na GitHubu i uvelike je pomogao  timu u radu s GitHubom.
+
+Marko Ćiril Zovko bio je zadužen za dokumentaciju. Vodio je bilješku sastanaka, napisao opis projektnog zadatka i zaključak, izradio prezentaciju, vodio popis literature i pratio cjelokupnu aktivnost grupe. Također je proveo Selenium testing.
+
 
 ## 📝 Kodeks ponašanja [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 Kao studenti sigurno ste upoznati s minimumom prihvatljivog ponašanja definiran u [KODEKS PONAŠANJA STUDENATA FAKULTETA ELEKTROTEHNIKE I RAČUNARSTVA SVEUČILIŠTA U ZAGREBU](https://www.fer.hr/_download/repository/Kodeks_ponasanja_studenata_FER-a_procisceni_tekst_2016%5B1%5D.pdf), te dodatnim naputcima za timski rad na predmetu [Programsko inženjerstvo](https://wwww.fer.hr).
