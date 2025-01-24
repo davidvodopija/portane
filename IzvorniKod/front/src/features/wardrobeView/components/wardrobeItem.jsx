@@ -67,10 +67,12 @@ function WardrobeItem({ id, onItemDeleted, wardrobeId }) {
 				src={item.picture || placeholder}
 				className="card-img-top"
 				alt={item.label}
-				onClick={() => navigate(`/wardrobes/${wardrobeId}/item-details/${id}`)}
+				onClick={() =>
+					navigate(`/wardrobes/${wardrobeId}/item-details/${id}`)
+				}
 			/>
 
-			<div className="card-body p-0 pb-2">
+			<div className="card-body p-0 pb-2 ps-3 pe-1">
 				<div className="actions-on-hover d-flex justify-content-end">
 					<HoverItemActions
 						shared={item.public}
@@ -79,14 +81,15 @@ function WardrobeItem({ id, onItemDeleted, wardrobeId }) {
 						onDelete={handleDeleteWardrobeItem}
 					/>
 				</div>
-				<p className="card-location ms-3 mb-0">
+				<p className="card-location mb-0">
 					{item.closetCustomComponent.title}
 				</p>
 				<a
-					className="card-text ms-3"
+					className="card-text"
 					onClick={() =>
 						navigate(`/wardrobes/${wardrobeId}/item-details/${id}`)
-					}>
+					}
+				>
 					{item.label}{" "}
 				</a>
 			</div>

@@ -11,16 +11,23 @@ import AddItem from "./routes/app/addItem";
 import PrivateUserRoute from "./routes/auth/privateUserRoute";
 import PrivateSellerRoute from "./routes/auth/privateSellerRoute";
 import PublicAuthRoute from "./routes/auth/publicAuthRoute";
+import OutfitGenerator from "./routes/app/outfitGenerator";
+import OutfitSuggestion from "./routes/app/outfitSuggestion";
 import SellerProfile from "./routes/app/sellerProfile";
 import AddListing from "./routes/app/addListing";
 import GalleryView from "./routes/app/galleryView";
 import AddListingForm from "../features/addListingForm/components/addListingForm";
+import OAuthCallback from "./routes/auth/OAuthCallback";
 
 function Router() {
 	return (
 		<BrowserRouter>
 			<AppProvider>
 				<Routes>
+					<Route
+						path="/oauth/google/:mode"
+						element={<OAuthCallback></OAuthCallback>}
+					/>
 					<Route
 						path="/user-profile"
 						element={
@@ -144,6 +151,25 @@ function Router() {
 							</PrivateSellerRoute>
 						}
 					/>
+
+					<Route
+						path="/outfit-generator"
+						element={
+							<PrivateUserRoute>
+								<OutfitGenerator />
+							</PrivateUserRoute>
+						}
+					/>
+
+					<Route
+						path="/outfit-suggestion"
+						element={
+							<PrivateUserRoute>
+								<OutfitSuggestion />
+							</PrivateUserRoute>
+						}
+					/>
+
 					<Route path="*" element={<Navigate to="/" replace />} />
 				</Routes>
 			</AppProvider>

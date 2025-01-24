@@ -6,10 +6,7 @@ import fer.portane.form.ArticleForm;
 import fer.portane.form.ArticleSearchForm;
 import fer.portane.form.OutfitForm;
 import fer.portane.mapper.ArticleArticleDtoMapper;
-import fer.portane.model.Ad;
-import fer.portane.model.Article;
-import fer.portane.model.Closet;
-import fer.portane.model.ClosetCustomComponent;
+import fer.portane.model.*;
 import fer.portane.model.lut.Category;
 import fer.portane.model.lut.Style;
 import fer.portane.service.*;
@@ -242,16 +239,23 @@ public class ArticleFacadeImpl implements ArticleFacade {
             if (bitmask.get(i) == 1) {
                 specification = Specification.where(ArticleSpecification.fromUser(userId))
                         .and(ArticleSpecification.hasCategories(List.of(categories.get(i))))
-                        .and(ArticleSpecification.hasStyles(Collections.singletonList(outfitForm.getStyleId())))
+                        .and(ArticleSpecification.hasStyles(outfitForm.getStyleIds()))
                         .and(ArticleSpecification.hasPrimaryColors(Collections.singletonList(outfitForm.getColorId())))
                         .and(ArticleSpecification.randomOrder());
 
-            } else {
-                specification = Specification.where(ArticleSpecification.fromUser(userId))
-                        .and(ArticleSpecification.hasCategories(List.of(categories.get(i))))
-                        .and(ArticleSpecification.hasStyles(Collections.singletonList(outfitForm.getStyleId())))
-                        .and(ArticleSpecification.randomOrder());
+                try {
+                    outfit.add(articleService.findAll(specification).getFirst());
+                    continue;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
+
+            specification = Specification.where(ArticleSpecification.fromUser(userId))
+                    .and(ArticleSpecification.hasCategories(List.of(categories.get(i))))
+                    .and(ArticleSpecification.hasStyles(outfitForm.getStyleIds()))
+                    .and(ArticleSpecification.randomOrder());
+
             try {
                 outfit.add(articleService.findAll(specification).getFirst());
             } catch (Exception e) {
@@ -264,7 +268,8 @@ public class ArticleFacadeImpl implements ArticleFacade {
 
     @Override
     public List<ArticleDto> findClosestArticles(int count) {
-        Long userId = authService.getAuthenticatedUser().getId();
+        User user = authService.getAuthenticatedUser();
+        Long userId = (user != null ? user.getId() : 0);
 
         Optional<Closet> closet = closetService.findFirstByUserId(userId);
 

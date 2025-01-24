@@ -7,5 +7,5 @@ public class ClosetCustomComponentDto {
     private Long id;
     private String title;
     private String componentType;
-    private Long closetId;
+    private ClosetDto closet;
 }

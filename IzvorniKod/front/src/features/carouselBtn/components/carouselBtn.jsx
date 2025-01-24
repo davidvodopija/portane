@@ -1,39 +1,55 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './carouselBtn.css';
 import CarouselCard from './carouselCard';
-import item from '../../../assets/item.png';
+import { getClosetNearYou } from "../api/carouselBtnAPI";
+
 
 function CarouselBtn() {
+
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const fetchItems = async() => {
+      try{
+        const data = await getClosetNearYou();
+        setItems(data);
+      }catch(error){
+        console.error('Error occured while fetching items: ', error);
+      }
+    };
+
+    fetchItems();
+  }, []);
+
+  const itemGroups = items?.reduce((groups, item, index) => {
+    if (index % 4 === 0){
+      groups.push([]);
+    }
+    groups[groups.length -1].push(item);
+    
+    return groups;
+  }, []);
+
   return (
     <div className="container mb-5">
       <div id="carouselItems" className="carousel-items-container carousel slide">
-        <div className="carousel-inner  ">
-          <div className="carousel-item active">
-            <div className="cards-container">
-              <CarouselCard src={item} txt="Item 1" />
-              <CarouselCard src={item} txt="Item 1" />
-              <CarouselCard src={item} txt="Item 1" />
-              <CarouselCard src={item} txt="Item 1" />
-            </div>
-          </div>
-          <div className="carousel-item">
-            <div className="cards-container">
-              <CarouselCard src={item} txt="Item 2" />
-              <CarouselCard src={item} txt="Item 2" />
-              <CarouselCard src={item} txt="Item 2" />
-              <CarouselCard src={item} txt="Item 2" />
-            </div>
-          </div>
-          <div className="carousel-item">
-            <div className="cards-container">
-              <CarouselCard src={item} txt="Item 3" />
-              <CarouselCard src={item} txt="Item 3" />
-              <CarouselCard src={item} txt="Item 3" />
-              <CarouselCard src={item} txt="Item 3" />
-            </div>
-          </div>
+        <div className="carousel-inner">
+          {itemGroups.map((group, index) => (
+              <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+                <div className="cards-container mx-2">
+                  {group.map((item) => (
+                    <CarouselCard 
+                      key={item.id}
+                      src={item.picture}
+                      txt={item.label}
+                      user={item.closetCustomComponent.closet.user}
+                    />
+                  ))}
+                </div>
+              </div>
+            ))}
         </div>
         <button className="carousel-control-prev" type="button" data-bs-target="#carouselItems" data-bs-slide="prev">
           <span className="carousel-control-prev-icon" aria-hidden="true"></span>

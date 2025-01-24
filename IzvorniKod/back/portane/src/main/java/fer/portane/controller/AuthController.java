@@ -6,6 +6,7 @@ import fer.portane.dto.UserDto;
 import fer.portane.facade.AuthFacade;
 import fer.portane.facade.UserFacade;
 import fer.portane.form.LoginForm;
+import fer.portane.service.OAuth2Service;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
@@ -16,6 +17,7 @@ import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -25,6 +27,9 @@ public class AuthController {
 
     @Autowired
     private AuthFacade authFacade;
+
+    @Autowired
+    private OAuth2Service oAuth2Service;
 
     @PostMapping("/login")
     public ResponseEntity<GeneralResponse<UserDto>> login(
@@ -74,4 +79,5 @@ public class AuthController {
         generalResponse.setResult("Logged out successfully");
         return ResponseEntity.ok(generalResponse);
     }
+
 }

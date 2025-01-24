@@ -38,6 +38,10 @@ button.btn:hover {
 	border: 2px solid #b4000065;
 }
 
+button.btn-grey {
+	border: 2px solid gray;
+}
+
 button.btn-red {
 	background-color: #b40000;
 	color: white;
@@ -47,6 +51,11 @@ button.btn-red {
 button.btn-red-clear {
 	background-color: none;
 	border: 1.5px solid #b4000065;
+}
+
+button.btn-grey {
+	background-color: gray;
+	color: white;
 }
 
 /*radius variants*/

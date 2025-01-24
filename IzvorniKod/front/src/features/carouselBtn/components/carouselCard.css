@@ -10,6 +10,11 @@
     font-weight: 500;
 }
 
+.carousel-card img{
+    object-fit: cover;
+    height: 12vw;
+}
+
 @media (max-width: 768px) {
     .carousel-card{
         width: 25vw;

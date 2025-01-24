@@ -17,7 +17,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public User getAuthenticatedUser() {
         Authentication authorization = getAuthentication();
-        if (authorization == null) {
+        if (authorization.getPrincipal() == "anonymousUser") {
             return null;
         }
 

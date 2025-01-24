@@ -40,7 +40,15 @@ public class SecurityConfig {
                                     "/api/sellers/create",
                                     "/api/articles/search",
                                     "/api/ads/search",
-                                    "/api/storage/upload"
+                                    "/api/storage/upload",
+                                    "/api/articles/find/**",
+                                    "/api/ads/find/**",
+                                    "/api/weather/**",
+                                    "/oauth2/**",
+                                    "/api/users/oauth2/**",
+                                    "/api/sellers/oauth2/**",
+                                    "/api/oauth2/**",
+                                    "/api/articles/find-closest"
                             )
                             .permitAll()
                             .anyRequest()

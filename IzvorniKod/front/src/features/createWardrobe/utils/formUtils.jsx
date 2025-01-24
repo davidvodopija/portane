@@ -1,9 +1,11 @@
 import { validateForm } from "../../../utils/formUtils.jsx";
 
-const reformatFormData = (elements) => {
+const reformatFormData = (elements, location) => {
 	const formattedData = {
 		title: "",
 		componentsList: [],
+		latitude : location.latitude,
+		longitude : location.longitude
 	};
 
 	const formElements = Array.from(elements).filter((element) => element.name);
@@ -26,9 +28,9 @@ const reformatFormData = (elements) => {
 };
 
 // Usage within handleFormSubmit
-export const handleFormSubmit = (formRef, providerFunction) => {
+export const handleFormSubmit = (formRef, location, providerFunction) => {
 	if (validateForm(formRef)) {
-		const formattedData = reformatFormData(formRef.current.elements);
+		const formattedData = reformatFormData(formRef.current.elements, location);
 		providerFunction(formattedData);
 	}
 };
