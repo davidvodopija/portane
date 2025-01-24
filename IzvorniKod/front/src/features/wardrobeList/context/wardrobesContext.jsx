@@ -1,6 +1,11 @@
 import React, { createContext, useState, useEffect } from "react";
 import { useAuth } from "../../auth/hooks/useAuth.jsx";
-import { getAllWardrobes, removeWardrobeByID } from "../api/wardrobesAPI.jsx";
+import {
+	getWeatherKey,
+	getAllWardrobes,
+	removeWardrobeByID,
+} from "../api/wardrobesAPI.jsx";
+import { getAllWardrobeItems } from "../../wardrobeView/api/wardrobeItemsAPI.jsx";
 
 export const wardrobesContext = createContext();
 
@@ -9,6 +14,8 @@ export const WardrobesProvider = ({ children }) => {
 	const [wardrobesInfo, setWardrobesInfo] = useState(null);
 	const { user, isLoggedIn } = useAuth();
 	const [isLoading, setIsLoading] = useState(true);
+	const [items, setItems] = useState(0);
+	const [weatherKey, setWeatherKey] = useState("");
 
 	const getWardrobes = async () => {
 		try {
@@ -16,6 +23,7 @@ export const WardrobesProvider = ({ children }) => {
 				const updatedWardrobes = await getAllWardrobes();
 				setWardrobes(updatedWardrobes.content);
 				setWardrobesInfo(updatedWardrobes);
+				getWardrobeItems(updatedWardrobes.content);
 			} else {
 				setWardrobes([]);
 				setWardrobesInfo([]);
@@ -25,10 +33,28 @@ export const WardrobesProvider = ({ children }) => {
 		}
 	};
 
+	const getWardrobeItems = async (wardrobes) => {
+		try {
+			if (!wardrobes) return;
+
+			const allItems = await Promise.all(
+				wardrobes.map((wardrobe) => getAllWardrobeItems(wardrobe.id))
+			);
+
+			const allWardrobeItems = allItems.flat();
+			setItems(allWardrobeItems);
+		} catch (error) {
+			console.error("Error getting all wardrobe items:", error);
+		}
+	};
+
 	useEffect(() => {
 		if (isLoggedIn) {
 			getWardrobes().then(() => {
-				setIsLoading(false);
+				getWeatherKey().then((key) => {
+					setWeatherKey(key);
+					setIsLoading(false);
+				});
 			});
 		}
 	}, [isLoggedIn]);
@@ -49,6 +75,8 @@ export const WardrobesProvider = ({ children }) => {
 	const value = {
 		wardrobes,
 		wardrobesInfo,
+		items,
+		weatherKey,
 		getWardrobes,
 		deleteWardrobe,
 	};

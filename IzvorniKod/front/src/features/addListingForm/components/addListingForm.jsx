@@ -28,7 +28,7 @@ function AddListingForm() {
 		styleIds: [],
 		seasonId: 0,
 		galleryId: 0,
-		price: 0,
+		price: null,
 	});
 
 	const [isLoading, setIsLoading] = useState(true);
@@ -98,7 +98,8 @@ function AddListingForm() {
 			let response;
 			if (!adId) {
 				if (formData.picture == "") {
-					const pictureField = formRef.current.querySelectorAll("[type=file]");
+					const pictureField =
+						formRef.current.querySelectorAll("[type=file]");
 
 					pictureField.forEach((field) => {
 						field.setCustomValidity("Upload an image");
@@ -113,7 +114,9 @@ function AddListingForm() {
 						picture: image.result.link,
 						categoryId: formData.categoryId,
 						conditionId: formData.conditionId,
-						footwearTypeId: formData.footwearType ? formData.footwearTypeId : 0,
+						footwearTypeId: formData.footwearType
+							? formData.footwearTypeId
+							: 0,
 						primaryColorId: formData.primaryColorId,
 						secondaryColorId: formData.secondaryColorId,
 						styleIds: formData.styleIds,
@@ -130,7 +133,9 @@ function AddListingForm() {
 						picture: formData.picture,
 						categoryId: formData.categoryId,
 						conditionId: formData.conditionId,
-						footwearTypeId: formData.footwearType ? formData.footwearTypeId : 0,
+						footwearTypeId: formData.footwearType
+							? formData.footwearTypeId
+							: 0,
 						primaryColorId: formData.primaryColorId,
 						secondaryColorId: formData.secondaryColorId,
 						styleIds: formData.styleIds,
@@ -163,7 +168,8 @@ function AddListingForm() {
 				...prevData,
 				picture: file,
 			}));
-			const pictureField = formRef.current.querySelectorAll("[type=file]");
+			const pictureField =
+				formRef.current.querySelectorAll("[type=file]");
 
 			pictureField.forEach((field) => {
 				field.setCustomValidity("");
@@ -192,7 +198,9 @@ function AddListingForm() {
 					/>
 				</div>
 
-				<p className="listing-title-style mx-3">Informacije o artiklu</p>
+				<p className="listing-title-style mx-3">
+					Informacije o artiklu
+				</p>
 				<hr className="line mx-3" />
 
 				<div className="row mx-3">
@@ -203,7 +211,7 @@ function AddListingForm() {
 						<input
 							type="text"
 							id="label"
-							maxLength="30"
+							maxLength="40"
 							className="form-control form-control-sm"
 							placeholder="Ime artikla"
 							required
@@ -221,7 +229,8 @@ function AddListingForm() {
 								className="form-select"
 								required
 								value={formData.seasonId || ""}
-								onChange={handleChange}>
+								onChange={handleChange}
+							>
 								<option value="" disabled>
 									Izaberi
 								</option>
@@ -248,15 +257,19 @@ function AddListingForm() {
 								}))}
 								value={formData.styleIds.map((id) => ({
 									value: id,
-									label: codebooks.styles.find((style) => style.id === id)
-										?.name,
+									label: codebooks.styles.find(
+										(style) => style.id === id
+									)?.name,
 								}))}
 								onChange={handleSelectChange}
 							/>
 						</div>
 
 						<div className="mb-3">
-							<label htmlFor="secondary-color" className="form-label">
+							<label
+								htmlFor="secondary-color"
+								className="form-label"
+							>
 								SPOREDNA BOJA
 							</label>
 							<select
@@ -264,7 +277,8 @@ function AddListingForm() {
 								className="form-select"
 								onChange={handleChange}
 								value={formData.secondaryColorId || ""}
-								required>
+								required
+							>
 								<option value="" disabled>
 									Izaberi
 								</option>
@@ -277,7 +291,10 @@ function AddListingForm() {
 						</div>
 						{formData.categoryId == 6 && (
 							<div className="mb-3">
-								<label htmlFor="footwear-type" className="form-label">
+								<label
+									htmlFor="footwear-type"
+									className="form-label"
+								>
 									OTVORENOST
 								</label>
 								<select
@@ -285,7 +302,8 @@ function AddListingForm() {
 									className="form-select"
 									required
 									onChange={handleChange}
-									value={formData.footwearTypeId || ""}>
+									value={formData.footwearTypeId || ""}
+								>
 									<option value="" disabled>
 										Izaberi
 									</option>
@@ -309,12 +327,16 @@ function AddListingForm() {
 								className="form-select"
 								required
 								onChange={handleChange}
-								value={formData.categoryId || ""}>
+								value={formData.categoryId || ""}
+							>
 								<option value="" disabled>
 									Izaberi
 								</option>
 								{codebooks.categories.map((category) => (
-									<option key={category.id} value={category.id}>
+									<option
+										key={category.id}
+										value={category.id}
+									>
 										{category.name}
 									</option>
 								))}
@@ -322,7 +344,10 @@ function AddListingForm() {
 						</div>
 
 						<div className="mb-3">
-							<label htmlFor="primary-color" className="form-label">
+							<label
+								htmlFor="primary-color"
+								className="form-label"
+							>
 								GLAVNA BOJA
 							</label>
 							<select
@@ -330,7 +355,8 @@ function AddListingForm() {
 								className="form-select"
 								required
 								onChange={handleChange}
-								value={formData.primaryColorId || ""}>
+								value={formData.primaryColorId || ""}
+							>
 								<option value="" disabled>
 									Izaberi
 								</option>
@@ -351,12 +377,16 @@ function AddListingForm() {
 								className="form-select"
 								required
 								value={formData.conditionId || ""}
-								onChange={handleChange}>
+								onChange={handleChange}
+							>
 								<option value="" disabled>
 									Izaberi
 								</option>
 								{codebooks.conditions.map((condition) => (
-									<option key={condition.id} value={condition.id}>
+									<option
+										key={condition.id}
+										value={condition.id}
+									>
 										{condition.name}
 									</option>
 								))}
@@ -377,7 +407,8 @@ function AddListingForm() {
 							className="form-select"
 							required
 							onChange={handleChange}
-							value={formData.galleryId || ""}>
+							value={formData.galleryId || ""}
+						>
 							<option value="" disabled>
 								Izaberi
 							</option>
@@ -397,10 +428,11 @@ function AddListingForm() {
 							id="price"
 							className="form-control"
 							placeholder="Unesi cijenu"
-							value={formData.price || 0}
+							value={formData.price}
 							onChange={handleChange}
 							step={0.01}
-							min={0}></input>
+							min={0}
+						></input>
 					</div>
 				</div>
 
@@ -409,8 +441,9 @@ function AddListingForm() {
 						size="long"
 						color="red"
 						radius="rounded"
-						onClick={() => handleFormSubmit(formRef, handleSubmit)}>
-						{adId ? "AžURIRAJ OGLAS" : "PODIJELI OGLAS"}
+						onClick={() => handleFormSubmit(formRef, handleSubmit)}
+					>
+						{adId ? "AŽURIRAJ OGLAS" : "PODIJELI OGLAS"}
 					</Button>
 				</div>
 				<div className="d-flex justify-content-end mt-3">
