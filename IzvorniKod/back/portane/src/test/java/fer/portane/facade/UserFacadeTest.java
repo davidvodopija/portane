@@ -52,7 +52,7 @@ class UserFacadeTest {
         // Arrange
         UserForm userForm = new UserForm();
         userForm.setEmail("test@example.com");
-        userForm.setPassword("password123");
+        userForm.setPassword("aBcD$1234");
         userForm.setFirstname("John");
         userForm.setLastname("Doe");
 
