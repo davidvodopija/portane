@@ -1,24 +1,31 @@
 .switchlabel {
-    font-size: 1.3rem;
-    padding-left: 10px;
-    padding-right: 10px;
-    min-width: 170px;
+	font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+	padding-left: 10px;
+	padding-right: 10px;
+	min-width: 100px;
 }
 
 .switchlabel:hover {
-    background-color: #fef3f3;
-    color: #af0000;
-    border-bottom: 3px solid #ffc8c8;
+	background-color: #fef3f3;
+	color: #af0000;
+	border-bottom: 3px solid #ffc8c8;
 }
 
 .switchlabel-active {
-    background-color: #ffffff00;
-    border-bottom: 3px solid #ffc8c8;
-    color: #b40000;
+	background-color: #ffffff00;
+	border-bottom: 3px solid #ffc8c8;
+	color: #b40000;
 }
 
 .switchlabel-passive {
-    background-color: #ffffff00;
-    border-bottom: 3px solid #dedede;
-    color: #757575;
+	background-color: #ffffff00;
+	border-bottom: 3px solid #dedede;
+	color: #757575;
+}
+
+@media (max-width: 480px) {
+	.switchlabel {
+		font-size: 0.8rem;
+		min-width: 70px;
+	}
 }

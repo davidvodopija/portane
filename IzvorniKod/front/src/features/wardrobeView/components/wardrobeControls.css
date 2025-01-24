@@ -1,30 +1,30 @@
 .wardrobe-controls {
-    flex-direction: column;
-    width: 20vw;
-    margin-right: 5vw;
+	flex-direction: column;
+	width: 25vw;
+	margin-right: 5vw;
 }
 
 .wardrobe-controls img {
-    width: 10vw;
-    margin-left: 22%;
+	width: 10vw;
+	margin-left: 16%;
 }
 
 .control-component {
-    flex-direction: column;
+	flex-direction: column;
 }
 
 @media (max-width: 768px) {
-    .wardrobe-controls {
-        flex-direction: row;
-        margin-bottom: 3vw;
-        width: fit-content;
-        margin-left: auto;
-        margin-right: auto;
-    }
+	.wardrobe-controls {
+		flex-direction: row;
+		margin-bottom: 3vw;
+		width: fit-content;
+		margin-left: auto;
+		margin-right: auto;
+	}
 
-    .wardrobe-controls img {
-        margin-left: auto;
-        margin-right: auto;
-        width: 10vw;
-    }
+	.wardrobe-controls img {
+		margin-left: auto;
+		margin-right: auto;
+		width: 10vw;
+	}
 }

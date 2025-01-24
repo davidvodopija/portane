@@ -16,7 +16,10 @@ function WardrobeControls() {
 					size="small"
 					color="orange"
 					radius="mediumround"
-					onClick={() => navigate(`/wardrobes/${wardrobeId}/add-item`)}>
+					onClick={() =>
+						navigate(`/wardrobes/${wardrobeId}/add-item`)
+					}
+				>
 					DODAJ NOVI KOMAD ODJEĆE
 				</Button>
 			</div>
@@ -27,7 +30,10 @@ function WardrobeControls() {
 					size="small"
 					color="orange"
 					radius="mediumround"
-					onClick={() => navigate("/wardrobes/" + wardrobeId + "/edit")}>
+					onClick={() =>
+						navigate("/wardrobes/" + wardrobeId + "/edit")
+					}
+				>
 					IZMIJENI ORMAR
 				</Button>
 			</div>
