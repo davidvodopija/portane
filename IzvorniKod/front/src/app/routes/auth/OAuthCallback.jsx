@@ -25,7 +25,6 @@ const OAuthCallback = () => {
 				}
 			)
 			.then((response) => {
-				console.log("OAuth Response:", response.data);
 				if (response.data.result.seller) {
 					fetch(response.data.result.seller.logo)
 						.then((res) => res.blob())

@@ -39,14 +39,12 @@ function itemDetailView() {
 
     useEffect(() => {
         if (info) {
-            console.log(info)
             if (type === "ad") {
                 setItem(info.article);
             } else {
                 setItem(info)
             }
             setLoading(false)
-            console.log(item);
         }
     }, [info]);
 

@@ -19,7 +19,6 @@ function WardrobeItemsList() {
         postSearch({
             closetId: wardrobeId,
         }, page, size).then((data) => {
-            console.log(data);
             setItems(data.result.content);
             setPage(data.result.pageable.pageNumber);
             setTotalPages(data.result.totalPages);

@@ -18,7 +18,6 @@ function GalleryAdsList() {
 
     useEffect(() => {
         postAdvertSearch({galleryId: galleryId}, page, size).then((data) => {
-            console.log(data)
             setAds(data.result.content);
             setTotalPages(data.result.totalPages);
             setPage(data.result.pageable.pageNumber);

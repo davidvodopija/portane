@@ -19,7 +19,6 @@ function CategorySelect({mode}) {
     const {searchTerm, entered, setTotalPages, page, formData, setFormData} = useContext(searchContext);
     const [isLoading, setIsLoading] = useState(true);
 
-    //console.log(formData)
 
     let size = 12;
     const [itemList, setItemList] = useState([]);

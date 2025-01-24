@@ -15,12 +15,9 @@ function SearchBar({size = "big", text = "Pretraži", searchMode = "sharedItems"
     };
 
     const handleSubmit = () => {
-        //setSearchTerm(inputValue);
         setSearchMode(searchMode);
         setEntered(-entered);
-        //console.log(inputValue);
         navigate("/search");
-        //setInputValue(""); //clear input field
     };
 
     return (

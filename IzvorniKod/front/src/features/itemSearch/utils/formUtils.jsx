@@ -6,11 +6,9 @@ export const handleSubmitArticle = async (formData, mode, setItemList, currentPa
         if (mode !== "myItems") {
             formData.userId = null;
         }
-        console.log(formData);
 
         const response = await postSearch(formData, currentPage, size);
         if (response) {
-            console.log(response);
             setItemList(response.result.content);
             setTotalPages(response.result.totalPages)
         }
@@ -22,11 +20,9 @@ export const handleSubmitArticle = async (formData, mode, setItemList, currentPa
 
 export const handleSubmitAdverts = async (formData, mode, setItemList, currentPage, size, setTotalPages) => {
     try {
-        console.log(formData);
 
         const response = await postAdvertSearch(formData, currentPage, size);
         if (response) {
-            console.log(response);
             setItemList(response.result.content);
             setTotalPages(response.result.totalPages)
         }
