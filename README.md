@@ -7,7 +7,6 @@ Korisnici mogu dodavati artikle odjeće ili obuće te definirati njihove karakte
 Korisnici mogu izraditi odjevnu kombinaciju zadavanjem kriterija, rezultira popisom preporučenih artikala. 
 Aplikacija podržava prijavu oglašivača koji reklamiraju svoje artikle.
 
-
 ## Funkcijski zahtjevi
 
 https://github.com/davidvodopija/portane/wiki/2.-Analiza-zahtjeva
@@ -43,7 +42,6 @@ Servis za dohvat vremenske prognoze ima dnevni limit od 50 request-ova što se m
 
 ## Kontribucije
 https://github.com/davidvodopija/portane/wiki/8.-Prikaz-aktivnosti-grupe
-
 
 ## 📝 Kodeks ponašanja [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 Kao studenti sigurno ste upoznati s minimumom prihvatljivog ponašanja definiran u [KODEKS PONAŠANJA STUDENATA FAKULTETA ELEKTROTEHNIKE I RAČUNARSTVA SVEUČILIŠTA U ZAGREBU](https://www.fer.hr/_download/repository/Kodeks_ponasanja_studenata_FER-a_procisceni_tekst_2016%5B1%5D.pdf), te dodatnim naputcima za timski rad na predmetu [Programsko inženjerstvo](https://wwww.fer.hr).
