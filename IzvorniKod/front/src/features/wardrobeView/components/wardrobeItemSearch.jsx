@@ -1,4 +1,4 @@
-import "./wardrobeItem.css";
+import "./wardrobeItemSearch.css";
 import HoverItemActions from "../../../components/hoverItemActions/hoverItemActions";
 import {useNavigate} from "react-router-dom";
 import {useState, useEffect} from "react";
@@ -6,7 +6,7 @@ import {deleteWardrobeItem, findWardrobeItem} from "../api/wardrobeItemsAPI";
 import {addItemFormAPI} from "../../addItemForm/api/addItemFormAPI";
 import placeholder from "../../../assets/placeholderImg.png";
 
-function WardrobeItem({id, onItemDeleted, wardrobeId}) {
+function WardrobeItem({id, onItemDeleted, wardrobeId, actions = true, pathOnClick = "edit"}) {
     const navigate = useNavigate();
     const [item, setItem] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -62,30 +62,40 @@ function WardrobeItem({id, onItemDeleted, wardrobeId}) {
     }
 
     return (
-        <div className="card wardrobe-item-card">
+        <div className="card wardrobe-item-card4">
             <img
                 src={item.picture || placeholder}
-                className="card-img-top"
+                className="card-img-top4"
                 alt={item.label}
-                onClick={() => navigate(`/wardrobes/${wardrobeId}/item-details/${id}`)}
+                onClick={() => {
+                    (actions) ?
+                        navigate(`/wardrobes/${wardrobeId}/item-details/${id}`) : navigate(`/itemInfo/article/${id}`)
+                }}
             />
 
-            <div className="card-body p-0 pb-2">
-                <div className="actions-on-hover d-flex justify-content-end">
-                    <HoverItemActions
-                        shared={item.public}
-                        onShare={shareWardrobeItem}
-                        onEdit={handleEditWardrobeItem}
-                        onDelete={handleDeleteWardrobeItem}
-                    />
-                </div>
-                <p className="card-location ms-3 mb-0">
-                    {item.closetCustomComponent.title}
-                </p>
+            <div className="card-body4 p-0 py-2 ps-2">
+                {
+                    (actions) ? <div className="actions-on-hover4 d-flex justify-content-end">
+                        <HoverItemActions
+                            shared={item.public}
+                            onShare={shareWardrobeItem}
+                            onEdit={handleEditWardrobeItem}
+                            onDelete={handleDeleteWardrobeItem}
+                        />
+                    </div> : <></>
+                }
+
+                {
+                    (pathOnClick === "edit") ?
+                        <p className="card-location mb-0">
+                            {item.closetCustomComponent.title}
+                        </p> : <></>
+                }
+
                 <a
-                    className="card-text ms-3"
-                    onClick={() =>
-                        navigate(`/wardrobes/${wardrobeId}/item-details/${id}`)
+                    className="card-text4"
+                    onClick={() => (actions) ?
+                        navigate(`/wardrobes/${wardrobeId}/item-details/${id}`) : navigate(`/itemInfo/article/${id}`)
                     }>
                     {item.label}{" "}
                 </a>

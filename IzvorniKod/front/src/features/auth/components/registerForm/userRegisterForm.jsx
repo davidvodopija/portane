@@ -63,6 +63,9 @@ function UserRegisterForm({ isUser, setIsUser }) {
 					id="password"
 					placeholder="Unesite lozinku"
 					required
+					minLength={6}
+					pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{6,}$"
+					title="Password must be at least 6 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character."
 				/>
 			</div>
 			<div className="form-check mb-3">
@@ -87,12 +90,18 @@ function UserRegisterForm({ isUser, setIsUser }) {
 					Registriraj se
 				</Button>
 			</div>
-			Prijavi se putem:{" "}
-			<i
-				className="bi bi-google me-2 text-danger fs-5 ms-1"
-				onClick={() => {
-					redirectToGoogleOAuth(isUser);
-				}}></i>
+			<div className="d-grid w-100 mb-3">
+				<Button
+					size="small"
+					color="white"
+					radius="normal"
+					onClick={() => {
+						redirectToGoogleOAuth(isUser);
+					}}>
+					<i className="bi bi-google pull-left fs-6"></i>
+					<span className="ms-4">Prijavi se putem Google-a</span>
+				</Button>
+			</div>
 		</form>
 	);
 }

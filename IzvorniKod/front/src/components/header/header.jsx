@@ -3,12 +3,12 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Button from "../button/button";
 import SearchBar from "../searchBar/searchBar";
 import "./header.css";
-import { useAuth } from "../../features/auth/hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import {useAuth} from "../../features/auth/hooks/useAuth";
+import {useNavigate} from "react-router-dom";
 
 function Header() {
-	const { user, isLoggedIn, logoutUser } = useAuth();
-	const navigate = useNavigate();
+    const {user, isLoggedIn, registerUser, loginUser, logoutUser} = useAuth();
+    const navigate = useNavigate();
 
 	return (
 		<div className="navbar p-2 ps-0 m-3">
